@@ -20,10 +20,10 @@ Cookiecutter will pick a default value if used with ``no_input``:
         no_input=True,
     )
 
-In this case it will be using the default defined in ``cookiecutter.json`` or ``.cookiecutterrc``.
+In this case it will be using the default defined in ``manifest.yaml`` or ``.cookiecutterrc``.
 
 .. note::
-   values from ``cookiecutter.json`` will be overridden by values from  ``.cookiecutterrc``
+   values from ``manifest.yaml`` will be overridden by values from  ``.cookiecutterrc``
 
 Advanced Example: Defaults + Extra Context
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

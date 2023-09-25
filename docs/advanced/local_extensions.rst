@@ -8,7 +8,7 @@ Local Extensions
 A template may extend the Cookiecutter environment with local extensions.
 These can be part of the template itself, providing it with more sophisticated custom tags and filters.
 
-To do so, a template author must specify the required extensions in ``cookiecutter.json`` as follows:
+To do so, a template author must specify the required extensions in ``manifest.yaml`` as follows:
 
 .. code-block:: json
 

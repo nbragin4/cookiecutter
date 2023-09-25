@@ -3,8 +3,9 @@ cookiecutter.replay.
 
 -------------------
 """
-import json
+import yaml
 import os
+from cookiecutter.ordered_yaml import ordered_dump
 
 from cookiecutter.utils import make_sure_path_exists
 
@@ -26,13 +27,10 @@ def dump(replay_dir: "os.PathLike[str]", template_name: str, context: dict):
     if not isinstance(context, dict):
         raise TypeError('Context is required to be of type dict')
 
-    if 'cookiecutter' not in context:
-        raise ValueError('Context is required to contain a cookiecutter key')
-
     replay_file = get_file_name(replay_dir, template_name)
 
     with open(replay_file, 'w', encoding="utf-8") as outfile:
-        json.dump(context, outfile, indent=2)
+        ordered_dump(context, outfile, indent=2)
 
 
 def load(replay_dir, template_name):
@@ -43,9 +41,6 @@ def load(replay_dir, template_name):
     replay_file = get_file_name(replay_dir, template_name)
 
     with open(replay_file, encoding="utf-8") as infile:
-        context = json.load(infile)
-
-    if 'cookiecutter' not in context:
-        raise ValueError('Context is required to contain a cookiecutter key')
+        context = yaml.safe_load(infile)
 
     return context

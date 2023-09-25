@@ -23,12 +23,12 @@ This is a directory structure for a simple cookiecutter::
     ├── blah.txt                      <--------- Non-templated files/dirs
     │                                            go outside
     │
-    └── cookiecutter.json             <--------- Prompts & default values
+    └── manifest.yaml             <--------- Prompts & default values
 
 You must have:
 
-- A ``cookiecutter.json`` file.
-- A ``{{ cookiecutter.project_name }}/`` directory, where ``project_name`` is defined in your ``cookiecutter.json``.
+- A ``manifest.yaml`` file.
+- A ``{{ cookiecutter.project_name }}/`` directory, where ``project_name`` is defined in your ``manifest.yaml``.
 
 Beyond that, you can have whatever files/directories you want.
 

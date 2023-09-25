@@ -22,7 +22,7 @@ def test_finds_local_repo(tmp_path):
 
 
 def test_local_repo_with_no_context_raises(tmp_path):
-    """A local repository without a cookiecutter.json should raise a \
+    """A local repository without a manifest.yaml should raise a \
     `RepositoryNotFound` exception."""
     template_path = str(Path('tests', 'fake-repo-bad'))
     with pytest.raises(exceptions.RepositoryNotFound) as err:

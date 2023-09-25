@@ -16,10 +16,10 @@ Create the directory for your cookiecutter and cd into it:
     $ mkdir cookiecutter-website-simple
     $ cd cookiecutter-website-simple/
 
-Step 2: Create cookiecutter.json
+Step 2: Create manifest.yaml
 ----------------------------------
 
-`cookiecutter.json` is a JSON file that contains fields which can be referenced in the cookiecutter template. For each, default value is defined and user will be prompted for input during cookiecutter execution. Only mandatory field is `project_slug` and it should comply with package naming conventions defined in `PEP8 Naming Conventions <https://www.python.org/dev/peps/pep-0008/#package-and-module-names>`_ .
+`manifest.yaml` is a JSON file that contains fields which can be referenced in the cookiecutter template. For each, default value is defined and user will be prompted for input during cookiecutter execution. Only mandatory field is `project_slug` and it should comply with package naming conventions defined in `PEP8 Naming Conventions <https://www.python.org/dev/peps/pep-0008/#package-and-module-names>`_ .
 
 .. code-block:: json
 

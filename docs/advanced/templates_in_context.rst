@@ -3,7 +3,7 @@
 Templates in Context Values
 --------------------------------
 
-The values (but not the keys!) of `cookiecutter.json` are also Jinja2 templates.
+The values (but not the keys!) of `manifest.yaml` are also Jinja2 templates.
 Values from user prompts are added to the context immediately, such that one context value can be derived from previous values.
 This approach can potentially save your user a lot of keystrokes by providing more sensible defaults.
 
@@ -16,7 +16,7 @@ Python packages show some patterns for their naming conventions:
 - a lowercase, dashed repository name
 - an importable, dash-less package name
 
-Here is a `cookiecutter.json` with templated values for this pattern:
+Here is a `manifest.yaml` with templated values for this pattern:
 
 .. code-block:: JSON
 

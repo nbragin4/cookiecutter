@@ -44,7 +44,7 @@ Possible settings are:
 
 ``default_context``:
     A list of key/value pairs that you want injected as context whenever you generate a project with Cookiecutter.
-    These values are treated like the defaults in ``cookiecutter.json``, upon generation of any project.
+    These values are treated like the defaults in ``manifest.yaml``, upon generation of any project.
 ``cookiecutters_dir``
     Directory where your cookiecutters are cloned to when you use Cookiecutter with a repo argument.
 ``replay_dir``

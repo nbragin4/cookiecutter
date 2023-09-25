@@ -1,5 +1,5 @@
 """Functions for prompting the user for project info."""
-import json
+import yaml
 from collections import OrderedDict
 
 from rich.prompt import Prompt, Confirm, PromptBase, InvalidResponse
@@ -7,6 +7,7 @@ from jinja2.exceptions import UndefinedError
 
 from cookiecutter.environment import StrictEnvironment
 from cookiecutter.exceptions import UndefinedVariableInTemplate
+from cookiecutter.ordered_yaml import ordered_load
 
 
 def read_user_variable(var_name, default_value, prompts=None, prefix=""):
@@ -134,7 +135,7 @@ def process_json(user_value, default_value=None):
     :param str user_value: User-supplied value to load as a JSON dict
     """
     try:
-        user_dict = json.loads(user_value, object_pairs_hook=OrderedDict)
+        user_dict = ordered_load(user_value, object_pairs_hook=OrderedDict)
     except Exception as error:
         # Leave it up to click to ask the user again
         raise InvalidResponse('Unable to decode to JSON.') from error
@@ -184,7 +185,7 @@ def read_user_dict(var_name, default_value, prompts=None, prefix=""):
 def render_variable(env, raw, cookiecutter_dict):
     """Render the next variable to be displayed in the user prompt.
 
-    Inside the prompting taken from the cookiecutter.json file, this renders
+    Inside the prompting taken from the manifest.yaml file, this renders
     the next variable. For example, if a project_name is "Peanut Butter
     Cookie", the repo_name could be be rendered with:
 
@@ -240,16 +241,16 @@ def prompt_for_config(context, no_input=False):
     env = StrictEnvironment(context=context)
 
     prompts = {}
-    if '__prompts__' in context['cookiecutter'].keys():
-        prompts = context['cookiecutter']['__prompts__']
-        del context['cookiecutter']['__prompts__']
+    if '__prompts__' in context.keys():
+        prompts = context['__prompts__']
+        del context['__prompts__']
 
     # First pass: Handle simple and raw variables, plus choices.
     # These must be done first because the dictionaries keys and
     # values might refer to them.
 
     count = 0
-    all_prompts = context['cookiecutter'].items()
+    all_prompts = context.items()
     visible_prompts = [k for k, _ in all_prompts if not k.startswith("_")]
     size = len(visible_prompts)
     for key, raw in all_prompts:
@@ -260,7 +261,7 @@ def prompt_for_config(context, no_input=False):
             cookiecutter_dict[key] = render_variable(env, raw, cookiecutter_dict)
             continue
 
-        if not isinstance(raw, dict):
+        if not isinstance(raw, dict) or not isinstance(raw, OrderedDict):
             count += 1
             prefix = f"  [dim][{count}/{size}][/] "
 
@@ -279,7 +280,7 @@ def prompt_for_config(context, no_input=False):
                     )
                 else:
                     cookiecutter_dict[key] = read_user_yes_no(key, raw, prompts, prefix)
-            elif not isinstance(raw, dict):
+            elif not isinstance(raw, dict) or not isinstance(raw, OrderedDict):
                 # We are dealing with a regular variable
                 val = render_variable(env, raw, cookiecutter_dict)
 
@@ -292,7 +293,7 @@ def prompt_for_config(context, no_input=False):
             raise UndefinedVariableInTemplate(msg, err, context) from err
 
     # Second pass; handle the dictionaries.
-    for key, raw in context['cookiecutter'].items():
+    for key, raw in context.items():
         # Skip private type dicts not to be rendered.
         if key.startswith('_') and not key.startswith('__'):
             continue

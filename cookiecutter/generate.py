@@ -1,6 +1,5 @@
 """Functions for generating a project from a project template."""
 import fnmatch
-import json
 import logging
 import os
 import shutil
@@ -21,6 +20,7 @@ from cookiecutter.exceptions import (
 )
 from cookiecutter.find import find_template
 from cookiecutter.hooks import run_hook
+from cookiecutter.ordered_yaml import ordered_load
 from cookiecutter.utils import make_sure_path_exists, rmtree, work_in
 
 logger = logging.getLogger(__name__)
@@ -37,7 +37,7 @@ def is_copy_only_path(path, context):
     :param context: cookiecutter context.
     """
     try:
-        for dont_render in context['cookiecutter']['_copy_without_render']:
+        for dont_render in context['_copy_without_render']:
             if fnmatch.fnmatch(path, dont_render):
                 return True
     except KeyError:
@@ -88,7 +88,7 @@ def apply_overwrites_to_context(context, overwrite_context):
 
 
 def generate_context(
-    context_file='cookiecutter.json', default_context=None, extra_context=None
+    context_file='manifest.yaml', default_context=None, extra_context=None
 ):
     """Generate the context for a Cookiecutter project template.
 
@@ -103,7 +103,7 @@ def generate_context(
 
     try:
         with open(context_file, encoding='utf-8') as file_handle:
-            obj = json.load(file_handle, object_pairs_hook=OrderedDict)
+            obj = ordered_load(file_handle, object_pairs_hook=OrderedDict)
     except ValueError as e:
         # JSON decoding error.  Let's throw a new exception that is more
         # friendly for the developer or user.
@@ -115,10 +115,7 @@ def generate_context(
         )
         raise ContextDecodingException(our_exc_message) from e
 
-    # Add the Python object to the context dictionary
-    file_name = os.path.split(context_file)[1]
-    file_stem = file_name.split('.')[0]
-    context[file_stem] = obj
+    context.update(obj)
 
     # Overwrite context variable defaults with the default context from the
     # user's global config, if available
@@ -194,9 +191,9 @@ def generate_file(project_dir, infile, context, env, skip_if_file_exists=False):
         raise
     rendered_file = tmpl.render(**context)
 
-    if context['cookiecutter'].get('_new_lines', False):
+    if context.get('_new_lines', False):
         # Use `_new_lines` from context, if configured.
-        newline = context['cookiecutter']['_new_lines']
+        newline = context['_new_lines']
         logger.debug('Using configured newline character %s', repr(newline))
     else:
         # Detect original file newline to output the rendered file.
@@ -310,7 +307,7 @@ def generate_files(
     logger.debug('Generating project from %s...', template_dir)
     context = context or OrderedDict([])
 
-    envvars = context.get('cookiecutter', {}).get('_jinja2_env_vars', {})
+    envvars = context.get('_jinja2_env_vars', {})
 
     unrendered_dir = os.path.split(template_dir)[1]
     ensure_dir_is_templated(unrendered_dir)

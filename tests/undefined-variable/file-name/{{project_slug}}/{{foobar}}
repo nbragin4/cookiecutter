@@ -1,0 +1,2 @@
+{{project_slug}}
+{% for _ in project_slug %}={% endfor %}

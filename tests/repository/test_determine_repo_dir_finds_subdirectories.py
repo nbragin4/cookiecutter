@@ -25,7 +25,7 @@ def cloned_cookiecutter_path(user_config_data, template):
     subdir_template_path = os.path.join(cloned_template_path, 'my-dir')
     if not os.path.exists(subdir_template_path):
         os.mkdir(subdir_template_path)
-    Path(subdir_template_path, 'cookiecutter.json').touch()  # creates file
+    Path(subdir_template_path, 'manifest.yaml').touch()  # creates file
 
     return subdir_template_path
 
@@ -33,7 +33,7 @@ def cloned_cookiecutter_path(user_config_data, template):
 def test_should_find_existing_cookiecutter(
     template, user_config_data, cloned_cookiecutter_path
 ):
-    """Find `cookiecutter.json` in sub folder created by `cloned_cookiecutter_path`."""
+    """Find `manifest.yaml` in sub folder created by `cloned_cookiecutter_path`."""
     project_dir, cleanup = repository.determine_repo_dir(
         template=template,
         abbreviations={},
@@ -48,7 +48,7 @@ def test_should_find_existing_cookiecutter(
 
 
 def test_local_repo_typo(template, user_config_data, cloned_cookiecutter_path):
-    """Wrong pointing to `cookiecutter.json` sub-directory should raise."""
+    """Wrong pointing to `manifest.yaml` sub-directory should raise."""
     with pytest.raises(exceptions.RepositoryNotFound) as err:
         repository.determine_repo_dir(
             template=template,

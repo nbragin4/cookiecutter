@@ -1,6 +1,7 @@
 """test_dump."""
-import json
+import yaml
 import os
+from cookiecutter.ordered_yaml import ordered_dump
 
 import pytest
 
@@ -43,11 +44,11 @@ def test_type_error_if_not_dict_context(replay_test_dir, template_name):
         replay.dump(replay_test_dir, template_name, 'not_a_dict')
 
 
-def test_value_error_if_key_missing_in_context(replay_test_dir, template_name):
-    """Test that replay.dump raises if the context does not contain a key \
-    named 'cookiecutter'."""
-    with pytest.raises(ValueError):
-        replay.dump(replay_test_dir, template_name, {'foo': 'bar'})
+# def test_value_error_if_key_missing_in_context(replay_test_dir, template_name):
+#     """Test that replay.dump raises if the context does not contain a key \
+#     named 'cookiecutter'."""
+#     with pytest.raises(ValueError):
+#         replay.dump(replay_test_dir, template_name, {'foo': 'bar'})
 
 
 @pytest.fixture
@@ -75,7 +76,7 @@ def mock_ensure_success(mocker):
 def test_ioerror_if_replay_dir_creation_fails(mock_ensure_failure, replay_test_dir):
     """Test that replay.dump raises when the replay_dir cannot be created."""
     with pytest.raises(OSError):
-        replay.dump(replay_test_dir, 'foo', {'cookiecutter': {'hello': 'world'}})
+        replay.dump(replay_test_dir, 'foo', {'hello': 'world'})
 
     mock_ensure_failure.assert_called_once_with(replay_test_dir)
 
@@ -93,7 +94,7 @@ def test_run_json_dump(
     is correctly written to the expected file in the replay_dir."""
     spy_get_replay_file = mocker.spy(replay, 'get_file_name')
 
-    mock_json_dump = mocker.patch('json.dump', side_effect=json.dump)
+    mock_json_dump = mocker.patch('cookiecutter.ordered_yaml.ordered_dump', side_effect=ordered_dump)
 
     replay.dump(replay_test_dir, template_name, context)
 

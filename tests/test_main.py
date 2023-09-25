@@ -74,9 +74,7 @@ def test_replay_load_template_name(
     monkeypatch.chdir('tests/fake-repo-tmpl')
 
     mock_replay_load = mocker.patch('cookiecutter.main.load')
-    mocker.patch('cookiecutter.main.generate_context').return_value = {
-        'cookiecutter': {}
-    }
+    mocker.patch('cookiecutter.main.generate_context').return_value = {}
     mocker.patch('cookiecutter.main.generate_files')
     mocker.patch('cookiecutter.main.dump')
 
@@ -97,9 +95,7 @@ def test_custom_replay_file(monkeypatch, mocker, user_config_file):
     monkeypatch.chdir('tests/fake-repo-tmpl')
 
     mock_replay_load = mocker.patch('cookiecutter.main.load')
-    mocker.patch('cookiecutter.main.generate_context').return_value = {
-        'cookiecutter': {}
-    }
+    mocker.patch('cookiecutter.main.generate_context').return_value = {}
     mocker.patch('cookiecutter.main.generate_files')
     mocker.patch('cookiecutter.main.dump')
 

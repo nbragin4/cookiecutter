@@ -17,7 +17,7 @@ def find_template(repo_dir: "os.PathLike[str]") -> Path:
     logger.debug('Searching %s for the project template.', repo_dir)
 
     for str_path in os.listdir(repo_dir):
-        if 'cookiecutter' in str_path and '{{' in str_path and '}}' in str_path:
+        if '{{' in str_path and '}}' in str_path:
             project_template = Path(repo_dir, str_path)
             break
     else:

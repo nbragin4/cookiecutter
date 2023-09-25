@@ -17,7 +17,7 @@ class ExtensionLoaderMixin:
         Does the following:
 
         1. Establishes default_extensions (currently just a Time feature)
-        2. Reads extensions set in the cookiecutter.json _extensions key.
+        2. Reads extensions set in the manifest.yaml _extensions key.
         3. Attempts to load the extensions. Provides useful error if fails.
         """
         context = kwargs.pop('context', {})
@@ -43,7 +43,7 @@ class ExtensionLoaderMixin:
         list instead.
         """
         try:
-            extensions = context['cookiecutter']['_extensions']
+            extensions = context['_extensions']
         except KeyError:
             return []
         else:
@@ -60,6 +60,6 @@ class StrictEnvironment(ExtensionLoaderMixin, Environment):
     def __init__(self, **kwargs):
         """Set the standard Cookiecutter StrictEnvironment.
 
-        Also loading extensions defined in cookiecutter.json's _extensions key.
+        Also loading extensions defined in manifest.yaml's _extensions key.
         """
         super().__init__(undefined=StrictUndefined, **kwargs)

@@ -45,7 +45,7 @@ repos:
           - "--indent=2"
           - "--no-sort-keys"
           - "--no-ensure-ascii"
-        exclude: "invalid-syntax.json|tests/fake-repo-bad-json/cookiecutter.json|tests/fake-repo/cookiecutter.json"
+        exclude: "invalid-syntax.json|tests/fake-repo-bad-json/manifest.yaml|tests/fake-repo/manifest.yaml"
       - id: check-toml
       - id: check-xml
       - id: check-yaml

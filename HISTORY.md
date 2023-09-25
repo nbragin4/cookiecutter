@@ -326,7 +326,7 @@ Important Changes:
 
 * Added: Added debug messages for get_user_config [@ssbarnea](https://github.com/ssbarnea) (#1357)
 * Multiple templates per one repository feature added. [@RomHartmann](https://github.com/RomHartmann) (#1224, #1063)
-* Update replay.py json.dump indent for easy viewing [@nicain](https://github.com/nicain) (#1293)
+* Update replay.py yaml.safe_dump indent for easy viewing [@nicain](https://github.com/nicain) (#1293)
 * 'future' library replaced with 'six' as a more lightweight python porting library [@asottile](https://github.com/asottile) (#941)
 * Added extension: Slugify template filter [@ppanero](https://github.com/ppanero) (#1336)
 * Added command line option: `--skip-if-file-exists`, allow to skip the existing files when doing `overwrite_if_exists`. [@chhsiao1981](https://github.com/chhsiao1981) (#1076)
@@ -445,7 +445,7 @@ Other Changes:
 * Add `test_requirements.txt` file for easier testing outside of tox, thanks to [@ramnes](https://github.com/ramnes) (#945)
 * Improve wording in *copy without render* docs, thanks to [@eyalev](https://github.com/eyalev) (#938)
 * Fix a number of typos, thanks to [@delirious-lettuce](https://github.com/delirious-lettuce) (#968)
-* Improved *extra context* docs by noting that extra context keys must be present in the template\'s `cookiecutter.json`, thanks to
+* Improved *extra context* docs by noting that extra context keys must be present in the template\'s `manifest.yaml`, thanks to
 [@karantan](https://github.com/karantan) for the report and fix (#863, #864)
 * Added more cookiecutter templates to the mix:
   * [cookiecutter-kata-cpputest](https://github.com/13coders/cookiecutter-kata-cpputest) by [@13coders](https://github.com/13coders) (#901)
@@ -509,8 +509,8 @@ New Features:
 * New CLI option `--debug-file PATH` to store a log file on disk. By default no log file is written. Entries for `DEBUG` level and     higher. Thanks to [@hackebrot](https://github.com/hackebrot)(#792).
 * Existing templates in a user\'s `cookiecutters_dir` (default is `~/.cookiecutters/`) can now be referenced by directory name, thanks
 to [@michaeljoseph](https://github.com/michaeljoseph) (#825).
-* Add support for dict values in `cookiecutter.json`, thanks to [@freakboy3742](https://github.com/freakboy3742) and [@hackebrot](https://github.com/hackebrot) (#815, #858).
-* Add a `jsonify` filter to default jinja2 extensions that json.dumps a Python object into a string, thanks to [@aroig](https://github.com/aroig) (#791).
+* Add support for dict values in `manifest.yaml`, thanks to [@freakboy3742](https://github.com/freakboy3742) and [@hackebrot](https://github.com/hackebrot) (#815, #858).
+* Add a `jsonify` filter to default jinja2 extensions that yaml.safe_dump a Python object into a string, thanks to [@aroig](https://github.com/aroig) (#791).
 
 Bug Fixes:
 
@@ -805,12 +805,12 @@ Other Changes:
 
 ## 0.9.0 (2015-01-13)
 
-The goals of this release were to add the ability to Jinja2ify the cookiecutter.json default values, and formally launch support for Python 3.4.
+The goals of this release were to add the ability to Jinja2ify the manifest.yaml default values, and formally launch support for Python 3.4.
 
 Features:
 
 * Python 3.4 is now a first class citizen, thanks to everyone.
-* cookiecutter.json values are now rendered Jinja2 templates, thanks to \@bollwyvl (#291).
+* manifest.yaml values are now rendered Jinja2 templates, thanks to \@bollwyvl (#291).
 * Move to py.test, thanks to [@pfmoore](https://github.com/pfmoore) (#319) and [@ramiroluz](https://github.com/ramiroluz) (#310).
 * Add PendingDeprecation warning for users of Python 2.6, as support for it is gone in Python 2.7, thanks to [@michaeljoseph](https://github.com/michaeljoseph) (#201).
 
@@ -885,7 +885,7 @@ Other Changes:
 * Added environment variable to disable network tests for environments without networking, thanks to [@vincentbernat](https://github.com/vincentbernat).
 * Added Appveyor support to aid Windows integrations, thanks to [@pydanny](https://github.com/pydanny) (#215).
 * CONTRIBUTING.rst is now generated via make contributing, thanks to [@pydanny](https://github.com/pydanny) (#220).
-* Removed unnecessary endoing argument to json.load, thanks to [@pfmoore](https://github.com/pfmoore) (#234).
+* Removed unnecessary endoing argument to yaml.safe_load, thanks to [@pfmoore](https://github.com/pfmoore) (#234).
 * Now generating shell hooks dynamically for Unix/Windows portability, thanks to [@pfmoore](https://github.com/pfmoore) (#236).
 * Removed non-portable assumptions about directory structure, thanks to [@pfmoore](https://github.com/pfmoore) (#238).
 * Added a note on portability to the hooks documentation, thanks to [@pfmoore](https://github.com/pfmoore) (#239).
@@ -962,7 +962,7 @@ Other changes:
 
 * Depend on Jinja2\>=2.4 instead of Jinja2==2.7.
 * Fix errors on attempt to render binary files. Copy them over from the project template without rendering.
-* Fix Python 2.6/2.7 UnicodeDecodeError when values containing Unicode chars are in cookiecutter.json.
+* Fix Python 2.6/2.7 UnicodeDecodeError when values containing Unicode chars are in manifest.yaml.
 * Set encoding in Python 3 unicode_open() to always be utf-8.
 
 ## 0.6.1 (2013-08-12)
@@ -973,8 +973,8 @@ Other changes:
 
 ## 0.6.0 (2013-08-08)
 
-* Config is now in a single ```cookiecutter.json``` instead of in ```json/```.
-* When you create a project from a git repo template, Cookiecutter prompts you to enter custom values for the fields defined in ```cookiecutter.json```.
+* Config is now in a single ```manifest.yaml``` instead of in ```json/```.
+* When you create a project from a git repo template, Cookiecutter prompts you to enter custom values for the fields defined in ```manifest.yaml```.
 
 ## 0.5 (2013-07-28)
 

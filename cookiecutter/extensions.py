@@ -9,6 +9,8 @@ from jinja2 import nodes
 from jinja2.ext import Extension
 from slugify import slugify as pyslugify
 
+from cookiecutter.ordered_yaml import ordered_dump
+
 
 class JsonifyExtension(Extension):
     """Jinja2 extension to convert a Python object to JSON."""
@@ -21,6 +23,19 @@ class JsonifyExtension(Extension):
             return json.dumps(obj, sort_keys=True, indent=4)
 
         environment.filters['jsonify'] = jsonify
+
+
+class YamlifyExtension(Extension):
+    """Jinja2 extension to convert a Python object to YAML."""
+
+    def __init__(self, environment):
+        """Initialize the extension with the given environment."""
+        super().__init__(environment)
+
+        def yamlify(obj):
+            return ordered_dump(obj, sort_keys=True, indent=4)
+
+        environment.filters['yamlify'] = yamlify
 
 
 class RandomStringExtension(Extension):

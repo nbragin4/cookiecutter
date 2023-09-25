@@ -8,7 +8,7 @@ Template Extensions
 A template may extend the Cookiecutter environment with custom `Jinja2 extensions`_.
 It can add extra filters, tests, globals or even extend the parser.
 
-To do so, a template author must specify the required extensions in ``cookiecutter.json`` as follows:
+To do so, a template author must specify the required extensions in ``manifest.yaml`` as follows:
 
 .. code-block:: json
 
@@ -20,7 +20,7 @@ To do so, a template author must specify the required extensions in ``cookiecutt
 
 On invocation Cookiecutter tries to import the extensions and add them to its environment respectively.
 
-In the above example, Cookiecutter provides the additional tag `now`_, after installing the `jinja2_time.TimeExtension`_ and enabling it in ``cookiecutter.json``.
+In the above example, Cookiecutter provides the additional tag `now`_, after installing the `jinja2_time.TimeExtension`_ and enabling it in ``manifest.yaml``.
 
 Please note that Cookiecutter will **not** install any dependencies on its own!
 As a user you need to make sure you have all the extensions installed, before running Cookiecutter on a template that requires custom Jinja2 extensions.

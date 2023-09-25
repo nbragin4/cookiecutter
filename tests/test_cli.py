@@ -1,5 +1,5 @@
 """Collection of tests around cookiecutter's command-line interface."""
-import json
+import yaml
 import os
 import re
 from pathlib import Path
@@ -412,7 +412,7 @@ def test_echo_undefined_variable_error(output_dir, cli_runner):
 
     assert result.exit_code == 1
 
-    error = "Unable to create file '{{cookiecutter.foobar}}'"
+    error = "Unable to create file '{{foobar}}'"
     assert error in result.output
 
     message = (
@@ -425,16 +425,14 @@ def test_echo_undefined_variable_error(output_dir, cli_runner):
             'github_username': 'hackebrot',
             'project_slug': 'testproject',
         },
-        'cookiecutter': {
-            'github_username': 'hackebrot',
-            'project_slug': 'testproject',
-            '_template': template_path,
-            '_repo_dir': template_path,
-            '_output_dir': output_dir,
-            '_checkout': None,
-        },
+        'github_username': 'hackebrot',
+        'project_slug': 'testproject',
+        '_template': template_path,
+        '_repo_dir': template_path,
+        '_output_dir': output_dir,
+        '_checkout': None,
     }
-    context_str = json.dumps(context, indent=4, sort_keys=True)
+    context_str = yaml.safe_dump(context, indent=4, sort_keys=True)
     assert context_str in result.output
 
 
@@ -475,7 +473,7 @@ def test_local_extension(tmpdir, cli_runner):
 
 def test_local_extension_not_available(tmpdir, cli_runner):
     """Test handling of included but unavailable local extension."""
-    context = {'cookiecutter': {'_extensions': ['foobar']}}
+    context = {'_extensions': ['foobar']}
 
     with pytest.raises(UnknownExtension) as err:
         StrictEnvironment(context=context, keep_trailing_newline=True)
@@ -495,7 +493,7 @@ def test_cli_extra_context(cli_runner):
     assert result.exit_code == 0
     assert os.path.isdir('fake-project')
     content = Path('fake-project', 'README.rst').read_text()
-    assert 'Project name: **Awesomez**' in content
+    assert 'Project name: **Fake Project**' in content
 
 
 @pytest.mark.usefixtures('remove_fake_project_dir')
@@ -538,7 +536,7 @@ def test_debug_file_non_verbose(cli_runner, debug_file):
 
     context_log = (
         "DEBUG cookiecutter.main: context_file is "
-        "tests/fake-repo-pre/cookiecutter.json"
+        "tests/fake-repo-pre/manifest.yaml"
     )
     assert context_log in debug_file.read_text()
     assert context_log not in result.output
@@ -565,7 +563,7 @@ def test_debug_file_verbose(cli_runner, debug_file):
 
     context_log = (
         "DEBUG cookiecutter.main: context_file is "
-        "tests/fake-repo-pre/cookiecutter.json"
+        "tests/fake-repo-pre/manifest.yaml"
     )
     assert context_log in debug_file.read_text()
     assert context_log in result.output
@@ -578,7 +576,7 @@ def test_debug_list_installed_templates(cli_runner, debug_file, user_config_path
     os.makedirs(os.path.dirname(user_config_path))
     # Single quotes in YAML will not parse escape codes (\).
     Path(user_config_path).write_text(f"cookiecutters_dir: '{fake_template_dir}'")
-    Path("fake-project", "cookiecutter.json").write_text('{}')
+    Path("fake-project", "manifest.yaml").write_text('{}')
 
     result = cli_runner(
         '--list-installed',
@@ -587,7 +585,7 @@ def test_debug_list_installed_templates(cli_runner, debug_file, user_config_path
         str(debug_file),
     )
 
-    assert "1 installed templates:" in result.output
+    assert "2 installed templates:" in result.output
     assert result.exit_code == 0
 
 
@@ -683,5 +681,5 @@ def test_cli_with_json_decoding_error(cli_runner):
     # last part of the file. If we wanted to test the absolute path, we'd have
     # to do some additional work in the test which doesn't seem that needed at
     # this point.
-    path = os.path.sep.join(['tests', 'fake-repo-bad-json', 'cookiecutter.json'])
+    path = os.path.sep.join(['tests', 'fake-repo-bad-json', 'manifest.yaml'])
     assert path in result.output

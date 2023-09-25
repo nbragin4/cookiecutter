@@ -23,11 +23,9 @@ def test_hooks_raises_errors(tmp_path, abort_pre_gen, abort_post_gen):
     for different errors.
     """
     context = {
-        "cookiecutter": {
-            "repo_dir": "foobar",
-            "abort_pre_gen": abort_pre_gen,
-            "abort_post_gen": abort_post_gen,
-        }
+        "repo_dir": "foobar",
+        "abort_pre_gen": abort_pre_gen,
+        "abort_post_gen": abort_post_gen,
     }
 
     with pytest.raises(exceptions.FailedHookException) as error:

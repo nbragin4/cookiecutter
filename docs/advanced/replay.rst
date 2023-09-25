@@ -14,18 +14,16 @@ Example for a replay file (which was created via ``cookiecutter gh:hackebrot/coo
 .. code-block:: JSON
 
     {
-        "cookiecutter": {
-            "app_class_name": "FooBarApp",
-            "app_title": "Foo Bar",
-            "email": "raphael@example.com",
-            "full_name": "Raphael Pierzina",
-            "github_username": "hackebrot",
-            "kivy_version": "1.8.0",
-            "project_slug": "foobar",
-            "short_description": "A sleek slideshow app that supports swipe gestures.",
-            "version": "0.1.0",
-            "year": "2015"
-        }
+        "app_class_name": "FooBarApp",
+        "app_title": "Foo Bar",
+        "email": "raphael@example.com",
+        "full_name": "Raphael Pierzina",
+        "github_username": "hackebrot",
+        "kivy_version": "1.8.0",
+        "project_slug": "foobar",
+        "short_description": "A sleek slideshow app that supports swipe gestures.",
+        "version": "0.1.0",
+        "year": "2015"
     }
 
 To fetch this context data without being prompted on the command line you can use either of the following methods.

@@ -199,7 +199,7 @@ class TestExternalHooks:
         hooks.run_script_with_context(
             os.path.join(self.hooks_path, self.post_hook),
             'tests',
-            {'cookiecutter': {'file': 'context_post.txt'}},
+            {'file': 'context_post.txt'},
         )
         assert os.path.isfile('tests/context_post.txt')
         assert 'tests' not in os.getcwd()

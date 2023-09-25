@@ -1,6 +1,6 @@
 """Main `cookiecutter` CLI."""
 import collections
-import json
+import yaml
 import os
 import sys
 
@@ -21,6 +21,7 @@ from cookiecutter.exceptions import (
 from cookiecutter.log import configure_logger
 from cookiecutter.main import cookiecutter
 from cookiecutter.config import get_user_config
+from cookiecutter.ordered_yaml import ordered_dump
 
 
 def version_msg():
@@ -59,7 +60,7 @@ def list_installed_templates(default_config, passed_config_file):
         folder
         for folder in os.listdir(cookiecutter_folder)
         if os.path.exists(
-            os.path.join(cookiecutter_folder, folder, 'cookiecutter.json')
+            os.path.join(cookiecutter_folder, folder, 'manifest.yaml')
         )
     ]
     click.echo(f'{len(template_names)} installed templates: ')
@@ -74,7 +75,7 @@ def list_installed_templates(default_config, passed_config_file):
 @click.option(
     '--no-input',
     is_flag=True,
-    help='Do not prompt for parameters and only use cookiecutter.json file content. '
+    help='Do not prompt for parameters and only use manifest.yaml file content. '
     'Defaults to deleting any cached resources and redownloading them. '
     'Cannot be combined with the --replay flag.',
 )
@@ -85,7 +86,7 @@ def list_installed_templates(default_config, passed_config_file):
 )
 @click.option(
     '--directory',
-    help='Directory within repo that holds cookiecutter.json file '
+    help='Directory within repo that holds manifest.yaml file '
     'for advanced repositories with multi templates in it',
 )
 @click.option(
@@ -231,7 +232,7 @@ def main(
         click.echo(f'{undefined_err.message}')
         click.echo(f'Error message: {undefined_err.error.message}')
 
-        context_str = json.dumps(undefined_err.context, indent=4, sort_keys=True)
+        context_str = ordered_dump(undefined_err.context, indent=4, sort_keys=True)
         click.echo(f'Context: {context_str}')
         sys.exit(1)
 

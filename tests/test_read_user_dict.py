@@ -96,9 +96,9 @@ def test_should_call_prompt_with_process_json(mocker):
 
 
 def test_should_not_load_json_from_sentinel(mocker):
-    """Make sure that `json.loads` is not called when using default value."""
+    """Make sure that `yaml.safe_load` is not called when using default value."""
     mock_json_loads = mocker.patch(
-        'cookiecutter.prompt.json.loads', autospec=True, return_value={}
+        'cookiecutter.prompt.yaml.safe_load', autospec=True, return_value={}
     )
 
     runner = click.testing.CliRunner()

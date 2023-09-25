@@ -15,33 +15,33 @@ def context_data():
     Return ('input_params, expected_context') tuples.
     """
     context = (
-        {'context_file': 'tests/test-generate-context/test.json'},
-        {'test': {'1': 2, 'some_key': 'some_val'}},
+        OrderedDict({'context_file': 'tests/test-generate-context/test.json'}),
+        OrderedDict({'test': OrderedDict({'1': 2, 'some_key': 'some_val'})}),
     )
 
     context_with_default = (
-        {
+        OrderedDict({
             'context_file': 'tests/test-generate-context/test.json',
-            'default_context': {'1': 3},
-        },
-        {'test': {'1': 3, 'some_key': 'some_val'}},
+            'default_context': OrderedDict({'1': 3}),
+        }),
+        OrderedDict({'test': OrderedDict({'1': 3, 'some_key': 'some_val'})}),
     )
 
     context_with_extra = (
-        {
+        OrderedDict({
             'context_file': 'tests/test-generate-context/test.json',
-            'extra_context': {'1': 4},
-        },
-        {'test': {'1': 4, 'some_key': 'some_val'}},
+            'extra_context': OrderedDict({'1': 4}),
+        }),
+        OrderedDict({'test': OrderedDict({'1': 4, 'some_key': 'some_val'})}),
     )
 
     context_with_default_and_extra = (
-        {
+        OrderedDict({
             'context_file': 'tests/test-generate-context/test.json',
-            'default_context': {'1': 3},
-            'extra_context': {'1': 5},
-        },
-        {'test': {'1': 5, 'some_key': 'some_val'}},
+            'default_context': OrderedDict({'1': 3}),
+            'extra_context': OrderedDict({'1': 5}),
+        }),
+        OrderedDict({'test': OrderedDict({'1': 5, 'some_key': 'some_val'})}),
     )
 
     yield context

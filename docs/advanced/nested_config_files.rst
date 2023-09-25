@@ -11,16 +11,16 @@ Let's imagine to have the following structure::
 
     main-directory/
         ├── project-1
-        │   ├── cookiecutter.json
+        │   ├── manifest.yaml
         │   ├── {{cookiecutter.project_slug}}
         |	│   ├── ...
         ├── project-2
-        │   ├── cookiecutter.json
+        │   ├── manifest.yaml
         │   ├── {{cookiecutter.project_slug}}
         |	│   ├── ...
-        └── cookiecutter.json
+        └── manifest.yaml
 
-It is possible to specify in the main ``cookiecutter.json`` how to reach the other
+It is possible to specify in the main ``manifest.yaml`` how to reach the other
 config files as follows:
 
 .. code-block:: JSON
@@ -43,4 +43,4 @@ among the possible templates:
     Choose from 1, 2 [1]:
 
 Once a template is chosen, for example ``1``, it will continue to ask the info required by
-``cookiecutter.json`` in the ``project-1`` folder, such as ``project-slug``
+``manifest.yaml`` in the ``project-1`` folder, such as ``project-slug``

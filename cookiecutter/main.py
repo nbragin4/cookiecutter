@@ -44,7 +44,7 @@ def cookiecutter(
         or a URL to a git repository.
     :param checkout: The branch, tag or commit ID to checkout after clone.
     :param no_input: Do not prompt for user input.
-        Use default values for template parameters taken from `cookiecutter.json`, user
+        Use default values for template parameters taken from `manifest.yaml`, user
         config and `extra_dict`. Force a refresh of cached resources.
     :param extra_context: A dictionary of context that overrides default
         and user configuration.
@@ -93,7 +93,7 @@ def cookiecutter(
                 path, template_name = os.path.split(os.path.splitext(replay)[0])
                 context_from_replayfile = load(path, template_name)
 
-    context_file = os.path.join(repo_dir, 'cookiecutter.json')
+    context_file = os.path.join(repo_dir, 'manifest.yaml')
     logger.debug('context_file is %s', context_file)
 
     if replay:
@@ -105,11 +105,11 @@ def cookiecutter(
         logger.debug('replayfile context: %s', context_from_replayfile)
         items_for_prompting = {
             k: v
-            for k, v in context['cookiecutter'].items()
-            if k not in context_from_replayfile['cookiecutter'].keys()
+            for k, v in context.items()
+            if k not in context_from_replayfile.keys()
         }
         context_for_prompting = {}
-        context_for_prompting['cookiecutter'] = items_for_prompting
+        context_for_prompting = items_for_prompting
         context = context_from_replayfile
         logger.debug('prompting context: %s', context_for_prompting)
     else:
@@ -120,22 +120,22 @@ def cookiecutter(
         )
         context_for_prompting = context
     # preserve the original cookiecutter options
-    # print(context['cookiecutter'])
+    # print(context)
     context['_cookiecutter'] = {
-        k: v for k, v in context['cookiecutter'].items() if not k.startswith("_")
+        k: v for k, v in context.items() if not k.startswith("_")
     }
 
     # prompt the user to manually configure at the command line.
     # except when 'no-input' flag is set
 
     with import_patch:
-        if context_for_prompting['cookiecutter']:
-            context['cookiecutter'].update(
+        if context_for_prompting:
+            context.update(
                 prompt_for_config(context_for_prompting, no_input)
             )
-        if "template" in context["cookiecutter"]:
+        if "template" in context:
             nested_template = re.search(
-                r'\((.*?)\)', context["cookiecutter"]["template"]
+                r'\((.*?)\)', context["template"]
             ).group(1)
             return cookiecutter(
                 template=os.path.join(repo_dir, nested_template),
@@ -157,16 +157,16 @@ def cookiecutter(
     logger.debug('context is %s', context)
 
     # include template dir or url in the context dict
-    context['cookiecutter']['_template'] = template
+    context['_template'] = template
 
     # include output+dir in the context dict
-    context['cookiecutter']['_output_dir'] = os.path.abspath(output_dir)
+    context['_output_dir'] = os.path.abspath(output_dir)
 
     # include repo dir or url in the context dict
-    context['cookiecutter']['_repo_dir'] = repo_dir
+    context['_repo_dir'] = repo_dir
 
     # include checkout details in the context dict
-    context['cookiecutter']['_checkout'] = checkout
+    context['_checkout'] = checkout
 
     dump(config_dict['replay_dir'], template_name, context)
 

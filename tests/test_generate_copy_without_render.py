@@ -25,16 +25,14 @@ def test_generate_copy_without_render_extensions():
     """
     generate.generate_files(
         context={
-            'cookiecutter': {
-                'repo_name': 'test_copy_without_render',
-                'render_test': 'I have been rendered!',
-                '_copy_without_render': [
-                    '*not-rendered',
-                    'rendered/not_rendered.yml',
-                    '*.txt',
-                    '{{cookiecutter.repo_name}}-rendered/README.md',
-                ],
-            }
+            'repo_name': 'test_copy_without_render',
+            'render_test': 'I have been rendered!',
+            '_copy_without_render': [
+                '*not-rendered',
+                'rendered/not_rendered.yml',
+                '*.txt',
+                '{{cookiecutter.repo_name}}-rendered/README.md',
+            ],
         },
         repo_dir='tests/test-generate-copy-without-render',
     )

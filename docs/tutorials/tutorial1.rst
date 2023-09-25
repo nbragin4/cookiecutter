@@ -114,10 +114,10 @@ https://raw.github.com/audreyfeldroy/cookiecutter-pypackage/master/%7B%7Bcookiec
 
 Observe how it corresponds to the `AUTHORS.rst` file that you generated.
 
-cookiecutter.json
+manifest.yaml
 ~~~~~~~~~~~~~~~~~
 
-Now navigate back up to `cookiecutter-pypackage/` and look at the `cookiecutter.json` file.
+Now navigate back up to `cookiecutter-pypackage/` and look at the `manifest.yaml` file.
 
 You should see JSON that corresponds to the prompts and default values shown earlier during project generation:
 

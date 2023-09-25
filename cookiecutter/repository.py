@@ -47,7 +47,7 @@ def expand_abbreviations(template, abbreviations):
 
 
 def repository_has_cookiecutter_json(repo_directory):
-    """Determine if `repo_directory` contains a `cookiecutter.json` file.
+    """Determine if `repo_directory` contains a `manifest.yaml` file.
 
     :param repo_directory: The candidate repository directory.
     :return: True if the `repo_directory` is valid, else False.
@@ -55,7 +55,7 @@ def repository_has_cookiecutter_json(repo_directory):
     repo_directory_exists = os.path.isdir(repo_directory)
 
     repo_config_exists = os.path.isfile(
-        os.path.join(repo_directory, 'cookiecutter.json')
+        os.path.join(repo_directory, 'manifest.yaml')
     )
     return repo_directory_exists and repo_config_exists
 
@@ -85,7 +85,7 @@ def determine_repo_dir(
     :param no_input: Do not prompt for user input and eventually force a refresh of
         cached resources.
     :param password: The password to use when extracting the repository.
-    :param directory: Directory within repo where cookiecutter.json lives.
+    :param directory: Directory within repo where manifest.yaml lives.
     :return: A tuple containing the cookiecutter template directory, and
         a boolean describing whether that directory should be cleaned up
         after the template has been instantiated.

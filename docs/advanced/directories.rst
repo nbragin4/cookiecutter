@@ -12,10 +12,10 @@ Here's an example repository demonstrating this feature::
     https://github.com/user/repo-name.git
         ├── directory1-name/
         |   ├── {{cookiecutter.project_slug}}/
-        |   └── cookiecutter.json
+        |   └── manifest.yaml
         └── directory2-name/
             ├── {{cookiecutter.project_slug}}/
-            └── cookiecutter.json
+            └── manifest.yaml
 
 To activate one of templates within a subdirectory, use the ``--directory`` option:
 

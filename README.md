@@ -68,8 +68,8 @@ A command-line utility that creates projects from **cookiecutters** (project tem
   ```
 
 - Unless you suppress it with `--no-input`, you are prompted for input:
-  - Prompts are the keys in `cookiecutter.json`.
-  - Default responses are the values in `cookiecutter.json`.
+  - Prompts are the keys in `manifest.yaml`.
+  - Default responses are the values in `manifest.yaml`.
   - Prompts are shown in order.
 - Cross-platform support for `~/.cookiecutterrc` files:
 
@@ -113,7 +113,7 @@ Projects are generated to your current directory or to the target directory if s
   ```py
   {{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}.py
   ```
-- Simply define your template variables in a `cookiecutter.json` file. You can also add human-readable questions and choices that will be prompted to the user for each variable using the `__prompts__` key. Those human-readable questions supports [`rich` markup](https://rich.readthedocs.io/en/stable/markup.html) such as `[bold yellow]this is bold and yellow[/]`
+- Simply define your template variables in a `manifest.yaml` file. You can also add human-readable questions and choices that will be prompted to the user for each variable using the `__prompts__` key. Those human-readable questions supports [`rich` markup](https://rich.readthedocs.io/en/stable/markup.html) such as `[bold yellow]this is bold and yellow[/]`
   For example:
 
   ```json

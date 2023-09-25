@@ -12,7 +12,7 @@ Boolean variables are regular key / value pairs, but with the value being
 ``True``/``False``.
 
 For example, if you provide the following boolean variable in your
-``cookiecutter.json``::
+``manifest.yaml``::
 
    {
        "run_as_docker": true

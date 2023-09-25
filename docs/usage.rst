@@ -12,7 +12,7 @@ First, clone a Cookiecutter project template::
 Make your changes
 -----------------
 
-Modify the variables defined in `cookiecutter.json`.
+Modify the variables defined in `manifest.yaml`.
 
 Open up the skeleton project. If you need to change it around a bit, do so.
 
@@ -51,7 +51,7 @@ repository::
     $ cookiecutter hg+ssh://hg@bitbucket.org/audreyr/cookiecutter-pypackage
 
 You will be prompted to enter a bunch of project config values. (These are
-defined in the project's `cookiecutter.json`.)
+defined in the project's `manifest.yaml`.)
 
 Then, Cookiecutter will generate a project from the template, using the values
 that you entered. It will be placed in your current directory.

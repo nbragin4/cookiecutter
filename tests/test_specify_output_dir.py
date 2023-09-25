@@ -6,14 +6,12 @@ from cookiecutter import main
 
 @pytest.fixture
 def context():
-    """Fixture to return a valid context as known from a cookiecutter.json."""
+    """Fixture to return a valid context as known from a manifest.yaml."""
     return {
-        'cookiecutter': {
-            'email': 'raphael@hackebrot.de',
-            'full_name': 'Raphael Pierzina',
-            'github_username': 'hackebrot',
-            'version': '0.1.0',
-        }
+        'email': 'raphael@hackebrot.de',
+        'full_name': 'Raphael Pierzina',
+        'github_username': 'hackebrot',
+        'version': '0.1.0',
     }
 
 
@@ -22,7 +20,7 @@ def template(tmp_path):
     """Fixture to prepare test template directory."""
     template_dir = tmp_path.joinpath("template")
     template_dir.mkdir()
-    template_dir.joinpath('cookiecutter.json').touch()
+    template_dir.joinpath('manifest.yaml').touch()
     return str(template_dir)
 
 

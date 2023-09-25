@@ -4,14 +4,12 @@ import pytest
 
 @pytest.fixture
 def context():
-    """Fixture to return a valid context as known from a cookiecutter.json."""
+    """Fixture to return a valid context as known from a manifest.yaml."""
     return {
-        'cookiecutter': {
-            'email': 'raphael@hackebrot.de',
-            'full_name': 'Raphael Pierzina',
-            'github_username': 'hackebrot',
-            'version': '0.1.0',
-        }
+        'email': 'raphael@hackebrot.de',
+        'full_name': 'Raphael Pierzina',
+        'github_username': 'hackebrot',
+        'version': '0.1.0',
     }
 
 

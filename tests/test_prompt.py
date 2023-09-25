@@ -73,8 +73,8 @@ class TestPrompt:
     @pytest.mark.parametrize(
         'context',
         [
-            {'cookiecutter': {'full_name': 'Your Name'}},
-            {'cookiecutter': {'full_name': 'Řekni či napiš své jméno'}},
+            {'full_name': 'Your Name'},
+            {'full_name': 'Řekni či napiš své jméno'},
         ],
         ids=['ASCII default prompt/input', 'Unicode default prompt/input'],
     )
@@ -86,21 +86,19 @@ class TestPrompt:
         )
 
         cookiecutter_dict = prompt.prompt_for_config(context)
-        assert cookiecutter_dict == context['cookiecutter']
+        assert cookiecutter_dict == context
 
     @pytest.mark.parametrize(
         'context',
         [
             {
-                'cookiecutter': {
-                    'full_name': 'Your Name',
-                    'check': ['yes', 'no'],
-                    'nothing': 'ok',
-                    '__prompts__': {
-                        'full_name': 'Name please',
-                        'check': 'Checking',
-                    },
-                }
+                'full_name': 'Your Name',
+                'check': ['yes', 'no'],
+                'nothing': 'ok',
+                '__prompts__': {
+                    'full_name': 'Name please',
+                    'check': 'Checking',
+                },
             },
         ],
         ids=['ASCII default prompt/input'],
@@ -121,39 +119,33 @@ class TestPrompt:
         )
 
         cookiecutter_dict = prompt.prompt_for_config(context)
-        assert cookiecutter_dict == context['cookiecutter']
+        assert cookiecutter_dict == context
 
     @pytest.mark.parametrize(
         'context',
         [
             {
-                'cookiecutter': {
-                    'full_name': 'Your Name',
-                    'check': ['yes', 'no'],
-                    '__prompts__': {
-                        'check': 'Checking',
-                    },
-                }
+                'full_name': 'Your Name',
+                'check': ['yes', 'no'],
+                '__prompts__': {
+                    'check': 'Checking',
+                },
             },
             {
-                'cookiecutter': {
-                    'full_name': 'Your Name',
-                    'check': ['yes', 'no'],
-                    '__prompts__': {
-                        'full_name': 'Name please',
-                        'check': {'__prompt__': 'Checking', 'yes': 'Yes', 'no': 'No'},
-                    },
-                }
+                'full_name': 'Your Name',
+                'check': ['yes', 'no'],
+                '__prompts__': {
+                    'full_name': 'Name please',
+                    'check': {'__prompt__': 'Checking', 'yes': 'Yes', 'no': 'No'},
+                },
             },
             {
-                'cookiecutter': {
-                    'full_name': 'Your Name',
-                    'check': ['yes', 'no'],
-                    '__prompts__': {
-                        'full_name': 'Name please',
-                        'check': {'no': 'No'},
-                    },
-                }
+                'full_name': 'Your Name',
+                'check': ['yes', 'no'],
+                '__prompts__': {
+                    'full_name': 'Name please',
+                    'check': {'no': 'No'},
+                },
             },
         ],
     )
@@ -171,7 +163,7 @@ class TestPrompt:
             'cookiecutter.prompt.read_user_dict',
             lambda var, default, prompts, prefix: {"key": "value", "integer": 37},
         )
-        context = {'cookiecutter': {'details': {}}}
+        context = {'details': {}}
 
         cookiecutter_dict = prompt.prompt_for_config(context)
         assert cookiecutter_dict == {'details': {'key': 'value', 'integer': 37}}
@@ -179,12 +171,10 @@ class TestPrompt:
     def test_should_render_dict(self):
         """Verify template inside dictionary variable rendered."""
         context = {
-            'cookiecutter': {
-                'project_name': 'Slartibartfast',
-                'details': {
-                    '{{cookiecutter.project_name}}': '{{cookiecutter.project_name}}'
-                },
-            }
+            'project_name': 'Slartibartfast',
+            'details': {
+                '{{cookiecutter.project_name}}': '{{cookiecutter.project_name}}'
+            },
         }
 
         cookiecutter_dict = prompt.prompt_for_config(context, no_input=True)
@@ -196,29 +186,27 @@ class TestPrompt:
     def test_should_render_deep_dict(self):
         """Verify nested structures like dict in dict, rendered correctly."""
         context = {
-            'cookiecutter': {
-                'project_name': "Slartibartfast",
-                'details': {
-                    "key": "value",
-                    "integer_key": 37,
-                    "other_name": '{{cookiecutter.project_name}}',
-                    "dict_key": {
-                        "deep_key": "deep_value",
-                        "deep_integer": 42,
-                        "deep_other_name": '{{cookiecutter.project_name}}',
-                        "deep_list": [
-                            "deep value 1",
-                            "{{cookiecutter.project_name}}",
-                            "deep value 3",
-                        ],
-                    },
-                    "list_key": [
-                        "value 1",
+            'project_name': "Slartibartfast",
+            'details': {
+                "key": "value",
+                "integer_key": 37,
+                "other_name": '{{cookiecutter.project_name}}',
+                "dict_key": {
+                    "deep_key": "deep_value",
+                    "deep_integer": 42,
+                    "deep_other_name": '{{cookiecutter.project_name}}',
+                    "deep_list": [
+                        "deep value 1",
                         "{{cookiecutter.project_name}}",
-                        "value 3",
+                        "deep value 3",
                     ],
                 },
-            }
+                "list_key": [
+                    "value 1",
+                    "{{cookiecutter.project_name}}",
+                    "value 3",
+                ],
+            },
         }
 
         cookiecutter_dict = prompt.prompt_for_config(context, no_input=True)
@@ -241,18 +229,16 @@ class TestPrompt:
     def test_should_render_deep_dict_with_human_prompts(self):
         """Verify dict rendered correctly when human-readable prompts."""
         context = {
-            'cookiecutter': {
-                'project_name': "Slartibartfast",
-                'details': {
-                    "key": "value",
-                    "integer_key": 37,
-                    "other_name": '{{cookiecutter.project_name}}',
-                    "dict_key": {
-                        "deep_key": "deep_value",
-                    },
+            'project_name': "Slartibartfast",
+            'details': {
+                "key": "value",
+                "integer_key": 37,
+                "other_name": '{{cookiecutter.project_name}}',
+                "dict_key": {
+                    "deep_key": "deep_value",
                 },
-                '__prompts__': {'project_name': 'Project name'},
-            }
+            },
+            '__prompts__': {'project_name': 'Project name'},
         }
         cookiecutter_dict = prompt.prompt_for_config(context, no_input=True)
         assert cookiecutter_dict == {
@@ -270,10 +256,8 @@ class TestPrompt:
     def test_internal_use_no_human_prompts(self):
         """Verify dict rendered correctly when human-readable prompts empty."""
         context = {
-            'cookiecutter': {
-                'project_name': "Slartibartfast",
-                '__prompts__': {},
-            }
+            'project_name': "Slartibartfast",
+            '__prompts__': {},
         }
         cookiecutter_dict = prompt.prompt_for_config(context, no_input=True)
         assert cookiecutter_dict == {
@@ -286,17 +270,15 @@ class TestPrompt:
             'cookiecutter.prompt.read_user_variable',
             lambda var, default, prompts, prefix: default,
         )
-        context = {
-            'cookiecutter': OrderedDict(
-                [
-                    ('project_name', 'A New Project'),
-                    (
-                        'pkg_name',
-                        '{{ cookiecutter.project_name|lower|replace(" ", "") }}',
-                    ),
-                ]
-            )
-        }
+        context = OrderedDict(
+            [
+                ('project_name', 'A New Project'),
+                (
+                    'pkg_name',
+                    '{{ cookiecutter.project_name|lower|replace(" ", "") }}',
+                ),
+            ]
+        )
 
         exp_cookiecutter_dict = {
             'project_name': 'A New Project',
@@ -313,7 +295,7 @@ class TestPrompt:
                 'Should not try to read a response for private context var'
             ),
         )
-        context = {'cookiecutter': {'_copy_without_render': ['*.html']}}
+        context = {'_copy_without_render': ['*.html']}
         cookiecutter_dict = prompt.prompt_for_config(context)
         assert cookiecutter_dict == {'_copy_without_render': ['*.html']}
 
@@ -326,8 +308,7 @@ class TestPrompt:
         3. Variables beginning with anything other than underscores are not private and
            are rendered.
         """
-        context = {
-            'cookiecutter': OrderedDict(
+        context = OrderedDict(
                 [
                     ('foo', 'Hello world'),
                     ('bar', 123),
@@ -339,7 +320,7 @@ class TestPrompt:
                     ('__rendered_hidden_bar', 123),
                 ]
             )
-        }
+
         cookiecutter_dict = prompt.prompt_for_config(context, no_input=True)
         assert cookiecutter_dict == OrderedDict(
             [
@@ -360,17 +341,15 @@ class TestPrompt:
         Private variables designed to be raw, same as context input.
         """
         context = {
-            'cookiecutter': {
-                'project_name': 'Skip render',
-                '_skip_jinja_template': '{{cookiecutter.project_name}}',
-                '_skip_float': 123.25,
-                '_skip_integer': 123,
-                '_skip_boolean': True,
-                '_skip_nested': True,
-            }
+            'project_name': 'Skip render',
+            '_skip_jinja_template': '{{cookiecutter.project_name}}',
+            '_skip_float': 123.25,
+            '_skip_integer': 123,
+            '_skip_boolean': True,
+            '_skip_nested': True,
         }
         cookiecutter_dict = prompt.prompt_for_config(context, no_input=True)
-        assert cookiecutter_dict == context['cookiecutter']
+        assert cookiecutter_dict == context
 
 
 DEFAULT_PREFIX = '  [dim][1/1][/] '
@@ -392,7 +371,7 @@ class TestReadUserChoice:
         read_user_variable = mocker.patch('cookiecutter.prompt.read_user_variable')
 
         choices = ['landscape', 'portrait', 'all']
-        context = {'cookiecutter': {'orientation': choices}}
+        context = {'orientation': choices}
 
         cookiecutter_dict = prompt.prompt_for_config(context)
 
@@ -412,7 +391,7 @@ class TestReadUserChoice:
 
         read_user_choice = mocker.patch('cookiecutter.prompt.read_user_choice')
 
-        context = {'cookiecutter': {'full_name': 'Your Name'}}
+        context = {'full_name': 'Your Name'}
 
         cookiecutter_dict = prompt.prompt_for_config(context)
 
@@ -433,8 +412,7 @@ class TestReadUserChoice:
 
         rendered_choices = ['foo', 'anewproject', 'bar']
 
-        context = {
-            'cookiecutter': OrderedDict(
+        context = OrderedDict(
                 [
                     ('project_name', 'A New Project'),
                     (
@@ -447,7 +425,6 @@ class TestReadUserChoice:
                     ),
                 ]
             )
-        }
 
         expected = {
             'project_name': 'A New Project',
@@ -475,7 +452,7 @@ class TestPromptChoiceForConfig:
     @pytest.fixture
     def context(self, choices):
         """Fixture. Just populate context variable."""
-        return {'cookiecutter': {'orientation': choices}}
+        return {'orientation': choices}
 
     def test_should_return_first_option_if_no_input(self, mocker, choices, context):
         """Verify prompt_choice_for_config return first list option on no_input=True."""
@@ -529,7 +506,7 @@ class TestReadUserYesNo(object):
 
         read_user_variable = mocker.patch('cookiecutter.prompt.read_user_variable')
 
-        context = {'cookiecutter': {'run_as_docker': run_as_docker}}
+        context = {'run_as_docker': run_as_docker}
 
         cookiecutter_dict = prompt.prompt_for_config(context)
 
@@ -542,21 +519,19 @@ class TestReadUserYesNo(object):
     def test_boolean_parameter_no_input(self):
         """Verify boolean parameter sent to prompt for config with no input."""
         context = {
-            'cookiecutter': {
-                'run_as_docker': True,
-            }
+            'run_as_docker': True,
         }
         cookiecutter_dict = prompt.prompt_for_config(context, no_input=True)
-        assert cookiecutter_dict == context['cookiecutter']
+        assert cookiecutter_dict == context
 
 
 @pytest.mark.parametrize(
     'context',
     (
-        {'cookiecutter': {'foo': '{{cookiecutter.nope}}'}},
-        {'cookiecutter': {'foo': ['123', '{{cookiecutter.nope}}', '456']}},
-        {'cookiecutter': {'foo': {'{{cookiecutter.nope}}': 'value'}}},
-        {'cookiecutter': {'foo': {'key': '{{cookiecutter.nope}}'}}},
+        {'foo': '{{cookiecutter.nope}}'},
+        {'foo': ['123', '{{cookiecutter.nope}}', '456']},
+        {'foo': {'{{cookiecutter.nope}}': 'value'}},
+        {'foo': {'key': '{{cookiecutter.nope}}'}},
     ),
     ids=[
         'Undefined variable in cookiecutter dict',

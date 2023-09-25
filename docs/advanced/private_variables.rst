@@ -6,7 +6,7 @@ Private Variables
 Cookiecutter allows the definition private variables by prepending an underscore to the variable name.
 The user will not be required to fill those variables in.
 These can either be not rendered, by using a prepending underscore, or rendered, prepending a double underscore.
-For example, the ``cookiecutter.json``:
+For example, the ``manifest.yaml``:
 
 .. code-block:: JSON
 
@@ -30,7 +30,7 @@ The user will only be asked for ``project_name``.
 
 Non-rendered private variables can be used for defining constants.
 An example of where you may wish to use private **rendered** variables is creating a Python package repository and want to enforce naming consistency.
-To ensure the repository and package name are based on the project name, you could create a ``cookiecutter.json`` such as:
+To ensure the repository and package name are based on the project name, you could create a ``manifest.yaml`` such as:
 
 .. code-block:: JSON
 
