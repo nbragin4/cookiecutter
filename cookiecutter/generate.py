@@ -2,6 +2,7 @@
 import fnmatch
 import logging
 import os
+import copy
 import shutil
 import warnings
 from collections import OrderedDict
@@ -129,8 +130,10 @@ def generate_context(
     if extra_context:
         apply_overwrites_to_context(obj, extra_context)
 
+    spec = copy.deepcopy(obj["spec"])
+    always_merger.merge(spec, obj)
     logger.debug('Context generated is %s', context)
-    return obj
+    return spec
 
 
 def generate_file(project_dir, infile, context, env, skip_if_file_exists=False):

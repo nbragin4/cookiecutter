@@ -99,7 +99,7 @@ def cookiecutter(
     if replay:
         context = generate_context(
             context_file=context_file,
-            default_context=config_dict['default_context'],
+            default_context=config_dict,
             extra_context=None,
         )
         logger.debug('replayfile context: %s', context_from_replayfile)
@@ -115,7 +115,7 @@ def cookiecutter(
     else:
         context = generate_context(
             context_file=context_file,
-            default_context=config_dict['default_context'],
+            default_context=config_dict,
             extra_context=extra_context,
         )
         context_for_prompting = context

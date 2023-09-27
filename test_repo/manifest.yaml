@@ -1,1 +1,2 @@
-project_name: "example_name"
+spec:
+  project_name: "example_name"
