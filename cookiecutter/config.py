@@ -7,6 +7,7 @@ import os
 import yaml
 
 from cookiecutter.exceptions import ConfigDoesNotExistException, InvalidConfiguration
+from cookiecutter.ordered_yaml import ordered_load
 
 logger = logging.getLogger(__name__)
 
@@ -45,7 +46,9 @@ def merge_configs(default, overwrite):
         # Make sure to preserve existing items in
         # nested dicts, for example `abbreviations`
         if isinstance(v, dict):
-            new_config[k] = merge_configs(default.get(k, {}), v)
+            new_config[k] = merge_configs(
+                default.get(k, collections.OrderedDict({})), v
+            )
         else:
             new_config[k] = v
 
@@ -60,7 +63,7 @@ def get_config(config_path):
     logger.debug('config_path is %s', config_path)
     with open(config_path, encoding='utf-8') as file_handle:
         try:
-            yaml_dict = yaml.safe_load(file_handle)
+            yaml_dict = ordered_load(file_handle)
         except yaml.YAMLError as e:
             raise InvalidConfiguration(
                 f'Unable to parse YAML file {config_path}.'

@@ -84,6 +84,14 @@ cookiecutter.main module
    :undoc-members:
    :show-inheritance:
 
+cookiecutter.ordered\_yaml module
+---------------------------------
+
+.. automodule:: cookiecutter.ordered_yaml
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 cookiecutter.prompt module
 --------------------------
 

@@ -24,6 +24,7 @@ requirements = [
     'pyyaml>=5.3.1',
     'python-slugify>=4.0.0',
     'requests>=2.23.0',
+    'deepmerge>=1.1.0',
     'arrow',
     'rich',
 ]
