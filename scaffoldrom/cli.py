@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name, no-value-for-parameter
 """Main `scaffoldrom` CLI."""
 import collections
 import json
@@ -76,7 +77,7 @@ def list_installed_templates(default_config, passed_config_file):
     is_flag=True,
     help='Do not prompt for parameters and only use scaffoldrom.json file content. '
     'Defaults to deleting any cached resources and redownloading them. '
-    'Cannot be combined with the --replay flag.',
+    'Cannot be combined with the --values flag.',
 )
 @click.option(
     '-c',
@@ -92,16 +93,16 @@ def list_installed_templates(default_config, passed_config_file):
     '-v', '--verbose', is_flag=True, help='Print debug information', default=False
 )
 @click.option(
-    '--replay',
+    '--values',
     is_flag=True,
     help='Do not prompt for parameters and only use information entered previously. '
     'Cannot be combined with the --no-input flag or with extra configuration passed.',
 )
 @click.option(
-    '--replay-file',
+    '--values-file',
     type=click.Path(),
     default=None,
-    help='Use this file for replay instead of the default.',
+    help='Use this file for values instead of the default.',
 )
 @click.option(
     '-f',
@@ -157,7 +158,7 @@ def main(
     no_input,
     checkout,
     verbose,
-    replay,
+    values,
     overwrite_if_exists,
     output_dir,
     config_file,
@@ -166,7 +167,7 @@ def main(
     directory,
     skip_if_file_exists,
     accept_hooks,
-    replay_file,
+    values_file,
     list_installed,
     keep_project_on_failure,
 ):
@@ -195,8 +196,8 @@ def main(
     else:
         _accept_hooks = accept_hooks == "yes"
 
-    if replay_file:
-        replay = replay_file
+    if values_file:
+        values = values_file
 
     try:
         scaffoldrom(
@@ -204,7 +205,7 @@ def main(
             checkout,
             no_input,
             extra_context=extra_context,
-            replay=replay,
+            values=values,
             overwrite_if_exists=overwrite_if_exists,
             output_dir=output_dir,
             config_file=config_file,

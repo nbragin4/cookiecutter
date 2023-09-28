@@ -34,7 +34,7 @@ Example user config:
         email: "audreyr@example.com"
         github_username: "audreyr"
     scaffoldroms_dir: "/home/audreyr/my-custom-scaffoldroms-dir/"
-    replay_dir: "/home/audreyr/my-custom-replay-dir/"
+    values_dir: "/home/audreyr/my-custom-values-dir/"
     abbreviations:
         pp: https://github.com/audreyfeldroy/scaffoldrom-pypackage.git
         gh: https://github.com/{0}.git
@@ -47,9 +47,9 @@ Possible settings are:
     These values are treated like the defaults in ``scaffoldrom.json``, upon generation of any project.
 ``scaffoldroms_dir``
     Directory where your scaffoldroms are cloned to when you use Scaffoldrom with a repo argument.
-``replay_dir``
+``values_dir``
     Directory where Scaffoldrom dumps context data to, which you can fetch later on when using the
-    :ref:`replay feature <replay-feature>`.
+    :ref:`values feature <values-feature>`.
 ``abbreviations``
     A list of abbreviations for scaffoldroms.
     Abbreviations can be simple aliases for a repo name, or can be used as a prefix, in the form ``abbr:suffix``.

@@ -98,19 +98,19 @@ def test_cli_verbose(cli_runner):
 
 
 @pytest.mark.usefixtures('remove_fake_project_dir')
-def test_cli_replay(mocker, cli_runner):
-    """Test cli invocation display log with `verbose` and `replay` flags."""
+def test_cli_values(mocker, cli_runner):
+    """Test cli invocation display log with `verbose` and `values` flags."""
     mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
-    result = cli_runner(template_path, '--replay', '-v')
+    result = cli_runner(template_path, '--values', '-v')
 
     assert result.exit_code == 0
     mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
-        replay=True,
+        values=True,
         overwrite_if_exists=False,
         skip_if_file_exists=False,
         output_dir='.',
@@ -125,19 +125,19 @@ def test_cli_replay(mocker, cli_runner):
 
 
 @pytest.mark.usefixtures('remove_fake_project_dir')
-def test_cli_replay_file(mocker, cli_runner):
-    """Test cli invocation correctly pass --replay-file option."""
+def test_cli_values_file(mocker, cli_runner):
+    """Test cli invocation correctly pass --values-file option."""
     mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
-    result = cli_runner(template_path, '--replay-file', '~/custom-replay-file', '-v')
+    result = cli_runner(template_path, '--values-file', '~/custom-values-file', '-v')
 
     assert result.exit_code == 0
     mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
-        replay='~/custom-replay-file',
+        values='~/custom-values-file',
         overwrite_if_exists=False,
         skip_if_file_exists=False,
         output_dir='.',
@@ -152,35 +152,35 @@ def test_cli_replay_file(mocker, cli_runner):
 
 
 @pytest.mark.usefixtures('remove_tmp_dir')
-def test_cli_replay_generated(mocker, cli_runner):
-    """Test cli invocation correctly generates a project with replay."""
-    template_path = 'tests/fake-repo-replay/'
+def test_cli_values_generated(mocker, cli_runner):
+    """Test cli invocation correctly generates a project with values."""
+    template_path = 'tests/fake-repo-values/'
     result = cli_runner(
         template_path,
-        '--replay-file',
-        'tests/test-replay/valid_replay.json',
+        '--values-file',
+        'tests/test-values/valid_values.json',
         '-o',
         'tests/tmp/',
         '-v',
     )
     assert result.exit_code == 0
-    assert open('tests/tmp/replay-project/README.md').read().strip() == 'replayed'
+    assert open('tests/tmp/values-project/README.md').read().strip() == 'valuesed'
 
 
 @pytest.mark.usefixtures('remove_fake_project_dir')
-def test_cli_exit_on_noinput_and_replay(mocker, cli_runner):
-    """Test cli invocation fail if both `no-input` and `replay` flags passed."""
+def test_cli_exit_on_noinput_and_values(mocker, cli_runner):
+    """Test cli invocation fail if both `no-input` and `values` flags passed."""
     mock_scaffoldrom = mocker.patch(
         'scaffoldrom.cli.scaffoldrom', side_effect=scaffoldrom
     )
 
     template_path = 'tests/fake-repo-pre/'
-    result = cli_runner(template_path, '--no-input', '--replay', '-v')
+    result = cli_runner(template_path, '--no-input', '--values', '-v')
 
     assert result.exit_code == 1
 
     expected_error_msg = (
-        "You can not use both replay and no_input or extra_context at the same time."
+        "You can not use both values and no_input or extra_context at the same time."
     )
 
     assert expected_error_msg in result.output
@@ -189,7 +189,7 @@ def test_cli_exit_on_noinput_and_replay(mocker, cli_runner):
         template_path,
         None,
         True,
-        replay=True,
+        values=True,
         overwrite_if_exists=False,
         skip_if_file_exists=False,
         output_dir='.',
@@ -210,14 +210,14 @@ def overwrite_cli_flag(request):
 
 
 @pytest.mark.usefixtures('remove_fake_project_dir')
-def test_run_scaffoldrom_on_overwrite_if_exists_and_replay(
+def test_run_scaffoldrom_on_overwrite_if_exists_and_values(
     mocker, cli_runner, overwrite_cli_flag
 ):
-    """Test cli invocation with `overwrite-if-exists` and `replay` flags."""
+    """Test cli invocation with `overwrite-if-exists` and `values` flags."""
     mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
-    result = cli_runner(template_path, '--replay', '-v', overwrite_cli_flag)
+    result = cli_runner(template_path, '--values', '-v', overwrite_cli_flag)
 
     assert result.exit_code == 0
 
@@ -225,7 +225,7 @@ def test_run_scaffoldrom_on_overwrite_if_exists_and_replay(
         template_path,
         None,
         False,
-        replay=True,
+        values=True,
         overwrite_if_exists=True,
         skip_if_file_exists=False,
         output_dir='.',
@@ -282,7 +282,7 @@ def test_cli_output_dir(mocker, cli_runner, output_dir_flag, output_dir):
         template_path,
         None,
         False,
-        replay=False,
+        values=False,
         overwrite_if_exists=False,
         skip_if_file_exists=False,
         output_dir=output_dir,
@@ -327,7 +327,7 @@ def test_user_config(mocker, cli_runner, user_config_path):
         template_path,
         None,
         False,
-        replay=False,
+        values=False,
         overwrite_if_exists=False,
         skip_if_file_exists=False,
         output_dir='.',
@@ -358,7 +358,7 @@ def test_default_user_config_overwrite(mocker, cli_runner, user_config_path):
         template_path,
         None,
         False,
-        replay=False,
+        values=False,
         overwrite_if_exists=False,
         skip_if_file_exists=False,
         output_dir='.',
@@ -384,7 +384,7 @@ def test_default_user_config(mocker, cli_runner):
         template_path,
         None,
         False,
-        replay=False,
+        values=False,
         overwrite_if_exists=False,
         skip_if_file_exists=False,
         output_dir='.',
@@ -654,7 +654,7 @@ def test_cli_accept_hooks(
         template_path,
         None,
         False,
-        replay=False,
+        values=False,
         overwrite_if_exists=False,
         output_dir=output_dir,
         config_file=None,

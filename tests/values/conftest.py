@@ -1,4 +1,4 @@
-"""pytest fixtures for testing scaffoldrom's replay feature."""
+"""pytest fixtures for testing scaffoldrom's values feature."""
 import pytest
 
 
@@ -16,9 +16,9 @@ def context():
 
 
 @pytest.fixture
-def replay_test_dir():
+def values_test_dir():
     """Fixture to test directory."""
-    return 'tests/test-replay/'
+    return 'tests/test-values/'
 
 
 @pytest.fixture

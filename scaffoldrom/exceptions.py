@@ -95,7 +95,7 @@ class InvalidModeException(ScaffoldromException):
     Exception for incompatible modes.
 
     Raised when scaffoldrom is called with both `no_input==True` and
-    `replay==True` at the same time.
+    `values==True` at the same time.
     """
 
 

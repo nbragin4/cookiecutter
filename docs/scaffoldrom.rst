@@ -92,10 +92,10 @@ scaffoldrom.prompt module
    :undoc-members:
    :show-inheritance:
 
-scaffoldrom.replay module
+scaffoldrom.values module
 --------------------------
 
-.. automodule:: scaffoldrom.replay
+.. automodule:: scaffoldrom.values
    :members:
    :undoc-members:
    :show-inheritance:

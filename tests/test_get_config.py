@@ -12,7 +12,7 @@ def test_merge_configs():
     """Verify default and user config merged in expected way."""
     default = {
         'scaffoldroms_dir': '/home/example/some-path-to-templates',
-        'replay_dir': '/home/example/some-path-to-replay-files',
+        'values_dir': '/home/example/some-path-to-values-files',
         'default_context': {},
         'abbreviations': {
             'gh': 'https://github.com/{0}.git',
@@ -34,7 +34,7 @@ def test_merge_configs():
 
     expected_config = {
         'scaffoldroms_dir': '/home/example/some-path-to-templates',
-        'replay_dir': '/home/example/some-path-to-replay-files',
+        'values_dir': '/home/example/some-path-to-values-files',
         'default_context': {
             'full_name': 'Raphael Pierzina',
             'github_username': 'hackebrot',
@@ -55,7 +55,7 @@ def test_get_config():
     conf = config.get_config('tests/test-config/valid-config.yaml')
     expected_conf = {
         'scaffoldroms_dir': '/home/example/some-path-to-templates',
-        'replay_dir': '/home/example/some-path-to-replay-files',
+        'values_dir': '/home/example/some-path-to-values-files',
         'default_context': {
             'full_name': 'Firstname Lastname',
             'email': 'firstname.lastname@gmail.com',
@@ -104,10 +104,10 @@ def test_get_config_with_defaults():
     """A config file that overrides 1 of 3 defaults."""
     conf = config.get_config('tests/test-config/valid-partial-config.yaml')
     default_scaffoldroms_dir = Path('~/.scaffoldroms').expanduser()
-    default_replay_dir = Path('~/.scaffoldrom_replay').expanduser()
+    default_values_dir = Path('~/.scaffoldrom_values').expanduser()
     expected_conf = {
         'scaffoldroms_dir': str(default_scaffoldroms_dir),
-        'replay_dir': str(default_replay_dir),
+        'values_dir': str(default_values_dir),
         'default_context': {
             'full_name': 'Firstname Lastname',
             'email': 'firstname.lastname@gmail.com',

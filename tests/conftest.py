@@ -10,7 +10,7 @@ from scaffoldrom.config import DEFAULT_CONFIG
 
 USER_CONFIG = """
 scaffoldroms_dir: '{scaffoldroms_dir}'
-replay_dir: '{replay_dir}'
+values_dir: '{values_dir}'
 """
 
 
@@ -20,9 +20,9 @@ def isolated_filesystem(monkeypatch, tmp_path):
     root_path = tmp_path.joinpath("home")
     root_path.mkdir()
     scaffoldroms_dir = root_path.joinpath(".scaffoldroms/")
-    replay_dir = root_path.joinpath(".scaffoldrom_replay/")
+    values_dir = root_path.joinpath(".scaffoldrom_values/")
     monkeypatch.setitem(DEFAULT_CONFIG, 'scaffoldroms_dir', str(scaffoldroms_dir))
-    monkeypatch.setitem(DEFAULT_CONFIG, 'replay_dir', str(replay_dir))
+    monkeypatch.setitem(DEFAULT_CONFIG, 'values_dir', str(values_dir))
 
     monkeypatch.setenv("HOME", str(root_path))
     monkeypatch.setenv("USERPROFILE", str(root_path))
@@ -78,22 +78,22 @@ def clean_system(request):
 
     * Back up the `~/.scaffoldromrc` config file to `~/.scaffoldromrc.backup`
     * Back up the `~/.scaffoldroms/` dir to `~/.scaffoldroms.backup/`
-    * Back up the `~/.scaffoldrom_replay/` dir to
-      `~/.scaffoldrom_replay.backup/`
+    * Back up the `~/.scaffoldrom_values/` dir to
+      `~/.scaffoldrom_values.backup/`
     * Starts off a test case with no pre-existing `~/.scaffoldromrc` or
-      `~/.scaffoldroms/` or `~/.scaffoldrom_replay/`
+      `~/.scaffoldroms/` or `~/.scaffoldrom_values/`
 
     During teardown:
 
     * Delete `~/.scaffoldroms/` only if a backup is present at
       `~/.scaffoldroms.backup/`
-    * Delete `~/.scaffoldrom_replay/` only if a backup is present at
-      `~/.scaffoldrom_replay.backup/`
+    * Delete `~/.scaffoldrom_values/` only if a backup is present at
+      `~/.scaffoldrom_values.backup/`
     * Restore the `~/.scaffoldromrc` config file from
       `~/.scaffoldromrc.backup`
     * Restore the `~/.scaffoldroms/` dir from `~/.scaffoldroms.backup/`
-    * Restore the `~/.scaffoldrom_replay/` dir from
-      `~/.scaffoldrom_replay.backup/`
+    * Restore the `~/.scaffoldrom_values/` dir from
+      `~/.scaffoldrom_values.backup/`
 
     """
     # If ~/.scaffoldromrc is pre-existing, move it to a temp location
@@ -112,12 +112,12 @@ def clean_system(request):
     scaffoldroms_dir_backup = os.path.expanduser('~/.scaffoldroms.backup')
     scaffoldroms_dir_found = backup_dir(scaffoldroms_dir, scaffoldroms_dir_backup)
 
-    # If the default scaffoldrom_replay_dir is pre-existing, move it to a
+    # If the default scaffoldrom_values_dir is pre-existing, move it to a
     # temp location
-    scaffoldrom_replay_dir = os.path.expanduser('~/.scaffoldrom_replay')
-    scaffoldrom_replay_dir_backup = os.path.expanduser('~/.scaffoldrom_replay.backup')
-    scaffoldrom_replay_dir_found = backup_dir(
-        scaffoldrom_replay_dir, scaffoldrom_replay_dir_backup
+    scaffoldrom_values_dir = os.path.expanduser('~/.scaffoldrom_values')
+    scaffoldrom_values_dir_backup = os.path.expanduser('~/.scaffoldrom_values.backup')
+    scaffoldrom_values_dir_found = backup_dir(
+        scaffoldrom_values_dir, scaffoldrom_values_dir_backup
     )
 
     def restore_backup():
@@ -133,12 +133,12 @@ def clean_system(request):
             scaffoldroms_dir, scaffoldroms_dir_backup, scaffoldroms_dir_found
         )
 
-        # Carefully delete the created ~/.scaffoldrom_replay dir only in
+        # Carefully delete the created ~/.scaffoldrom_values dir only in
         # certain conditions.
         restore_backup_dir(
-            scaffoldrom_replay_dir,
-            scaffoldrom_replay_dir_backup,
-            scaffoldrom_replay_dir_found,
+            scaffoldrom_values_dir,
+            scaffoldrom_values_dir_backup,
+            scaffoldrom_values_dir_found,
         )
 
     request.addfinalizer(restore_backup)
@@ -157,17 +157,17 @@ def user_config_data(user_dir):
      It will create it in the user's home directory.
 
     * `scaffoldroms_dir`
-    * `scaffoldrom_replay`
+    * `scaffoldrom_values`
 
     :returns: Dict with name of both user config dirs
     """
     scaffoldroms_dir = user_dir.joinpath('scaffoldroms')
     scaffoldroms_dir.mkdir()
-    replay_dir = user_dir.joinpath('scaffoldrom_replay')
-    replay_dir.mkdir()
+    values_dir = user_dir.joinpath('scaffoldrom_values')
+    values_dir.mkdir()
     return {
         'scaffoldroms_dir': str(scaffoldroms_dir),
-        'replay_dir': str(replay_dir),
+        'values_dir': str(values_dir),
     }
 
 

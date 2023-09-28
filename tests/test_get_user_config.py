@@ -56,7 +56,7 @@ def custom_config():
             },
         },
         'scaffoldroms_dir': '/home/example/some-path-to-templates',
-        'replay_dir': '/home/example/some-path-to-replay-files',
+        'values_dir': '/home/example/some-path-to-values-files',
         'abbreviations': {
             'gh': 'https://github.com/{0}.git',
             'gl': 'https://gitlab.com/{0}.git',
@@ -141,7 +141,7 @@ def test_expand_user_for_directories_in_config(monkeypatch):
     config_file = 'tests/test-config/config-expand-user.yaml'
 
     user_config = config.get_user_config(config_file)
-    assert user_config['replay_dir'] == 'Users/bob/replay-files'
+    assert user_config['values_dir'] == 'Users/bob/values-files'
     assert user_config['scaffoldroms_dir'] == 'Users/bob/templates'
 
 
@@ -152,5 +152,5 @@ def test_expand_vars_for_directories_in_config(monkeypatch):
     config_file = 'tests/test-config/config-expand-vars.yaml'
 
     user_config = config.get_user_config(config_file)
-    assert user_config['replay_dir'] == 'Users/bob/cookies/replay-files'
+    assert user_config['values_dir'] == 'Users/bob/cookies/values-files'
     assert user_config['scaffoldroms_dir'] == 'Users/bob/cookies/templates'

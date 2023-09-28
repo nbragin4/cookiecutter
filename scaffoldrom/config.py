@@ -20,7 +20,7 @@ BUILTIN_ABBREVIATIONS = {
 
 DEFAULT_CONFIG = {
     'scaffoldroms_dir': os.path.expanduser('~/.scaffoldroms/'),
-    'replay_dir': os.path.expanduser('~/.scaffoldrom_replay/'),
+    'values_dir': os.path.expanduser('~/.scaffoldrom_values/'),
     'default_context': collections.OrderedDict([]),
     'abbreviations': BUILTIN_ABBREVIATIONS,
 }
@@ -68,8 +68,8 @@ def get_config(config_path):
 
     config_dict = merge_configs(DEFAULT_CONFIG, yaml_dict)
 
-    raw_replay_dir = config_dict['replay_dir']
-    config_dict['replay_dir'] = _expand_path(raw_replay_dir)
+    raw_values_dir = config_dict['values_dir']
+    config_dict['values_dir'] = _expand_path(raw_values_dir)
 
     raw_cookies_dir = config_dict['scaffoldroms_dir']
     config_dict['scaffoldroms_dir'] = _expand_path(raw_cookies_dir)

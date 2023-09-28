@@ -16,7 +16,7 @@ Various advanced topics regarding scaffoldrom usage.
    templates_in_context
    private_variables
    copy_without_render
-   replay
+   values
    choice_variables
    boolean_variables
    dict_variables

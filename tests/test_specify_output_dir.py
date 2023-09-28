@@ -39,7 +39,7 @@ def mock_prompt(mocker):
 
 
 @pytest.fixture(autouse=True)
-def mock_replay(mocker):
+def mock_values(mocker):
     """Fixture. Automatically mock scaffoldrom's function with expected output."""
     mocker.patch('scaffoldrom.main.dump')
 

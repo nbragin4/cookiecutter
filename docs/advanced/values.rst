@@ -1,15 +1,15 @@
-.. _replay-feature:
+.. _values-feature:
 
-Replay Project Generation
+values Project Generation
 -------------------------
 
 *New in Scaffoldrom 1.1*
 
-On invocation **Scaffoldrom** dumps a json file to ``~/.scaffoldrom_replay/`` which enables you to *replay* later on.
+On invocation **Scaffoldrom** dumps a json file to ``~/.scaffoldrom_values/`` which enables you to *values* later on.
 
 In other words, it persists your **input** for a template and fetches it when you run the same template again.
 
-Example for a replay file (which was created via ``scaffoldrom gh:hackebrot/cookiedozer``):
+Example for a values file (which was created via ``scaffoldrom gh:hackebrot/cookiedozer``):
 
 .. code-block:: JSON
 
@@ -34,7 +34,7 @@ Pass the according option on the CLI:
 
 .. code-block:: bash
 
-    scaffoldrom --replay gh:hackebrot/cookiedozer
+    scaffoldrom --values gh:hackebrot/cookiedozer
 
 
 Or use the Python API:
@@ -42,19 +42,19 @@ Or use the Python API:
 .. code-block:: python
 
     from scaffoldrom.main import scaffoldrom
-    scaffoldrom('gh:hackebrot/cookiedozer', replay=True)
+    scaffoldrom('gh:hackebrot/cookiedozer', values=True)
 
 This feature comes in handy if, for instance, you want to create a new project from an updated template.
 
-Custom replay file
+Custom values file
 ~~~~~~~~~~~~~~~~~~
 
 *New in Scaffoldrom 2.0*
 
-To specify a custom filename, you can use the ``--replay-file`` option:
+To specify a custom filename, you can use the ``--values-file`` option:
 
 .. code-block:: bash
 
-    scaffoldrom --replay-file ./cookiedozer.json gh:hackebrot/cookiedozer
+    scaffoldrom --values-file ./cookiedozer.json gh:hackebrot/cookiedozer
 
-This may be useful to run the same replay file over several machines, in tests or when a user of the template reports a problem.
+This may be useful to run the same values file over several machines, in tests or when a user of the template reports a problem.

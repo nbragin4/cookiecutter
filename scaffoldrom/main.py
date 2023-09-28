@@ -14,7 +14,7 @@ from scaffoldrom.config import get_user_config
 from scaffoldrom.exceptions import InvalidModeException
 from scaffoldrom.generate import generate_context, generate_files
 from scaffoldrom.prompt import prompt_for_config
-from scaffoldrom.replay import dump, load
+from scaffoldrom.values import dump, load
 from scaffoldrom.repository import determine_repo_dir
 from scaffoldrom.utils import rmtree
 
@@ -26,7 +26,7 @@ def scaffoldrom(
     checkout=None,
     no_input=False,
     extra_context=None,
-    replay=None,
+    values=None,
     overwrite_if_exists=False,
     output_dir='.',
     config_file=None,
@@ -48,8 +48,8 @@ def scaffoldrom(
         config and `extra_dict`. Force a refresh of cached resources.
     :param extra_context: A dictionary of context that overrides default
         and user configuration.
-    :param replay: Do not prompt for input, instead read from saved json. If
-        ``True`` read from the ``replay_dir``.
+    :param values: Do not prompt for input, instead read from saved json. If
+        ``True`` read from the ``values_dir``.
         if it exists
     :param output_dir: Where to output the generated project dir into.
     :param config_file: User configuration file path.
@@ -60,9 +60,9 @@ def scaffoldrom(
     :param keep_project_on_failure: If `True` keep generated project directory even when
         generation fails
     """
-    if replay and ((no_input is not False) or (extra_context is not None)):
+    if values and ((no_input is not False) or (extra_context is not None)):
         err_msg = (
-            "You can not use both replay and no_input or extra_context "
+            "You can not use both values and no_input or extra_context "
             "at the same time."
         )
         raise InvalidModeException(err_msg)
@@ -85,32 +85,32 @@ def scaffoldrom(
 
     template_name = os.path.basename(os.path.abspath(repo_dir))
 
-    if replay:
+    if values:
         with import_patch:
-            if isinstance(replay, bool):
-                context_from_replayfile = load(config_dict['replay_dir'], template_name)
+            if isinstance(values, bool):
+                context_from_valuesfile = load(config_dict['values_dir'], template_name)
             else:
-                path, template_name = os.path.split(os.path.splitext(replay)[0])
-                context_from_replayfile = load(path, template_name)
+                path, template_name = os.path.split(os.path.splitext(values)[0])
+                context_from_valuesfile = load(path, template_name)
 
     context_file = os.path.join(repo_dir, 'scaffoldrom.json')
     logger.debug('context_file is %s', context_file)
 
-    if replay:
+    if values:
         context = generate_context(
             context_file=context_file,
             default_context=config_dict['default_context'],
             extra_context=None,
         )
-        logger.debug('replayfile context: %s', context_from_replayfile)
+        logger.debug('valuesfile context: %s', context_from_valuesfile)
         items_for_prompting = {
             k: v
             for k, v in context['scaffoldrom'].items()
-            if k not in context_from_replayfile['scaffoldrom'].keys()
+            if k not in context_from_valuesfile['scaffoldrom'].keys()
         }
         context_for_prompting = {}
         context_for_prompting['scaffoldrom'] = items_for_prompting
-        context = context_from_replayfile
+        context = context_from_valuesfile
         logger.debug('prompting context: %s', context_for_prompting)
     else:
         context = generate_context(
@@ -142,7 +142,7 @@ def scaffoldrom(
                 checkout=checkout,
                 no_input=no_input,
                 extra_context=extra_context,
-                replay=replay,
+                values=values,
                 overwrite_if_exists=overwrite_if_exists,
                 output_dir=output_dir,
                 config_file=config_file,
@@ -168,7 +168,7 @@ def scaffoldrom(
     # include checkout details in the context dict
     context['scaffoldrom']['_checkout'] = checkout
 
-    dump(config_dict['replay_dir'], template_name, context)
+    dump(config_dict['values_dir'], template_name, context)
 
     # Create project from local context and project template.
     with import_patch:

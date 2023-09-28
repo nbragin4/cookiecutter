@@ -42,7 +42,7 @@ History is important, but our current roadmap can be found [here](https://github
 
 ### Bugfixes
 
-* Fix replay (#1904) @vemonet
+* Fix values (#1904) @vemonet
 * Support multichoice overwrite (#1903) @Meepit
 
 ### This release is made by wonderful contributors:
@@ -56,7 +56,7 @@ History is important, but our current roadmap can be found [here](https://github
 
 * Add support for adding human-readable labels for choices when defining multiple choices questions (#1898) @vemonet
 
-* Prompt with replay file (#1758) @w1ndblow
+* Prompt with values file (#1758) @w1ndblow
 
 ### CI/CD and QA changes
 
@@ -147,7 +147,7 @@ History is important, but our current roadmap can be found [here](https://github
 * Fix @audreyr to @audreyfeldroy github account rename (#1604) @ri0t
 * Fixed broken links to jinja docs (#1691) @insspb
 * Fixed minor typos in docs (#1753) @segunb
-* Fixed: Python code block in the replay documentation (#1715) @juhannc
+* Fixed: Python code block in the values documentation (#1715) @juhannc
 * Fixed: recommonmark replaced with myst, as recommonmark is deprecated (#1709) @insspb
 * Improve Docs Readability (#1690) @ryanrussell
 * Update base docs, remove tox (#1858) @ericof
@@ -240,7 +240,7 @@ History is important, but our current roadmap can be found [here](https://github
 * Add Python 3.9 (#1478) @gliptak
 * Added: --list-installed cli option, listing already downloaded scaffoldrompackages (#1096) @chrisbrake
 * Added: Jinja2 Environment extension on files generation stage (#1419) @insspb
-* Added: --replay-file cli option, for replay file distributing (#906) @Cadair
+* Added: --values-file cli option, for values file distributing (#906) @Cadair
 * Added: _output_dir to scaffoldromcontext (#1034) @Casyfill
 * Added: CLI option to ignore hooks (#992) @rgreinho
 * Changed: Generated projects can use multiple type hooks at same time. (sh + py) (#974) @milonimrod
@@ -326,7 +326,7 @@ Important Changes:
 
 * Added: Added debug messages for get_user_config [@ssbarnea](https://github.com/ssbarnea) (#1357)
 * Multiple templates per one repository feature added. [@RomHartmann](https://github.com/RomHartmann) (#1224, #1063)
-* Update replay.py json.dump indent for easy viewing [@nicain](https://github.com/nicain) (#1293)
+* Update values.py json.dump indent for easy viewing [@nicain](https://github.com/nicain) (#1293)
 * 'future' library replaced with 'six' as a more lightweight python porting library [@asottile](https://github.com/asottile) (#941)
 * Added extension: Slugify template filter [@ppanero](https://github.com/ppanero) (#1336)
 * Added command line option: `--skip-if-file-exists`, allow to skip the existing files when doing `overwrite_if_exists`. [@chhsiao1981](https://github.com/chhsiao1981) (#1076)
@@ -351,7 +351,7 @@ Code style and docs changes:
 * Added black formatting verification on lint stage + project files reformatting [@ssbarnea](https://github.com/ssbarnea) [@insspb](https://github.com/insspb) (#1368)
 * Added pep257 docstring for tests/* files [@insspb](https://github.com/insspb) (#1369, #1370, #1371, #1372, #1373, #1374, #1375, #1376, #1377, #1378, #1380, #1381)
 * Added pep257 docstring for tests/conftests.py [@kishan](https://github.com/kishan3) (#1272, #1263)
-* Added pep257 docstring for tests/replay/conftest.py [@kishan](https://github.com/kishan3) (#1270, #1268)
+* Added pep257 docstring for tests/values/conftest.py [@kishan](https://github.com/kishan3) (#1270, #1268)
 * Added pep257 docstring for docs/__init__.py [@kishan](https://github.com/kishan3) (#1273, #1265)
 * Added missing docstring headers to all files [@croesnick](https://github.com/croesnick) (#1269, #1283)
 * Gitter links replaced by Slack in README [@browniebroke](https://github.com/browniebroke) (#1282)
@@ -378,7 +378,7 @@ Important Changes:
 Other Changes:
 
 * PEP257 fixing docstrings in exceptions.py. Thanks to [@MinchinWeb](https://github.com/MinchinWeb) (#1237)
-* PEP257 fixing docstrings in replay.py. Thanks to [@kishan](https://github.com/kishan3) (#1234)
+* PEP257 fixing docstrings in values.py. Thanks to [@kishan](https://github.com/kishan3) (#1234)
 * PEP257 fixing docstrings in test_unzip.py. Thanks to [@tonytheleg](https://github.com/tonytheleg) and [@insspb](https://github.com/insspb) (#1236, #1262)
 * Fixed tests sequence for appveyor, to exclude file not found bug. Thanks to [@insspb](https://github.com/insspb) (#1257)
 * Updates REAMDE.md with svg badge for appveyor. Thanks to [@sobolevn](https://github.com/sobolevn) (#1254)
@@ -515,7 +515,7 @@ to [@michaeljoseph](https://github.com/michaeljoseph) (#825).
 Bug Fixes:
 
 * Fix typo in the error logging text for when a hook did not exit successfully, thanks to [@luzfcb](https://github.com/luzfcb)    (#656)
-* Fix an issue around **replay** file names when **scaffoldrom* is used with a relative path to a template, thanks to    [@eliasdorneles](https://github.com/eliasdorneles) for raising the issue and [@hackebrot](https://github.com/hackebrot) for the PR (#752, #753)
+* Fix an issue around **values** file names when **scaffoldrom* is used with a relative path to a template, thanks to    [@eliasdorneles](https://github.com/eliasdorneles) for raising the issue and [@hackebrot](https://github.com/hackebrot) for the PR (#752, #753)
 * Ignore hook files with tilde-suffixes, thanks to [@hackebrot](https://github.com/hackebrot) (#768)
 * Fix a minor issue with the code that generates a name for a template, thanks to [@hackebrot](https://github.com/hackebrot)(#798)
 * Handle empty hook file or other OS errors, thanks to [@christianmlong](https://github.com/christianmlong) for raising this bug and [@jcarbaugh](https://github.com/jcarbaugh) and [@hackebrot](https://github.com/hackebrot) for the fix (#632, #729, #862)
@@ -622,13 +622,13 @@ New Features:
 secure (#586). Work done by [@hackebrot](https://github.com/hackebrot) (#111, #586, #592)
 * Uses strict Jinja2 env in prompt, thanks to [@hackebrot](https://github.com/hackebrot) (#598, #613)
 * Switched from pyyaml/ruamel.yaml libraries that were problematic across platforms to the pure Python [poyo](https://pypi.python.org/pypi/poyo) library, thanks to [@hackebrot](https://github.com/hackebrot) (#557, #569, #621)
-* User config values for `scaffoldrom_dir` and `replay_dir` now support environment variable and user home expansion, thanks to   [@nfarrar](https://github.com/nfarrar) for the suggestion and [@hackebrot](https://github.com/hackebrot) for the PR (#640,#642)
+* User config values for `scaffoldrom_dir` and `values_dir` now support environment variable and user home expansion, thanks to   [@nfarrar](https://github.com/nfarrar) for the suggestion and [@hackebrot](https://github.com/hackebrot) for the PR (#640,#642)
 * Add [jinja2-time](https://pypi.python.org/pypi/jinja2-time) as default extension for dates and times in templates via `{% now 'utc' %}`,thanks to [@hackebrot](https://github.com/hackebrot) (#653)
 
 Bug Fixes:
 
 * Provided way to define options that have no defaults, thanks to [@johtso](https://github.com/johtso) (#587, #588)
-* Make sure that `replay.dump()` and `replay.load()` use the correct user config, thanks to [@hackebrot](https://github.com/hackebrot)
+* Make sure that `values.dump()` and `values.load()` use the correct user config, thanks to [@hackebrot](https://github.com/hackebrot)
 (#590, #594)
 * Added correct CA bundle for Git on Appveyor, thanks to [@maiksensi](https://github.com/maiksensi) (#599, #602)
 * Open `HISTORY.rst` with `utf-8` encoding when reading the changelog, thanks to [@0-wiz-0](https://github.com/0-wiz-0) for submitting the issue and [@hackebrot](https://github.com/hackebrot) for the fix (#638, #639)
@@ -718,7 +718,7 @@ Other Changes:
 
 ## 1.1.0 (2015-09-26) Snickerdoodle
 
-The goals of this release were ```copy without render``` and a few additional command-line options such as ```--overwrite-if-exists```, ```---replay```, and ```output-dir```.
+The goals of this release were ```copy without render``` and a few additional command-line options such as ```--overwrite-if-exists```, ```---values```, and ```output-dir```.
 
 Features:
 
@@ -731,7 +731,7 @@ Features:
 * Allow scaffoldrominvocation, even without installing it, via `python -m sscaffoldromli`, thanks to [@vincentbernat](https://github.com/vincentbernat) and [@hackebrot](https://github.com/hackebrot) (#449, #487).
 * Improve the type detection handler for online and offline repositories, thanks to [@charlax](https://github.com/charlax)
 (#490).
-* Add replay feature, thanks to [@hackebrot](https://github.com/hackebrot) (#501).
+* Add values feature, thanks to [@hackebrot](https://github.com/hackebrot) (#501).
 * Be more precise when raising an error for an invalid user config file, thanks to [@vaab](https://github.com/vaab) and [@hackebrot](https://github.com/hackebrot) (#378, #528).
 * Added official Python 3.5 support, thanks to [@pydanny](https://github.com/pydanny) and [@hackebrot](https://github.com/hackebrot) (#522).
 * Added support for *choice* variables and switch to click style prompts, thanks to [@hackebrot](https://github.com/hackebrot) (#441, #455).
