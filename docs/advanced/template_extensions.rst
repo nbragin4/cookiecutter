@@ -3,12 +3,12 @@
 Template Extensions
 -------------------
 
-*New in Cookiecutter 1.4*
+*New in Scaffoldrom 1.4*
 
-A template may extend the Cookiecutter environment with custom `Jinja2 extensions`_.
+A template may extend the Scaffoldrom environment with custom `Jinja2 extensions`_.
 It can add extra filters, tests, globals or even extend the parser.
 
-To do so, a template author must specify the required extensions in ``cookiecutter.json`` as follows:
+To do so, a template author must specify the required extensions in ``scaffoldrom.json`` as follows:
 
 .. code-block:: json
 
@@ -18,32 +18,32 @@ To do so, a template author must specify the required extensions in ``cookiecutt
         "_extensions": ["jinja2_time.TimeExtension"]
     }
 
-On invocation Cookiecutter tries to import the extensions and add them to its environment respectively.
+On invocation Scaffoldrom tries to import the extensions and add them to its environment respectively.
 
-In the above example, Cookiecutter provides the additional tag `now`_, after installing the `jinja2_time.TimeExtension`_ and enabling it in ``cookiecutter.json``.
+In the above example, Scaffoldrom provides the additional tag `now`_, after installing the `jinja2_time.TimeExtension`_ and enabling it in ``scaffoldrom.json``.
 
-Please note that Cookiecutter will **not** install any dependencies on its own!
-As a user you need to make sure you have all the extensions installed, before running Cookiecutter on a template that requires custom Jinja2 extensions.
+Please note that Scaffoldrom will **not** install any dependencies on its own!
+As a user you need to make sure you have all the extensions installed, before running Scaffoldrom on a template that requires custom Jinja2 extensions.
 
-By default Cookiecutter includes the following extensions:
+By default Scaffoldrom includes the following extensions:
 
-- ``cookiecutter.extensions.JsonifyExtension``
-- ``cookiecutter.extensions.RandomStringExtension``
-- ``cookiecutter.extensions.SlugifyExtension``
-- ``cookiecutter.extensions.TimeExtension``
-- ``cookiecutter.extensions.UUIDExtension``
+- ``scaffoldrom.extensions.JsonifyExtension``
+- ``scaffoldrom.extensions.RandomStringExtension``
+- ``scaffoldrom.extensions.SlugifyExtension``
+- ``scaffoldrom.extensions.TimeExtension``
+- ``scaffoldrom.extensions.UUIDExtension``
 
 .. warning::
 
     The above is just an example to demonstrate how this is used. There is no
     need to require ``jinja2_time.TimeExtension``, since its functionality is
-    included by default (by ``cookiecutter.extensions.TimeExtension``) without
+    included by default (by ``scaffoldrom.extensions.TimeExtension``) without
     needing an extra install.
 
 Jsonify extension
 ~~~~~~~~~~~~~~~~~
 
-The ``cookiecutter.extensions.JsonifyExtension`` extension provides a ``jsonify`` filter in templates that converts a Python object to JSON:
+The ``scaffoldrom.extensions.JsonifyExtension`` extension provides a ``jsonify`` filter in templates that converts a Python object to JSON:
 
 .. code-block:: jinja
 
@@ -58,9 +58,9 @@ Would output:
 Random string extension
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-*New in Cookiecutter 1.7*
+*New in Scaffoldrom 1.7*
 
-The ``cookiecutter.extensions.RandomStringExtension`` extension provides a ``random_ascii_string`` method in templates that generates a random fixed-length string, optionally with punctuation.
+The ``scaffoldrom.extensions.RandomStringExtension`` extension provides a ``random_ascii_string`` method in templates that generates a random fixed-length string, optionally with punctuation.
 
 Generate a random n-size character string.
 Example for n=12:
@@ -90,7 +90,7 @@ Outputs:
 Slugify extension
 ~~~~~~~~~~~~~~~~~
 
-The ``cookiecutter.extensions.SlugifyExtension`` extension provides a ``slugify`` filter in templates that converts string into its dashed ("slugified") version:
+The ``scaffoldrom.extensions.SlugifyExtension`` extension provides a ``slugify`` filter in templates that converts string into its dashed ("slugified") version:
 
 .. code-block:: jinja
 
@@ -114,9 +114,9 @@ For example to change the output from ``it-s-a-random-version``` to ``it_s_a_ran
 UUID4 extension
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-*New in Cookiecutter 1.x*
+*New in Scaffoldrom 1.x*
 
-The ``cookiecutter.extensions.UUIDExtension`` extension provides a ``uuid4()``
+The ``scaffoldrom.extensions.UUIDExtension`` extension provides a ``uuid4()``
 method in templates that generates a uuid4.
 
 Generate a uuid4 string:

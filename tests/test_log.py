@@ -3,29 +3,29 @@ import logging
 
 import pytest
 
-from cookiecutter.log import configure_logger
+from scaffoldrom.log import configure_logger
 
 
 def create_log_records():
     """Test function, create log entries in expected stage of test."""
-    cookiecutter_logger = logging.getLogger('cookiecutter')
-    foo_logger = logging.getLogger('cookiecutter.foo')
-    foobar_logger = logging.getLogger('cookiecutter.foo.bar')
+    scaffoldrom_logger = logging.getLogger('scaffoldrom')
+    foo_logger = logging.getLogger('scaffoldrom.foo')
+    foobar_logger = logging.getLogger('scaffoldrom.foo.bar')
 
-    cookiecutter_logger.info('Welcome to Cookiecutter')
-    cookiecutter_logger.debug('Generating project from pytest-plugin')
+    scaffoldrom_logger.info('Welcome to Scaffoldrom')
+    scaffoldrom_logger.debug('Generating project from pytest-plugin')
     foo_logger.info('Loading user config from home dir')
     foobar_logger.debug("I don't know.")
     foobar_logger.debug('I wanted to save the world.')
     foo_logger.error('Aw, snap! Something went wrong')
-    cookiecutter_logger.debug('Successfully generated project')
+    scaffoldrom_logger.debug('Successfully generated project')
 
 
 @pytest.fixture
 def info_messages():
     """Fixture. List of test info messages."""
     return [
-        'INFO: Welcome to Cookiecutter',
+        'INFO: Welcome to Scaffoldrom',
         'INFO: Loading user config from home dir',
         'ERROR: Aw, snap! Something went wrong',
     ]
@@ -35,25 +35,25 @@ def info_messages():
 def debug_messages():
     """Fixture. List of test debug messages."""
     return [
-        "INFO cookiecutter: Welcome to Cookiecutter",
-        "DEBUG cookiecutter: Generating project from pytest-plugin",
-        "INFO cookiecutter.foo: Loading user config from home dir",
-        "DEBUG cookiecutter.foo.bar: I don't know.",
-        "DEBUG cookiecutter.foo.bar: I wanted to save the world.",
-        "ERROR cookiecutter.foo: Aw, snap! Something went wrong",
-        "DEBUG cookiecutter: Successfully generated project",
+        "INFO scaffoldrom: Welcome to Scaffoldrom",
+        "DEBUG scaffoldrom: Generating project from pytest-plugin",
+        "INFO scaffoldrom.foo: Loading user config from home dir",
+        "DEBUG scaffoldrom.foo.bar: I don't know.",
+        "DEBUG scaffoldrom.foo.bar: I wanted to save the world.",
+        "ERROR scaffoldrom.foo: Aw, snap! Something went wrong",
+        "DEBUG scaffoldrom: Successfully generated project",
     ]
 
 
 @pytest.fixture
 def info_logger():
-    """Fixture. Call cookiecutter logger setup with `info` debug level."""
+    """Fixture. Call scaffoldrom logger setup with `info` debug level."""
     return configure_logger(stream_level='INFO')
 
 
 @pytest.fixture
 def debug_logger():
-    """Fixture. Call cookiecutter logger setup with `debug` debug level."""
+    """Fixture. Call scaffoldrom logger setup with `debug` debug level."""
     return configure_logger(stream_level='DEBUG')
 
 
@@ -65,7 +65,7 @@ def debug_file(tmp_path):
 
 @pytest.fixture
 def info_logger_with_file(debug_file):
-    """Fixture. Call cookiecutter logger setup with `info` debug level + `file`."""
+    """Fixture. Call scaffoldrom logger setup with `info` debug level + `file`."""
     return configure_logger(stream_level='INFO', debug_file=str(debug_file))
 
 

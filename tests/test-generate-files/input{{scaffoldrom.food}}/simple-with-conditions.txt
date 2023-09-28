@@ -1,0 +1,5 @@
+{% if scaffoldrom %}
+    {% if scaffoldrom.food %}
+I eat {{ scaffoldrom.food }}
+    {% endif %}
+{% endif %}

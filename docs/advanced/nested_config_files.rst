@@ -3,7 +3,7 @@
 Nested configuration files
 ----------------------------------------------
 
-If you wish to create a hierarchy of templates and use cookiecutter to choose among them,
+If you wish to create a hierarchy of templates and use scaffoldrom to choose among them,
 you need just to specify the key ``template`` in the main configuration file to reach
 the other ones.
 
@@ -11,16 +11,16 @@ Let's imagine to have the following structure::
 
     main-directory/
         ├── project-1
-        │   ├── cookiecutter.json
-        │   ├── {{cookiecutter.project_slug}}
+        │   ├── scaffoldrom.json
+        │   ├── {{scaffoldrom.project_slug}}
         |	│   ├── ...
         ├── project-2
-        │   ├── cookiecutter.json
-        │   ├── {{cookiecutter.project_slug}}
+        │   ├── scaffoldrom.json
+        │   ├── {{scaffoldrom.project_slug}}
         |	│   ├── ...
-        └── cookiecutter.json
+        └── scaffoldrom.json
 
-It is possible to specify in the main ``cookiecutter.json`` how to reach the other
+It is possible to specify in the main ``scaffoldrom.json`` how to reach the other
 config files as follows:
 
 .. code-block:: JSON
@@ -32,7 +32,7 @@ config files as follows:
         ]
     }
 
-Then, when ``cookiecutter`` is launched in the main directory it will ask to choice
+Then, when ``scaffoldrom`` is launched in the main directory it will ask to choice
 among the possible templates:
 
 .. code-block:: bash
@@ -43,4 +43,4 @@ among the possible templates:
     Choose from 1, 2 [1]:
 
 Once a template is chosen, for example ``1``, it will continue to ask the info required by
-``cookiecutter.json`` in the ``project-1`` folder, such as ``project-slug``
+``scaffoldrom.json`` in the ``project-1`` folder, such as ``project-slug``

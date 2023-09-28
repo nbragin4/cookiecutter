@@ -1,13 +1,13 @@
 """
 test_abort_generate_on_hook_error.
 
-Tests to ensure cookiecutter properly exits with a non-zero exit code whenever
+Tests to ensure scaffoldrom properly exits with a non-zero exit code whenever
 errors occur in (optional) pre- or pos-gen hooks.
 """
 
 import pytest
 
-from cookiecutter import exceptions, generate
+from scaffoldrom import exceptions, generate
 
 
 @pytest.mark.parametrize(
@@ -23,7 +23,7 @@ def test_hooks_raises_errors(tmp_path, abort_pre_gen, abort_post_gen):
     for different errors.
     """
     context = {
-        "cookiecutter": {
+        "scaffoldrom": {
             "repo_dir": "foobar",
             "abort_pre_gen": abort_pre_gen,
             "abort_post_gen": abort_post_gen,

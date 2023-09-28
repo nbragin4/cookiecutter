@@ -2,7 +2,7 @@
 Overview
 ========
 
-Cookiecutter takes a template provided as a directory structure with template-files.
+Scaffoldrom takes a template provided as a directory structure with template-files.
 Templates can be located in the filesystem, as a ZIP-file or on a VCS-Server (Git/Hg) like GitHub.
 
 It reads a settings file and prompts the user interactively whether or not to change the settings.
@@ -15,24 +15,24 @@ Additionally the template can provide code (Python or shell-script) to be execut
 Input
 -----
 
-This is a directory structure for a simple cookiecutter::
+This is a directory structure for a simple scaffoldrom::
 
-    cookiecutter-something/
-    ├── {{ cookiecutter.project_name }}/  <--------- Project template
+    scaffoldrom-something/
+    ├── {{ scaffoldrom.project_name }}/  <--------- Project template
     │   └── ...
     ├── blah.txt                      <--------- Non-templated files/dirs
     │                                            go outside
     │
-    └── cookiecutter.json             <--------- Prompts & default values
+    └── scaffoldrom.json             <--------- Prompts & default values
 
 You must have:
 
-- A ``cookiecutter.json`` file.
-- A ``{{ cookiecutter.project_name }}/`` directory, where ``project_name`` is defined in your ``cookiecutter.json``.
+- A ``scaffoldrom.json`` file.
+- A ``{{ scaffoldrom.project_name }}/`` directory, where ``project_name`` is defined in your ``scaffoldrom.json``.
 
 Beyond that, you can have whatever files/directories you want.
 
-See https://github.com/audreyfeldroy/cookiecutter-pypackage for a real-world example
+See https://github.com/audreyfeldroy/scaffoldrom-pypackage for a real-world example
 of this.
 
 Output
@@ -44,4 +44,4 @@ This is what will be generated locally, in your current directory::
     │                         project_name prompt
     │
     └── ...       <-------- Files corresponding to those in your
-                            cookiecutter's `{{ cookiecutter.project_name }}/` dir
+                            scaffoldrom's `{{ scaffoldrom.project_name }}/` dir

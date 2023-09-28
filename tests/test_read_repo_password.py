@@ -1,9 +1,9 @@
 """Tests around handling repositories which require authentication."""
-from cookiecutter.prompt import read_repo_password
+from scaffoldrom.prompt import read_repo_password
 
 
 def test_click_invocation(mocker):
-    """Test click function called correctly by cookiecutter.
+    """Test click function called correctly by scaffoldrom.
 
     Test for password (hidden input) type invocation.
     """

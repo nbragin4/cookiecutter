@@ -1,17 +1,17 @@
-"""Collection of tests around loading cookiecutter config."""
+"""Collection of tests around loading scaffoldrom config."""
 from pathlib import Path
 
 import pytest
 import yaml
 
-from cookiecutter import config
-from cookiecutter.exceptions import ConfigDoesNotExistException, InvalidConfiguration
+from scaffoldrom import config
+from scaffoldrom.exceptions import ConfigDoesNotExistException, InvalidConfiguration
 
 
 def test_merge_configs():
     """Verify default and user config merged in expected way."""
     default = {
-        'cookiecutters_dir': '/home/example/some-path-to-templates',
+        'scaffoldroms_dir': '/home/example/some-path-to-templates',
         'replay_dir': '/home/example/some-path-to-replay-files',
         'default_context': {},
         'abbreviations': {
@@ -33,7 +33,7 @@ def test_merge_configs():
     }
 
     expected_config = {
-        'cookiecutters_dir': '/home/example/some-path-to-templates',
+        'scaffoldroms_dir': '/home/example/some-path-to-templates',
         'replay_dir': '/home/example/some-path-to-replay-files',
         'default_context': {
             'full_name': 'Raphael Pierzina',
@@ -54,7 +54,7 @@ def test_get_config():
     """Verify valid config opened and rendered correctly."""
     conf = config.get_config('tests/test-config/valid-config.yaml')
     expected_conf = {
-        'cookiecutters_dir': '/home/example/some-path-to-templates',
+        'scaffoldroms_dir': '/home/example/some-path-to-templates',
         'replay_dir': '/home/example/some-path-to-replay-files',
         'default_context': {
             'full_name': 'Firstname Lastname',
@@ -103,10 +103,10 @@ def test_invalid_config():
 def test_get_config_with_defaults():
     """A config file that overrides 1 of 3 defaults."""
     conf = config.get_config('tests/test-config/valid-partial-config.yaml')
-    default_cookiecutters_dir = Path('~/.cookiecutters').expanduser()
-    default_replay_dir = Path('~/.cookiecutter_replay').expanduser()
+    default_scaffoldroms_dir = Path('~/.scaffoldroms').expanduser()
+    default_replay_dir = Path('~/.scaffoldrom_replay').expanduser()
     expected_conf = {
-        'cookiecutters_dir': str(default_cookiecutters_dir),
+        'scaffoldroms_dir': str(default_scaffoldroms_dir),
         'replay_dir': str(default_replay_dir),
         'default_context': {
             'full_name': 'Firstname Lastname',

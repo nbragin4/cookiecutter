@@ -1,2 +1,2 @@
-cookiecutters_dir: "$COOKIES/templates"
+scaffoldroms_dir: "$COOKIES/templates"
 replay_dir: "$COOKIES/replay-files"

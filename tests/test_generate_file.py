@@ -8,8 +8,8 @@ import pytest
 from jinja2 import FileSystemLoader
 from jinja2.exceptions import TemplateSyntaxError
 
-from cookiecutter import generate
-from cookiecutter.environment import StrictEnvironment
+from scaffoldrom import generate
+from scaffoldrom.environment import StrictEnvironment
 
 
 @pytest.fixture(scope='function', autouse=True)
@@ -38,11 +38,11 @@ def env():
 
 def test_generate_file(env):
     """Verify simple file is generated with rendered context data."""
-    infile = 'tests/files/{{cookiecutter.generate_file}}.txt'
+    infile = 'tests/files/{{scaffoldrom.generate_file}}.txt'
     generate.generate_file(
         project_dir=".",
         infile=infile,
-        context={'cookiecutter': {'generate_file': 'cheese'}},
+        context={'scaffoldrom': {'generate_file': 'cheese'}},
         env=env,
     )
     assert os.path.isfile('tests/files/cheese.txt')
@@ -52,10 +52,10 @@ def test_generate_file(env):
 
 def test_generate_file_jsonify_filter(env):
     """Verify jsonify filter works during files generation process."""
-    infile = 'tests/files/{{cookiecutter.jsonify_file}}.txt'
+    infile = 'tests/files/{{scaffoldrom.jsonify_file}}.txt'
     data = {'jsonify_file': 'cheese', 'type': 'roquefort'}
     generate.generate_file(
-        project_dir=".", infile=infile, context={'cookiecutter': data}, env=env
+        project_dir=".", infile=infile, context={'scaffoldrom': data}, env=env
     )
     assert os.path.isfile('tests/files/cheese.txt')
     generated_text = Path('tests/files/cheese.txt').read_text()
@@ -66,9 +66,9 @@ def test_generate_file_jsonify_filter(env):
 @pytest.mark.parametrize("punctuation", (True, False))
 def test_generate_file_random_ascii_string(env, length, punctuation):
     """Verify correct work of random_ascii_string extension on file generation."""
-    infile = 'tests/files/{{cookiecutter.random_string_file}}.txt'
+    infile = 'tests/files/{{scaffoldrom.random_string_file}}.txt'
     data = {'random_string_file': 'cheese'}
-    context = {"cookiecutter": data, "length": length, "punctuation": punctuation}
+    context = {"scaffoldrom": data, "length": length, "punctuation": punctuation}
     generate.generate_file(project_dir=".", infile=infile, context=context, env=env)
     assert os.path.isfile('tests/files/cheese.txt')
     generated_text = Path('tests/files/cheese.txt').read_text()
@@ -81,12 +81,12 @@ def test_generate_file_with_true_condition(env):
     This test has positive answer, so file should be rendered.
     """
     infile = (
-        'tests/files/{% if cookiecutter.generate_file == \'y\' %}cheese.txt{% endif %}'
+        'tests/files/{% if scaffoldrom.generate_file == \'y\' %}cheese.txt{% endif %}'
     )
     generate.generate_file(
         project_dir=".",
         infile=infile,
-        context={'cookiecutter': {'generate_file': 'y'}},
+        context={'scaffoldrom': {'generate_file': 'y'}},
         env=env,
     )
     assert os.path.isfile('tests/files/cheese.txt')
@@ -100,12 +100,12 @@ def test_generate_file_with_false_condition(env):
     This test has negative answer, so file should not be rendered.
     """
     infile = (
-        'tests/files/{% if cookiecutter.generate_file == \'y\' %}cheese.txt{% endif %}'
+        'tests/files/{% if scaffoldrom.generate_file == \'y\' %}cheese.txt{% endif %}'
     )
     generate.generate_file(
         project_dir=".",
         infile=infile,
-        context={'cookiecutter': {'generate_file': 'n'}},
+        context={'scaffoldrom': {'generate_file': 'n'}},
         env=env,
     )
     assert not os.path.isfile('tests/files/cheese.txt')
@@ -135,11 +135,11 @@ def test_generate_file_verbose_template_syntax_error(env, expected_msg_regex):
 
 def test_generate_file_does_not_translate_lf_newlines_to_crlf(env, tmp_path):
     """Verify that file generation use same line ending, as in source file."""
-    infile = 'tests/files/{{cookiecutter.generate_file}}_lf_newlines.txt'
+    infile = 'tests/files/{{scaffoldrom.generate_file}}_lf_newlines.txt'
     generate.generate_file(
         project_dir=".",
         infile=infile,
-        context={'cookiecutter': {'generate_file': 'cheese'}},
+        context={'scaffoldrom': {'generate_file': 'cheese'}},
         env=env,
     )
 
@@ -153,11 +153,11 @@ def test_generate_file_does_not_translate_lf_newlines_to_crlf(env, tmp_path):
 
 def test_generate_file_does_not_translate_crlf_newlines_to_lf(env):
     """Verify that file generation use same line ending, as in source file."""
-    infile = 'tests/files/{{cookiecutter.generate_file}}_crlf_newlines.txt'
+    infile = 'tests/files/{{scaffoldrom.generate_file}}_crlf_newlines.txt'
     generate.generate_file(
         project_dir=".",
         infile=infile,
-        context={'cookiecutter': {'generate_file': 'cheese'}},
+        context={'scaffoldrom': {'generate_file': 'cheese'}},
         env=env,
     )
 

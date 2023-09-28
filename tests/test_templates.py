@@ -1,14 +1,14 @@
 """
 test_custom_extension_in_hooks.
 
-Tests to ensure custom cookiecutter extensions are properly made available to
+Tests to ensure custom scaffoldrom extensions are properly made available to
 pre- and post-gen hooks.
 """
 from pathlib import Path
 
 import pytest
 
-from cookiecutter import main
+from scaffoldrom import main
 
 
 @pytest.fixture
@@ -24,7 +24,7 @@ def test_build_templates(template, output_dir):
 
     no-templates is a compatibility tests for repo without `templates` directory
     """
-    project_dir = main.cookiecutter(
+    project_dir = main.scaffoldrom(
         f'tests/test-templates/{template}',
         no_input=True,
         output_dir=output_dir,

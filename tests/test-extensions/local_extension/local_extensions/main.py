@@ -1,11 +1,11 @@
 """Provides custom extension, exposing a ``foobar`` filter."""
 
 from jinja2.ext import Extension
-from cookiecutter.utils import simple_filter
+from scaffoldrom.utils import simple_filter
 
 
 class FoobarExtension(Extension):
-    """Simple jinja2 extension for cookiecutter test purposes."""
+    """Simple jinja2 extension for scaffoldrom test purposes."""
 
     def __init__(self, environment):
         """Foobar Extension Constructor."""

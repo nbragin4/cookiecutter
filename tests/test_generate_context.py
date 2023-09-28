@@ -5,8 +5,8 @@ from collections import OrderedDict
 
 import pytest
 
-from cookiecutter import generate
-from cookiecutter.exceptions import ContextDecodingException
+from scaffoldrom import generate
+from scaffoldrom.exceptions import ContextDecodingException
 
 
 def context_data():
@@ -86,7 +86,7 @@ def test_default_context_replacement_in_generate_context():
                 ('full_name', 'Raphael Pierzina'),
                 ('github_username', 'hackebrot'),
                 ('project_name', 'Kivy Project'),
-                ('repo_name', '{{cookiecutter.project_name|lower}}'),
+                ('repo_name', '{{scaffoldrom.project_name|lower}}'),
                 ('orientation', ['landscape', 'all', 'portrait']),
             ]
         )
@@ -133,7 +133,7 @@ def template_context():
             ('full_name', 'Raphael Pierzina'),
             ('github_username', 'hackebrot'),
             ('project_name', 'Kivy Project'),
-            ('repo_name', '{{cookiecutter.project_name|lower}}'),
+            ('repo_name', '{{scaffoldrom.project_name|lower}}'),
             ('orientation', ['all', 'landscape', 'portrait']),
             (
                 'deployments',
@@ -172,7 +172,7 @@ def test_apply_overwrites_does_not_modify_choices_for_invalid_overwrite():
                 ('full_name', 'Raphael Pierzina'),
                 ('github_username', 'hackebrot'),
                 ('project_name', 'Kivy Project'),
-                ('repo_name', '{{cookiecutter.project_name|lower}}'),
+                ('repo_name', '{{scaffoldrom.project_name|lower}}'),
                 ('orientation', ['all', 'landscape', 'portrait']),
             ]
         )
@@ -255,7 +255,7 @@ def test_apply_overwrites_in_nested_dict():
                         [
                             ('name', 'My Kivy Project'),
                             ('description', 'My Kivy Project'),
-                            ('repo_name', '{{cookiecutter.project_name|lower}}'),
+                            ('repo_name', '{{scaffoldrom.project_name|lower}}'),
                             ('orientation', ["all", "landscape", "portrait"]),
                         ]
                     ),

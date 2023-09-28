@@ -1,4 +1,4 @@
-* Cookiecutter version:
+* Scaffoldrom version:
 * Template project url:
 * Python version:
 * Operating System:
@@ -10,5 +10,5 @@
 ### What I've run:
 
 ```
-// REPLACE ME: Paste a log of command(s) you ran and cookiecutter's output, tracebacks, etc, here
+// REPLACE ME: Paste a log of command(s) you ran and scaffoldrom's output, tracebacks, etc, here
 ```

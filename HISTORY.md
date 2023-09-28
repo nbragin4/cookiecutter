@@ -1,6 +1,6 @@
 # History
 
-History is important, but our current roadmap can be found [here](https://github.com/cookiecutter/cookiecutter/projects)
+History is important, but our current roadmap can be found [here](https://github.com/nbragin4sscaffoldromrojects)
 
 ## 2.3.1 (2023-09-21)
 
@@ -60,13 +60,13 @@ History is important, but our current roadmap can be found [here](https://github
 
 ### CI/CD and QA changes
 
-* Set cookiecutter/VERSION.txt as source of truth for version number (#1896) @ericof
+* Set scaffoldromVERSION.txt as source of truth for version number (#1896) @ericof
 * [pre-commit.ci] pre-commit autoupdate (#1897) @pre-commit-ci
 
 ### Bugfixes
 
 * Fix issue where the prompts dict was not passed for yes_no questions (#1895) @vemonet
-* Set cookiecutter/VERSION.txt as source of truth for version number (#1896) @ericof
+* Set scaffoldromVERSION.txt as source of truth for version number (#1896) @ericof
 
 ### This release is made by wonderful contributors:
 
@@ -108,7 +108,7 @@ History is important, but our current roadmap can be found [here](https://github
 * Inline jinja2-time extension code (#1779) @tranzystorek-io
 * Support Python 3.11 (#1850) @kurtmckee
 * Support nested config files (#1770) @dariocurr
-* preserves original options in `_cookiecutter` (#1874) @kjaymiller
+* preserves original options in `_scaffoldrom (#1874) @kjaymiller
 
 ### CI/CD and QA changes
 
@@ -141,7 +141,7 @@ History is important, but our current roadmap can be found [here](https://github
 ### Documentation updates
 
 * Add jinja env docs (#1872) @pamelafox
-* Documentation extension: Create a Cookiecutter From Scratch tutorial (#1592) @miro-jelaska
+* Documentation extension: Create a Scaffoldrom From Scratch tutorial (#1592) @miro-jelaska
 * Easy PR! Fix typos and add minor doc updates (#1741) @Alex0Blackwell
 * Expand cli documentation relating to the no-input flag (#1543) (#1587) @jeremyswerdlow
 * Fix @audreyr to @audreyfeldroy github account rename (#1604) @ri0t
@@ -213,7 +213,7 @@ History is important, but our current roadmap can be found [here](https://github
 
 *Remark: This release never made it to official PyPI*
 
-* Fix Python version number in cookiecutter --version and test on Python 3.10 (#1621) @ozer550
+* Fix Python version number in scaffoldrom--version and test on Python 3.10 (#1621) @ozer550
 * Removed changes related to setuptools_scm (#1629) @audreyfeldroy @ozer550
 
 ## 2.0.1 (2021-12-11)
@@ -238,10 +238,10 @@ History is important, but our current roadmap can be found [here](https://github
 * Replace poyo with pyyaml. (#1489) @dHannasch
 * update AUTHOR lead (#1532) @HosamAlmoghraby
 * Add Python 3.9 (#1478) @gliptak
-* Added: --list-installed cli option, listing already downloaded cookiecutter packages (#1096) @chrisbrake
+* Added: --list-installed cli option, listing already downloaded scaffoldrompackages (#1096) @chrisbrake
 * Added: Jinja2 Environment extension on files generation stage (#1419) @insspb
 * Added: --replay-file cli option, for replay file distributing (#906) @Cadair
-* Added: _output_dir to cookiecutter context (#1034) @Casyfill
+* Added: _output_dir to scaffoldromcontext (#1034) @Casyfill
 * Added: CLI option to ignore hooks (#992) @rgreinho
 * Changed: Generated projects can use multiple type hooks at same time. (sh + py) (#974) @milonimrod
 * Added: Path templates will be rendered when copy_without_render used (#839) @noirbizarre
@@ -281,7 +281,7 @@ History is important, but our current roadmap can be found [here](https://github
 * docs: rewrite the conditional files / directories example description. (#1437) @lyz-code
 * Fix incorrect years in release history (#1473) @graue70
 * Add slugify in the default extensions list (#1470) @oncleben31
-* Renamed cookiecutter.package to API (#1442) @grrlic
+* Renamed scaffoldrompackage to API (#1442) @grrlic
 * Fixed wording detail (#1427) @steltenpower
 * Changed: CLI Commands documentation engine (#1418) @insspb
 * Added: Example for conditional files / directories in hooks (#1397) @xyb
@@ -364,7 +364,7 @@ Code style and docs changes:
 * Replaced click documentation links to point to version 7 [@igorbasko01](https://github.com/igorbasko01) (#1303)
 * Updated submodule link to latest version with documentation links fix [@DanBoothDev](https://github.com/DanBoothDev) (#1388)
 * Fixed links in main README file. [@insspb](https://github.com/insspb) (#1342)
-* Fix indentation of .cookiecutterrc in README.md [@mhsekhavat](https://github.com/mhsekhavat) (#1322)
+* Fix indentation of .scaffoldromc in README.md [@mhsekhavat](https://github.com/mhsekhavat) (#1322)
 * Changed format of loggers invocation [@insspb](https://github.com/insspb) (#1307)
 
 ## 1.7.0 (2019-12-22) Old friend
@@ -387,38 +387,38 @@ Other Changes:
 * Tests update: use sys.executable when invoking python in python 3 only environment thanks to [@vincentbernat](https://github.com/vincentbernat) (#1221)
 * Prevent `click` API v7.0 from showing choices when already shown, thanks to [@rly](https://github.com/rly) and [@luzfcb](https://github.com/luzfcb) (#1168)
 * Test the codebase with python3.8 beta on tox and travis-ci (#1206), thanks to [@mihrab34](https://github.com/mihrab34)
-* Add a [CODE\_OF\_CONDUCT.md](https://github.com/audreyfeldroy/cookiecutter/blob/master/CODE_OF_CONDUCT.md) file to the project, thanks to [@andreagrandi](https://github.com/andreagrandi) (#1009)
-* Update docstrings in `cookiecutter/main.py`, `cookiecutter/__init__.py`, and `cookiecutter/log.py` to follow the PEP 257 style guide, thanks to [@meahow](https://github.com/meahow) (#998, #999, #1000)
-* Update docstrings in `cookiecutter/utils.py` to follow the PEP 257 style guide, thanks to [@dornheimer](https://github.com/dornheimer)(#1026)
+* Add a [CODE\_OF\_CONDUCT.md](https://github.com/audreyfeldroy/scaffoldromblob/master/CODE_OF_CONDUCT.md) file to the project, thanks to [@andreagrandi](https://github.com/andreagrandi) (#1009)
+* Update docstrings in `scaffoldrommain.py`, `sscaffoldrom_init__.py`, and `scscaffoldromg.py` to follow the PEP 257 style guide, thanks to [@meahow](https://github.com/meahow) (#998, #999, #1000)
+* Update docstrings in `scaffoldromutils.py` to follow the PEP 257 style guide, thanks to [@dornheimer](https://github.com/dornheimer)(#1026)
 * Fix grammar in *Choice Variables* documentation, thanks to [@jubrilissa](https://github.com/jubrilissa) (#1011)
 * Update installation docs with links to the Windows Subsystem and GNU utilities, thanks to [@Nythiennzo](https://github.com/Nythiennzo) for the PR and [@BruceEckel](https://github.com/BruceEckel) for the review (#1016)
 * Upgrade flake8 to version 3.5.0, thanks to [@cclauss](https://github.com/cclauss) (#1038)
-* Update tutorial with explanation for how cookiecutter finds the template file, thanks to [@accraze](https://github.com/accraze)(#1025)
+* Update tutorial with explanation for how scaffoldromfinds the template file, thanks to [@accraze](https://github.com/accraze)(#1025)
 * Update CI config files to use `TOXENV` environment variable, thanks to [@asottile](https://github.com/asottile) (#1019)
 * Improve user documentation for writing hooks, thanks to [@jonathansick](https://github.com/jonathansick) (#1057)
-* Make sure to preserve the order of items in the generated cookiecutter context, thanks to [@hackebrot](https://github.com/hackebrot) (#1074)
+* Make sure to preserve the order of items in the generated scaffoldromcontext, thanks to [@hackebrot](https://github.com/hackebrot) (#1074)
 * Fixed DeprecationWarning for a regular expression on python 3.6, thanks to [@reinout](https://github.com/reinout) (#1124)
-* Document use of cookiecutter-template topic on GitHub, thanks to [@ssbarnea](https://github.com/ssbarnea) (#1189)
+* Document use of scaffoldromtemplate topic on GitHub, thanks to [@ssbarnea](https://github.com/ssbarnea) (#1189)
 * Update README badge links, thanks to [@luzfcb](https://github.com/luzfcb) (#1207)
 * Update prompt.py to match pep257 guidelines, thanks to [@jairideout](https://github.com/jairideout) (#1105)
 * Update link to Jinja2 extensions documentation, thanks to [@dacog](https://github.com/dacog) (#1193)
 * Require pip 9.0.0 or newer for tox environments, thanks to [@hackebrot](https://github.com/hackebrot) (#1215)
 * Use io.open contextmanager when reading hook files, thanks to [@jcb91](https://github.com/jcb91) (#1147)
-* Add more cookiecutter templates to the mix:
-  * [cookiecutter-python-cli](https://github.com/xuanluong/cookiecutter-python-cli) by [@xuanluong](https://github.com/xuanluong) (#1003)
-  * [cookiecutter-docker-science](https://github.com/docker-science/cookiecutter-docker-science) by [@takahi-i](https://github.com/takahi-i) (#1040)
-  * [cookiecutter-flask-skeleton](https://github.com/realpython/cookiecutter-flask-skeleton) by [@mjhea0](https://github.com/mjhea0) (#1052)
-  * [cookiecutter-awesome](https://github.com/Pawamoy/cookiecutter-awesome) by [@Pawamoy](https://github.com/Pawamoy) (#1051)
-  * [cookiecutter-flask-ask](https://github.com/chrisvoncsefalvay/cookiecutter-flask-ask) by [@machinekoder](https://github.com/machinekoder) (#1056)
-  * [cookiecutter-data-driven-journalism](https://github.com/jastark/cookiecutter-data-driven-journalism) by [@JAStark](https://github.com/JAStark) (#1020)
-  * [cookiecutter-tox-plugin](https://github.com/tox-dev/cookiecutter-tox-plugin) by [@obestwalter](https://github.com/obestwalter) (#1103)
-  * [cookiecutter-django-dokku](https://github.com/mashrikt/cookiecutter-django-dokku) by [@mashrikt](https://github.com/mashrikt) (#1093)
+* Add more scaffoldromtemplates to the mix:
+  * [scaffoldrompython-cli](https://github.com/xuanluong/sscaffoldromython-cli) by [@xuanluong](https://github.com/xuanluong) (#1003)
+  * [scaffoldromdocker-science](https://github.com/docker-science/sscaffoldromocker-science) by [@takahi-i](https://github.com/takahi-i) (#1040)
+  * [scaffoldromflask-skeleton](https://github.com/realpython/sscaffoldromlask-skeleton) by [@mjhea0](https://github.com/mjhea0) (#1052)
+  * [scaffoldromawesome](https://github.com/Pawamoy/sscaffoldromwesome) by [@Pawamoy](https://github.com/Pawamoy) (#1051)
+  * [scaffoldromflask-ask](https://github.com/chrisvoncsefalvay/sscaffoldromlask-ask) by [@machinekoder](https://github.com/machinekoder) (#1056)
+  * [scaffoldromdata-driven-journalism](https://github.com/jastark/sscaffoldromata-driven-journalism) by [@JAStark](https://github.com/JAStark) (#1020)
+  * [scaffoldromtox-plugin](https://github.com/tox-dev/sscaffoldromox-plugin) by [@obestwalter](https://github.com/obestwalter) (#1103)
+  * [scaffoldromdjango-dokku](https://github.com/mashrikt/sscaffoldromjango-dokku) by [@mashrikt](https://github.com/mashrikt) (#1093)
 
 ## 1.6.0 (2017-10-15) Tim Tam
 
 New Features:
 
-* Include template path or template URL in cookiecutter context under `_template`, thanks to [@aroig](https://github.com/aroig) (#774)
+* Include template path or template URL in scaffoldromcontext under `_template`, thanks to [@aroig](https://github.com/aroig) (#774)
 * Add a URL abbreviation for GitLab template projects, thanks to [@hackebrot](https://github.com/hackebrot) (#963)
 * Add option to use templates from Zip files or Zip URLs, thanks to [@freakboy3742](https://github.com/freakboy3742) (#961)
 
@@ -435,41 +435,41 @@ Other Changes:
 * Improve debug log message for when a hook is not found, thanks to [@raphigaziano](https://github.com/raphigaziano/) (#160)
 * Fix module summary and `expand_abbreviations()` doc string as per pep257, thanks to [@terryjbates](https://github.com/terryjbates)
 (#772)
-* Update doc strings in `cookiecutter/cli.py` and `cookiecutter/config.py` according to pep257, thanks to [@terryjbates](https://github.com/terryjbates) (#922, #931)
+* Update doc strings in `scaffoldromcli.py` and `sscaffoldromonfig.py` according to pep257, thanks to [@terryjbates](https://github.com/terryjbates) (#922, #931)
 * Update doc string for `is_copy_only_path()` according to pep257, thanks to [@mathagician](https://github.com/mathagician) and
 [@terryjbates](https://github.com/terryjbates) (#935, #949)
-* Update doc strings in `cookiecutter/extensions.py` according to pep257, thanks to [@meahow](https://github.com/meahow) (#996)
+* Update doc strings in `scaffoldromextensions.py` according to pep257, thanks to [@meahow](https://github.com/meahow) (#996)
 * Fix miscellaneous issues with building docs, thanks to [@stevepiercy](https://github.com/stevepiercy) (#889)
 * Re-implement Makefile and update several make rules, thanks to [@hackebrot](https://github.com/hackebrot) (#930)
 * Fix broken link to pytest docs, thanks to [@eyalev](https://github.com/eyalev) for the issue report and [@devstrat](https://github.com/devstrat) for the fix (#939, #940)
 * Add `test_requirements.txt` file for easier testing outside of tox, thanks to [@ramnes](https://github.com/ramnes) (#945)
 * Improve wording in *copy without render* docs, thanks to [@eyalev](https://github.com/eyalev) (#938)
 * Fix a number of typos, thanks to [@delirious-lettuce](https://github.com/delirious-lettuce) (#968)
-* Improved *extra context* docs by noting that extra context keys must be present in the template\'s `cookiecutter.json`, thanks to
+* Improved *extra context* docs by noting that extra context keys must be present in the template\'s `scaffoldromjson`, thanks to
 [@karantan](https://github.com/karantan) for the report and fix (#863, #864)
-* Added more cookiecutter templates to the mix:
-  * [cookiecutter-kata-cpputest](https://github.com/13coders/cookiecutter-kata-cpputest) by [@13coders](https://github.com/13coders) (#901)
-  * [cookiecutter-kata-gtest](https://github.com/13coders/cookiecutter-kata-gtest) by [@13coders](https://github.com/13coders) (#901)
-  * [cookiecutter-pyramid-talk-python-starter](https://github.com/mikeckennedy/cookiecutter-pyramid-talk-python-starter) by [@mikeckennedy](https://github.com/mikeckennedy) (#915)
-  * [cookiecutter-android](https://github.com/alexfu/cookiecutter-android) by [@alexfu](https://github.com/alexfu) (#890)
-  * [cookiecutter-lux-python](https://github.com/alexkey/cookiecutter-lux-python) by [@alexkey](https://github.com/alexkey) (#895)
-  * [cookiecutter-git](https://github.com/webevllc/cookiecutter-git) by [@tuxredux](https://github.com/tuxredux) (#921)
-  * [cookiecutter-ansible-role-ci](https://github.com/ferrarimarco/cookiecutter-ansible-role) by [@ferrarimarco](https://github.com/ferrarimarco) (#903)
-  * [cookiecutter\_dotfile](https://github.com/bdcaf/cookiecutter_dotfile) by [@bdcaf](https://github.com/bdcaf) (#925)
+* Added more scaffoldromtemplates to the mix:
+  * [scaffoldromkata-cpputest](https://github.com/13coders/sscaffoldromata-cpputest) by [@13coders](https://github.com/13coders) (#901)
+  * [scaffoldromkata-gtest](https://github.com/13coders/sscaffoldromata-gtest) by [@13coders](https://github.com/13coders) (#901)
+  * [scaffoldrompyramid-talk-python-starter](https://github.com/mikeckennedy/sscaffoldromyramid-talk-python-starter) by [@mikeckennedy](https://github.com/mikeckennedy) (#915)
+  * [scaffoldromandroid](https://github.com/alexfu/sscaffoldromndroid) by [@alexfu](https://github.com/alexfu) (#890)
+  * [scaffoldromlux-python](https://github.com/alexkey/sscaffoldromux-python) by [@alexkey](https://github.com/alexkey) (#895)
+  * [scaffoldromgit](https://github.com/webevllc/sscaffoldromit) by [@tuxredux](https://github.com/tuxredux) (#921)
+  * [scaffoldromansible-role-ci](https://github.com/ferrarimarco/sscaffoldromnsible-role) by [@ferrarimarco](https://github.com/ferrarimarco) (#903)
+  * [scaffoldrom_dotfile](https://github.com/bdcaf/sscaffoldromotfile) by [@bdcaf](https://github.com/bdcaf) (#925)
   * [painless-continuous-delivery](https://github.com/painless-software/painless-continuous-delivery) by [@painless-software](https://github.com/painless-software)
         (#927)
-  * [cookiecutter-molecule](https://github.com/retr0h/cookiecutter-molecule) by [@retr0h](https://github.com/retr0h) (#954)
+  * [scaffoldrommolecule](https://github.com/retr0h/sscaffoldromolecule) by [@retr0h](https://github.com/retr0h) (#954)
   * [sublime-snippet-package-template](https://github.com/agenoria/sublime-snippet-package-template) by [@agenoria](https://github.com/agenoria) (#956)
-  * [cookiecutter-conda-python](https://github.com/conda/cookiecutter-conda-python) by [@conda](https://github.com/conda) (#969)
-  * [cookiecutter-flask-minimal](https://github.com/candidtim/cookiecutter-flask-minimal) by [@candidtim](https://github.com/candidtim) (#977)
-  * [cookiecutter-pypackage-rust-cross-platform-publish](https://github.com/mckaymatt/cookiecutter-pypackage-rust-cross-platform-publish) by [@mckaymatt](https://github.com/mckaymatt) (#957)
+  * [scaffoldromconda-python](https://github.com/conda/sscaffoldromonda-python) by [@conda](https://github.com/conda) (#969)
+  * [scaffoldromflask-minimal](https://github.com/candidtim/sscaffoldromlask-minimal) by [@candidtim](https://github.com/candidtim) (#977)
+  * [scaffoldrompypackage-rust-cross-platform-publish](https://github.com/mckaymatt/sscaffoldromypackage-rust-cross-platform-publish) by [@mckaymatt](https://github.com/mckaymatt) (#957)
   * [cookie-cookie](https://github.com/tuxredux/cookie-cookie) by [@tuxredux](https://github.com/tuxredux) (#951)
-  * [cookiecutter-telegram-bot](https://github.com/Ars2014/cookiecutter-telegram-bot) by [@Ars2014](https://github.com/Ars2014) (#984)
+  * [scaffoldromtelegram-bot](https://github.com/Ars2014/sscaffoldromelegram-bot) by [@Ars2014](https://github.com/Ars2014) (#984)
   * [python-project-template](https://github.com/Kwpolska/python-project-template) by [@Kwpolska](https://github.com/Kwpolska) (#986)
   * [wemake-django-template](https://github.com/wemake-services/wemake-django-template) by [@wemake-services](https://github.com/wemake-services) (#990)
-  * [cookiecutter-raml](https://github.com/genzj/cookiecutter-raml) by [@genzj](https://github.com/genzj) (#994)
-  * [cookiecutter-anyblok-project](https://github.com/AnyBlok/cookiecutter-anyblok-project) by [@AnyBlok](https://github.com/AnyBlok) (#988)
-  * [cookiecutter-devenv](https://bitbucket.org/greenguavalabs/cookiecutter-devenv.git) by [@greenguavalabs](https://bitbucket.org/greenguavalabs) (#991)
+  * [scaffoldromraml](https://github.com/genzj/sscaffoldromaml) by [@genzj](https://github.com/genzj) (#994)
+  * [scaffoldromanyblok-project](https://github.com/AnyBlok/sscaffoldromnyblok-project) by [@AnyBlok](https://github.com/AnyBlok) (#988)
+  * [scaffoldromdevenv](https://bitbucket.org/greenguavalabs/sscaffoldromevenv.git) by [@greenguavalabs](https://bitbucket.org/greenguavalabs) (#991)
 
 ## 1.5.1 (2017-02-04) Alfajor
 
@@ -484,16 +484,16 @@ Bug Fixes:
 Other Changes:
 
 * Contributor documentation reST fixes, thanks to [@stevepiercy](https://github.com/stevepiercy) (#878)
-* Added more cookiecutter templates to the mix:
-  * [widget-cookiecutter](https://github.com/jupyter/widget-cookiecutter) by [@willingc](https://github.com/willingc) (#781)
-  * [cookiecutter-django-foundation](https://github.com/Parbhat/cookiecutter-django-foundation) by [@Parbhat](https://github.com/Parbhat) (#804)
-  * [cookiecutter-tornado](https://github.com/hkage/cookiecutter-tornado) by [@hkage](https://github.com/hkage) (#807)
-  * [cookiecutter-django-ansible](https://github.com/HackSoftware/cookiecutter-django-ansible) by [@Ivaylo-Bachvarov](https://github.com/Ivaylo-Bachvarov)(#816)
+* Added more scaffoldromtemplates to the mix:
+  * [widget-scaffoldrom(https://github.com/jupyter/widget-sscaffoldromby [@willingc](https://github.com/willingc) (#781)
+  * [scaffoldromdjango-foundation](https://github.com/Parbhat/sscaffoldromjango-foundation) by [@Parbhat](https://github.com/Parbhat) (#804)
+  * [scaffoldromtornado](https://github.com/hkage/sscaffoldromornado) by [@hkage](https://github.com/hkage) (#807)
+  * [scaffoldromdjango-ansible](https://github.com/HackSoftware/sscaffoldromjango-ansible) by [@Ivaylo-Bachvarov](https://github.com/Ivaylo-Bachvarov)(#816)
   * [CICADA](https://github.com/TAMU-CPT/CICADA) by [@elenimijalis](https://github.com/elenimijalis) (#840)
-  * [cookiecutter-tf-module](https://github.com/DualSpark/cookiecutter-tf-module) by [@VDuda](https://github.com/VDuda) (#843)
-  * [cookiecutter-pyqt4](https://github.com/aeroaks/cookiecutter-pyqt4) by [@aeroaks](https://github.com/aeroaks) (#847)
-  * [cookiecutter-golang](https://github.com/lacion/cookiecutter-golang) by [@mjhea0](https://github.com/mjhea0) and [@lacion](https://github.com/lacion) (#872, #873)
-  * [cookiecutter-elm](https://github.com/m-x-k/cookiecutter-elm.git), [cookiecutter-java](https://github.com/m-x-k/cookiecutter-java.git) and [cookiecutter-spring-boot](https://github.com/m-x-k/cookiecutter-spring-boot.git) by [@m-x-k](https://github.com/m-x-k) (#879)
+  * [scaffoldromtf-module](https://github.com/DualSpark/sscaffoldromf-module) by [@VDuda](https://github.com/VDuda) (#843)
+  * [scaffoldrompyqt4](https://github.com/aeroaks/sscaffoldromyqt4) by [@aeroaks](https://github.com/aeroaks) (#847)
+  * [scaffoldromgolang](https://github.com/lacion/sscaffoldromolang) by [@mjhea0](https://github.com/mjhea0) and [@lacion](https://github.com/lacion) (#872, #873)
+  * [scaffoldromelm](https://github.com/m-x-k/sscaffoldromlm.git), [scscaffoldromva](https://github.com/m-x-k/scascaffoldroma.git) and [scafscaffoldromng-boot](https://github.com/m-x-k/scaffscaffoldromg-boot.git) by [@m-x-k](https://github.com/m-x-k) (#879)
 
 ## 1.5.0 (2016-12-18) Alfajor
 
@@ -503,19 +503,19 @@ improvements.
 New Features:
 
 * Inject extra context with command-line arguments, thanks to [@msabramo](https://github.com/msabramo) and [@michaeljoseph](https://github.com/michaeljoseph) (#666).
-* Updated conda installation instructions to work with the new conda-forge distribution of Cookiecutter, thanks to [@pydanny](https://github.com/pydanny) and especially [@bollwyvl](https://github.com/bollwyvl) (#232, #705).
+* Updated conda installation instructions to work with the new conda-forge distribution of Scaffoldrom, thanks to [@pydanny](https://github.com/pydanny) and especially [@bollwyvl](https://github.com/bollwyvl) (#232, #705).
 * Refactor code responsible for interaction with version control systems and raise better error messages, thanks to [@michaeljoseph](https://github.com/michaeljoseph) (#778).
-* Add support for executing cookiecutter using `python -m cookiecutter` or from a checkout/zip file, thanks to [@brettcannon](https://github.com/brettcannon) (#788).
+* Add support for executing scaffoldromusing `python -m sscaffoldromor from a checkout/zip file, thanks to [@brettcannon](https://github.com/brettcannon) (#788).
 * New CLI option `--debug-file PATH` to store a log file on disk. By default no log file is written. Entries for `DEBUG` level and     higher. Thanks to [@hackebrot](https://github.com/hackebrot)(#792).
-* Existing templates in a user\'s `cookiecutters_dir` (default is `~/.cookiecutters/`) can now be referenced by directory name, thanks
+* Existing templates in a user\'s `scaffoldrom_dir` (default is `~/.sscaffoldrom`) can now be referenced by directory name, thanks
 to [@michaeljoseph](https://github.com/michaeljoseph) (#825).
-* Add support for dict values in `cookiecutter.json`, thanks to [@freakboy3742](https://github.com/freakboy3742) and [@hackebrot](https://github.com/hackebrot) (#815, #858).
+* Add support for dict values in `scaffoldromjson`, thanks to [@freakboy3742](https://github.com/freakboy3742) and [@hackebrot](https://github.com/hackebrot) (#815, #858).
 * Add a `jsonify` filter to default jinja2 extensions that json.dumps a Python object into a string, thanks to [@aroig](https://github.com/aroig) (#791).
 
 Bug Fixes:
 
 * Fix typo in the error logging text for when a hook did not exit successfully, thanks to [@luzfcb](https://github.com/luzfcb)    (#656)
-* Fix an issue around **replay** file names when **cookiecutter** is used with a relative path to a template, thanks to    [@eliasdorneles](https://github.com/eliasdorneles) for raising the issue and [@hackebrot](https://github.com/hackebrot) for the PR (#752, #753)
+* Fix an issue around **replay** file names when **scaffoldrom* is used with a relative path to a template, thanks to    [@eliasdorneles](https://github.com/eliasdorneles) for raising the issue and [@hackebrot](https://github.com/hackebrot) for the PR (#752, #753)
 * Ignore hook files with tilde-suffixes, thanks to [@hackebrot](https://github.com/hackebrot) (#768)
 * Fix a minor issue with the code that generates a name for a template, thanks to [@hackebrot](https://github.com/hackebrot)(#798)
 * Handle empty hook file or other OS errors, thanks to [@christianmlong](https://github.com/christianmlong) for raising this bug and [@jcarbaugh](https://github.com/jcarbaugh) and [@hackebrot](https://github.com/hackebrot) for the fix (#632, #729, #862)
@@ -530,10 +530,10 @@ Other Changes:
 * Documented `__init__` methods for Environment objects, thanks to [@pydanny](https://github.com/pydanny) (#677)
 * Updated whichcraft to 0.4.0, thanks to [@pydanny](https://github.com/pydanny).
 * Updated documentation link to Read the Docs, thanks to [@natim](https://github.com/Natim) (#687)
-* Moved cookiecutter templates and added category links, thanks to [@willingc](https://github.com/willingc) (#674)
+* Moved scaffoldromtemplates and added category links, thanks to [@willingc](https://github.com/willingc) (#674)
 * Added Github Issue Template, thanks to [@luzfcb](https://github.com/luzfcb) (#700)
 * Added `ssh` repository examples, thanks to [@pokoli](https://github.com/pokoli/) (#702)
-* Fix links to the cookiecutter-data-science template and its documentation, thanks to [@tephyr](https://github.com/tephyr) for the PR and [@willingc](https://github.com/willingc) for the review (#711, #714)
+* Fix links to the scaffoldromdata-science template and its documentation, thanks to [@tephyr](https://github.com/tephyr) for the PR and [@willingc](https://github.com/willingc) for the review (#711, #714)
 * Update link to docs for Django\'s `--template` command line option, thanks to [@purplediane](https://github.com/purplediane) (#754)
 * Create *hook backup files* during the tests as opposed to having them as static files in the repository, thanks to [@hackebrot](https://github.com/hackebrot) (#789)
 
@@ -545,14 +545,14 @@ Other Changes:
   * `repository.py`, thanks to [@terryjbates](https://github.com/terryjbates) (#833)
   * `vcs.py`, thanks to [@terryjbates](https://github.com/terryjbates) (#831)
 
-* Fix link to the Tryton cookiecutter, thanks to [@cedk](https://github.com/cedk) and [@nicoe](https://github.com/nicoe) (#697, #698)
+* Fix link to the Tryton scaffoldrom thanks to [@cedk](https://github.com/cedk) and [@nicoe](https://github.com/nicoe) (#697, #698)
 * Added PyCon US 2016 sponsorship to README, thanks to [@purplediane](https://github.com/purplediane) (#720)
 * Added a sprint contributor doc, thanks to [@phoebebauer](https://github.com/phoebebauer) (#727)
 * Converted readthedocs links (.org -\> .io), thanks to [@adamchainz](https://github.com/adamchainz) (#718)
 * Added Python 3.6 support, thanks to [@suledev](https://github.com/suledev) (#728)
 * Update occurrences of `repo_name` in documentation, thanks to [@palmerev](https://github.com/palmerev) (#734)
 * Added case studies document, thanks to [@pydanny](https://github.com/pydanny) (#735)
-* Added first steps cookiecutter creation tutorial, thanks to [@BruceEckel](https://github.com/BruceEckel) (#736)
+* Added first steps scaffoldromcreation tutorial, thanks to [@BruceEckel](https://github.com/BruceEckel) (#736)
 * Reorganised tutorials and setup git submodule to external tutorial, thanks to [@dot2dotseurat](https://github.com/dot2dotseurat) (#740)
 * Debian installation instructions, thanks to [@ivanlyon](https://github.com/ivanlyon) (#738)
 * Usage documentation typo fix., thanks to [@terryjbates](https://github.com/terryjbates) (#739)
@@ -561,9 +561,9 @@ Other Changes:
 * Split up advanced usage docs, thanks to [@zzzirk](https://github.com/zzzirk) (#749)
 * Documentation for the `no_input` option, thanks to [@pokoli](https://github.com/pokoli/) (#701)
 * Remove unnecessary shebangs from python files, thanks to [@michaeljoseph](https://github.com/michaeljoseph) (#763)
-* Refactor cookiecutter template identification, thanks to [@michaeljoseph](https://github.com/michaeljoseph) (#777)
+* Refactor scaffoldromtemplate identification, thanks to [@michaeljoseph](https://github.com/michaeljoseph) (#777)
 * Add a `cli_runner` test fixture to simplify CLI tests, thanks to [@hackebrot](https://github.com/hackebrot) (#790)
-* Add a check to ensure cookiecutter repositories have JSON context, thanks to [@michaeljoseph](https://github.com/michaeljoseph)(#782)
+* Add a check to ensure scaffoldromrepositories have JSON context, thanks to [@michaeljoseph](https://github.com/michaeljoseph)(#782)
 * Rename the internal function that determines whether a file should be rendered, thanks to [@audreyfeldroy](https://github.com/audreyfeldroy) for raising the issue and [@hackebrot](https://github.com/hackebrot)for the PR (#741, #802)
 * Fix typo in docs, thanks to [@mwarkentin](https://github.com/mwarkentin) (#828)
 * Fix broken link to *Invoke* docs, thanks to [@B3QL](https://github.com/B3QL) (#820)
@@ -577,37 +577,37 @@ Other Changes:
 * Make the build reproducible by avoiding nondeterministic keyword arguments, thanks to [@lamby](https://github.com/lamby) and [@hackebrot](https://github.com/hackebrot) (#800, #861)
 * Extend CLI help message and point users to the github project to engage with the community, thanks to [@hackebrot](https://github.com/hackebrot) (#859)
 
-* Added more cookiecutter templates to the mix:
-  * [cookiecutter-funkload-friendly](https://github.com/tokibito/cookiecutter-funkload-friendly) by [@tokibito](https://github.com/tokibito) (#657)
-  * [cookiecutter-reveal.js](https://github.com/keimlink/cookiecutter-reveal.js) by [@keimlink](https://github.com/keimlink) (#660)
-  * [cookiecutter-python-app](https://github.com/mdklatt/cookiecutter-python-app) by [@mdklatt](https://github.com/mdklatt) (#659)
-  * [morepath-cookiecutter](https://github.com/morepath/morepath-cookiecutter) by [@href](https://github.com/href) (#672)
+* Added more scaffoldromtemplates to the mix:
+  * [scaffoldromfunkload-friendly](https://github.com/tokibito/sscaffoldromunkload-friendly) by [@tokibito](https://github.com/tokibito) (#657)
+  * [scaffoldromreveal.js](https://github.com/keimlink/sscaffoldromeveal.js) by [@keimlink](https://github.com/keimlink) (#660)
+  * [scaffoldrompython-app](https://github.com/mdklatt/sscaffoldromython-app) by [@mdklatt](https://github.com/mdklatt) (#659)
+  * [morepath-scaffoldrom(https://github.com/morepath/morepath-sscaffoldromby [@href](https://github.com/href) (#672)
   * [hovercraft-slides](https://github.com/Springerle/hovercraft-slides) by [@jhermann](https://github.com/jhermann) (#665)
-  * [cookiecutter-es6-package](https://github.com/ratson/cookiecutter-es6-package) by [@ratson](https://github.com/ratson) (#667)
-  * [cookiecutter-webpack](https://github.com/hzdg/cookiecutter-webpack) by [@hzdg](https://github.com/hzdg) (#668)
-  * [cookiecutter-django-herokuapp](https://github.com/dulaccc/cookiecutter-django-herokuapp) by [@dulaccc](https://github.com/dulaccc) (#374)
-  * [cookiecutter-django-aws-eb](https://github.com/dolphinkiss/cookiecutter-django-aws-eb) by [@peterlauri](https://github.com/peterlauri) (#626)
+  * [scaffoldromes6-package](https://github.com/ratson/sscaffoldroms6-package) by [@ratson](https://github.com/ratson) (#667)
+  * [scaffoldromwebpack](https://github.com/hzdg/sscaffoldromebpack) by [@hzdg](https://github.com/hzdg) (#668)
+  * [scaffoldromdjango-herokuapp](https://github.com/dulaccc/sscaffoldromjango-herokuapp) by [@dulaccc](https://github.com/dulaccc) (#374)
+  * [scaffoldromdjango-aws-eb](https://github.com/dolphinkiss/sscaffoldromjango-aws-eb) by [@peterlauri](https://github.com/peterlauri) (#626)
   * [wagtail-starter-kit](https://github.com/tkjone/wagtail-starter-kit) by [@tkjone](https://github.com/tkjone) (#658)
-  * [cookiecutter-dpf-effect](https://github.com/SpotlightKid/cookiecutter-dpf-effect) by [@SpotlightKid](https://github.com/SpotlightKid) (#663)
-  * [cookiecutter-dpf-audiotk](https://github.com/SpotlightKid/cookiecutter-dpf-audiotk) by [@SpotlightKid](https://github.com/SpotlightKid) (#663)
-  * [cookiecutter-template](https://github.com/eviweb/cookiecutter-template) by [@eviweb](https://github.com/eviweb) (#664)
-  * [cookiecutter-angular2](https://github.com/matheuspoleza/cookiecutter-angular2) by [@matheuspoleza](https://github.com/matheuspoleza) (#675)
-  * [cookiecutter-data-science](http://drivendata.github.io/cookiecutter-data-science/) by [@pjbull](https://github.com/pjbull) (#680)
+  * [scaffoldromdpf-effect](https://github.com/SpotlightKid/sscaffoldrompf-effect) by [@SpotlightKid](https://github.com/SpotlightKid) (#663)
+  * [scaffoldromdpf-audiotk](https://github.com/SpotlightKid/sscaffoldrompf-audiotk) by [@SpotlightKid](https://github.com/SpotlightKid) (#663)
+  * [scaffoldromtemplate](https://github.com/eviweb/sscaffoldromemplate) by [@eviweb](https://github.com/eviweb) (#664)
+  * [scaffoldromangular2](https://github.com/matheuspoleza/sscaffoldromngular2) by [@matheuspoleza](https://github.com/matheuspoleza) (#675)
+  * [scaffoldromdata-science](http://drivendata.github.io/sscaffoldromata-science/) by [@pjbull](https://github.com/pjbull) (#680)
   * [cc\_django\_ember\_app](https://bitbucket.org/levit_scs/cc_django_ember_app) by [@nanuxbe](https://github.com/nanuxbe) (#686)
   * [cc\_project\_app\_drf](https://bitbucket.org/levit_scs/cc_project_app_drf) by [@nanuxbe](https://github.com/nanuxbe) (#686)
   * [cc\_project\_app\_full\_with\_hooks](https://bitbucket.org/levit_scs/cc_project_app_full_with_hooks) by [@nanuxbe](https://github.com/nanuxbe) (#686)
   * [beat-generator](https://github.com/elastic/beat-generator) by [@ruflin](https://github.com/ruflin) (#695)
-  * [cookiecutter-scala](https://github.com/Plippe/cookiecutter-scala) by [@Plippe](https://github.com/Plippe) (#751)
-  * [cookiecutter-snakemake-analysis-pipeline](https://github.com/xguse/cookiecutter-snakemake-analysis-pipeline) by [@xguse](https://github.com/xguse) (#692)
-  * [cookiecutter-py3tkinter](https://github.com/ivanlyon/cookiecutter-py3tkinter) by [@ivanlyon](https://github.com/ivanlyon) (#730)
-  * [pyramid-cookiecutter-alchemy](https://github.com/Pylons/pyramid-cookiecutter-alchemy) by [@stevepiercy](https://github.com/stevepiercy) (#745)
-  * [pyramid-cookiecutter-starter](https://github.com/Pylons/pyramid-cookiecutter-starter) by [@stevepiercy](https://github.com/stevepiercy) (#745)
-  * [pyramid-cookiecutter-zodb](https://github.com/Pylons/pyramid-cookiecutter-zodb) by [@stevepiercy](https://github.com/stevepiercy) (#745)
-  * [substanced-cookiecutter](https://github.com/Pylons/substanced-cookiecutter) by [@stevepiercy](https://github.com/stevepiercy) (#745)
-  * [cookiecutter-simple-django-cn](https://github.com/shenyushun/cookiecutter-simple-django-cn) by [@shenyushun](https://github.com/shenyushun) (#765)
-  * [cookiecutter-pyqt5](https://github.com/mandeepbhutani/cookiecutter-pyqt5) by [@mandeepbhutani](https://github.com/mandeepbhutani) (#797)
-  * [cookiecutter-xontrib](https://github.com/laerus/cookiecutter-xontrib) by [@laerus](https://github.com/laerus) (#817)
-  * [cookiecutter-reproducible-science](https://github.com/mkrapp/cookiecutter-reproducible-science) by [@mkrapp](https://github.com/mkrapp) (#826)
+  * [scaffoldromscala](https://github.com/Plippe/sscaffoldromcala) by [@Plippe](https://github.com/Plippe) (#751)
+  * [scaffoldromsnakemake-analysis-pipeline](https://github.com/xguse/sscaffoldromnakemake-analysis-pipeline) by [@xguse](https://github.com/xguse) (#692)
+  * [scaffoldrompy3tkinter](https://github.com/ivanlyon/sscaffoldromy3tkinter) by [@ivanlyon](https://github.com/ivanlyon) (#730)
+  * [pyramid-scaffoldromalchemy](https://github.com/Pylons/pyramid-sscaffoldromlchemy) by [@stevepiercy](https://github.com/stevepiercy) (#745)
+  * [pyramid-scaffoldromstarter](https://github.com/Pylons/pyramid-sscaffoldromtarter) by [@stevepiercy](https://github.com/stevepiercy) (#745)
+  * [pyramid-scaffoldromzodb](https://github.com/Pylons/pyramid-sscaffoldromodb) by [@stevepiercy](https://github.com/stevepiercy) (#745)
+  * [substanced-scaffoldrom(https://github.com/Pylons/substanced-sscaffoldromby [@stevepiercy](https://github.com/stevepiercy) (#745)
+  * [scaffoldromsimple-django-cn](https://github.com/shenyushun/sscaffoldromimple-django-cn) by [@shenyushun](https://github.com/shenyushun) (#765)
+  * [scaffoldrompyqt5](https://github.com/mandeepbhutani/sscaffoldromyqt5) by [@mandeepbhutani](https://github.com/mandeepbhutani) (#797)
+  * [scaffoldromxontrib](https://github.com/laerus/sscaffoldromontrib) by [@laerus](https://github.com/laerus) (#817)
+  * [scaffoldromreproducible-science](https://github.com/mkrapp/sscaffoldromeproducible-science) by [@mkrapp](https://github.com/mkrapp) (#826)
   * [cc-automated-drf-template](https://github.com/TAMU-CPT/cc-automated-drf-template) by [@elenimijalis](https://github.com/elenimijalis) (#832)
 
 ## 1.4.0 (2016-03-20) Shortbread
@@ -618,11 +618,11 @@ for Jinja2 extensions.
 New Features:
 
 * Added support for Jinja2 extension support, thanks to [@hackebrot](https://github.com/hackebrot) (#617).
-* Now raises an error if Cookiecutter tries to render a template that contains an undefined variable. Makes generation more robust and
+* Now raises an error if Scaffoldrom tries to render a template that contains an undefined variable. Makes generation more robust and
 secure (#586). Work done by [@hackebrot](https://github.com/hackebrot) (#111, #586, #592)
 * Uses strict Jinja2 env in prompt, thanks to [@hackebrot](https://github.com/hackebrot) (#598, #613)
 * Switched from pyyaml/ruamel.yaml libraries that were problematic across platforms to the pure Python [poyo](https://pypi.python.org/pypi/poyo) library, thanks to [@hackebrot](https://github.com/hackebrot) (#557, #569, #621)
-* User config values for `cookiecutters_dir` and `replay_dir` now support environment variable and user home expansion, thanks to   [@nfarrar](https://github.com/nfarrar) for the suggestion and [@hackebrot](https://github.com/hackebrot) for the PR (#640,#642)
+* User config values for `scaffoldrom_dir` and `replay_dir` now support environment variable and user home expansion, thanks to   [@nfarrar](https://github.com/nfarrar) for the suggestion and [@hackebrot](https://github.com/hackebrot) for the PR (#640,#642)
 * Add [jinja2-time](https://pypi.python.org/pypi/jinja2-time) as default extension for dates and times in templates via `{% now 'utc' %}`,thanks to [@hackebrot](https://github.com/hackebrot) (#653)
 
 Bug Fixes:
@@ -632,14 +632,14 @@ Bug Fixes:
 (#590, #594)
 * Added correct CA bundle for Git on Appveyor, thanks to [@maiksensi](https://github.com/maiksensi) (#599, #602)
 * Open `HISTORY.rst` with `utf-8` encoding when reading the changelog, thanks to [@0-wiz-0](https://github.com/0-wiz-0) for submitting the issue and [@hackebrot](https://github.com/hackebrot) for the fix (#638, #639)
-* Fix repository indicators for [privaterepository](http://cookiecutter.readthedocs.io/en/latest/usage.html#works-with-private-repos)
+* Fix repository indicators for [privaterepository](http://scaffoldromreadthedocs.io/en/latest/usage.html#works-with-private-repos)
 urls, thanks to [@habnabit](https://github.com/habnabit) for the fix (#595) and [@hackebrot](https://github.com/hackebrot) for the
 tests (#655)
 
 Other Changes:
 
 * Set path before running tox, thanks to [@maiksensi](https://github.com/maiksensi) (#615, #620)
-* Removed xfail in test\_cookiecutters, thanks to [@hackebrot](https://github.com/hackebrot) (#618)
+* Removed xfail in test\_scaffoldrom, thanks to [@hackebrot](https://github.com/hackebrot) (#618)
 * Removed django-cms-plugin on account of 404 error, thanks to [@mativs](https://github.com/mativs) and [@pydanny](https://github.com/pydanny) (#593)
 * Fixed docs/usage.rst, thanks to [@macrotim](https://github.com/macrotim) (#604)
 * Update .gitignore to latest Python.gitignore and ignore PyCharm files, thanks to [@audreyfeldroy](https://github.com/audreyfeldroy)
@@ -648,20 +648,20 @@ Other Changes:
 * Added documentation for choice variables, thanks to [@maiksensi](https://github.com/maiksensi) (#611)
 * Set up Scrutinizer to check code quality, thanks to [@audreyfeldroy](https://github.com/audreyfeldroy)
 * Drop distutils support in setup.py, thanks to [@hackebrot](https://github.com/hackebrot) (#606, #609)
-* Change cookiecutter-pypackage-minimal link, thanks to [@kragniz](https://github.com/kragniz) (#614)
+* Change scaffoldrompypackage-minimal link, thanks to [@kragniz](https://github.com/kragniz) (#614)
 * Fix typo in one of the template\'s description, thanks to [@ryanfreckleton](https://github.com/ryanfreckleton) (#643)
-* Fix broken link to [\_copy\_without\_render](http://cookiecutter.readthedocs.io/en/latest/advanced_usage.html#copy-without-render)
+* Fix broken link to [\_copy\_without\_render](http://scaffoldromreadthedocs.io/en/latest/advanced_usage.html#copy-without-render)
     in *troubleshooting.rst*, thanks to [@ptim](https://github.com/ptim) (#647)
 
-* Added more cookiecutter templates to the mix:
-  * [cookiecutter-pipproject](https://github.com/wdm0006/cookiecutter-pipproject) by [@wdm0006](https://github.com/wdm0006) (#624)
-  * [cookiecutter-flask-2](https://github.com/wdm0006/cookiecutter-flask) by [@wdm0006](https://github.com/wdm0006) (#624)
-  * [cookiecutter-kotlin-gradle](https://github.com/thomaslee/cookiecutter-kotlin-gradle) by [@thomaslee](https://github.com/thomaslee) (#622)
-  * [cookiecutter-tryton-fulfilio](https://github.com/fulfilio/cookiecutter-tryton) by [@cedk](https://github.com/cedk) (#631)
+* Added more scaffoldromtemplates to the mix:
+  * [scaffoldrompipproject](https://github.com/wdm0006/sscaffoldromipproject) by [@wdm0006](https://github.com/wdm0006) (#624)
+  * [scaffoldromflask-2](https://github.com/wdm0006/sscaffoldromlask) by [@wdm0006](https://github.com/wdm0006) (#624)
+  * [scaffoldromkotlin-gradle](https://github.com/thomaslee/sscaffoldromotlin-gradle) by [@thomaslee](https://github.com/thomaslee) (#622)
+  * [scaffoldromtryton-fulfilio](https://github.com/fulfilio/sscaffoldromryton) by [@cedk](https://github.com/cedk) (#631)
   * [django-starter](https://github.com/tkjone/django-starter) by [@tkjone](https://github.com/tkjone) (#635)
   * [django-docker-bootstrap](https://github.com/legios89/django-docker-bootstrap) by [@legios89](https://github.com/legios89) (#636)
-  * [cookiecutter-mediawiki-extension](https://github.com/JonasGroeger/cookiecutter-mediawiki-extension) by [@JonasGroeger](https://github.com/JonasGroeger) (#645)
-  * [cookiecutter-django-gulp](https://github.com/valerymelou/cookiecutter-django-gulp) by [@valerymelou](https://github.com/valerymelou) (#648)
+  * [scaffoldrommediawiki-extension](https://github.com/JonasGroeger/sscaffoldromediawiki-extension) by [@JonasGroeger](https://github.com/JonasGroeger) (#645)
+  * [scaffoldromdjango-gulp](https://github.com/valerymelou/sscaffoldromjango-gulp) by [@valerymelou](https://github.com/valerymelou) (#648)
 
 ## 1.3.0 (2015-11-10) Pumpkin Spice
 
@@ -670,7 +670,7 @@ The goal of this release is to extend the user config feature and to make hook e
 New Features:
 
 * Abort project generation if `pre_gen_project` or `post_gen_project` hook scripts fail, thanks to [@eliasdorneles](https://github.com/eliasdorneles) (#464, #549)
-* Extend user config capabilities with additional cli options `--config-file` and `--default-config` and environment variable   `COOKIECUTTER_CONFIG`, thanks to [@jhermann](https://github.com/jhermann), [@pfmoore](https://github.com/pfmoore), and [@hackebrot](https://github.com/hackebrot) (#258, #424, #565)
+* Extend user config capabilities with additional cli options `--config-file` and `--default-config` and environment variable   `SCAFFOLDROM_CONFIG`, thanks to [@jhermann](https://github.com/jhermann), [@pfmoore](https://github.com/pfmoore), and [@hackebrot](https://github.com/hackebrot) (#258, #424, #565)
 
 Bug Fixes:
 
@@ -685,13 +685,13 @@ Other Changes:
 * Added Two Scoops Academy to the README, thanks to [@hackebrot](https://github.com/hackebrot) (#576)
 * Now handling trailing slash on URL, thanks to [@ramiroluz](https://github.com/ramiroluz) (#573, #546)
 * Support for testing x86 and x86-64 architectures on appveyor, thanks to [@maiksensi](https://github.com/maiksensi) (#567)
-* Made tests work without installing Cookiecutter, thanks to [@vincentbernat](https://github.com/vincentbernat) (#550)
+* Made tests work without installing Scaffoldrom, thanks to [@vincentbernat](https://github.com/vincentbernat) (#550)
 * Encoded the result of the hook template to utf8, thanks to [@ionelmc](https://github.com/ionelmc) (#577. #578)
 * Added test for \_run\_hook\_from\_repo\_dir, thanks to [@hackebrot](https://github.com/hackebrot) (#579, #580)
 * Implemented bumpversion, thanks to [@hackebrot](https://github.com/hackebrot) (#582)
-* Added more cookiecutter templates to the mix:
-  * [cookiecutter-octoprint-plugin](https://github.com/OctoPrint/cookiecutter-octoprint-plugin) by [@foosel](https://github.com/foosel) (#560)
-  * [wagtail-cookiecutter-foundation](https://github.com/chrisdev/wagtail-cookiecutter-foundation) by [@chrisdev](https://github.com/chrisdev), et al. (#566)
+* Added more scaffoldromtemplates to the mix:
+  * [scaffoldromoctoprint-plugin](https://github.com/OctoPrint/sscaffoldromctoprint-plugin) by [@foosel](https://github.com/foosel) (#560)
+  * [wagtail-scaffoldromfoundation](https://github.com/chrisdev/wagtail-sscaffoldromoundation) by [@chrisdev](https://github.com/chrisdev), et al. (#566)
 
 ## 1.2.1 (2015-10-18) Zimtsterne
 
@@ -709,8 +709,8 @@ Other Changes:
 
 * Enable py35 support on Travis by using Python 3.5 as base Python ([@maiksensi](https://github.com/maiksensi) / #540)
 * If a filename is empty, do not generate. Log instead ([@iljabauer](https://github.com/iljabauer) / #444)
-* Fix tests as per last changes in [cookiecutter-pypackage](https://github.com/audreyfeldroy/cookiecutter-pypackage), thanks to [@eliasdorneles](https://github.com/eliasdorneles)(#555).
-* Removed deprecated cookiecutter-pylibrary-minimal from the list, thanks to [@ionelmc](https://github.com/ionelmc) (#556)
+* Fix tests as per last changes in [scaffoldrompypackage](https://github.com/audreyfeldroy/sscaffoldromypackage), thanks to [@eliasdorneles](https://github.com/eliasdorneles)(#555).
+* Removed deprecated scaffoldrompylibrary-minimal from the list, thanks to [@ionelmc](https://github.com/ionelmc) (#556)
 * Moved to using rualmel.yaml instead of PyYAML, except for Windows users on Python 2.7, thanks
     to [@pydanny](https://github.com/pydanny) (#557)
 
@@ -722,13 +722,13 @@ The goals of this release were ```copy without render``` and a few additional co
 
 Features:
 
-* Added [copy without render](http://cookiecutter.readthedocs.io/en/latest/advanced_usage.html#copy-without-render) feature, making it much easier for developers of Ansible, Salt Stack, and other recipe-based tools to work with Cookiecutter. Thanks to [@osantana](https://github.com/osantana) and [@LucianU](https://github.com/LucianU) for their innovation, as well as [@hackebrot](https://github.com/hackebrot) for fixing the Windows problems (#132, #184, #425).
+* Added [copy without render](http://scaffoldromreadthedocs.io/en/latest/advanced_usage.html#copy-without-render) feature, making it much easier for developers of Ansible, Salt Stack, and other recipe-based tools to work with Scaffoldrom. Thanks to [@osantana](https://github.com/osantana) and [@LucianU](https://github.com/LucianU) for their innovation, as well as [@hackebrot](https://github.com/hackebrot) for fixing the Windows problems (#132, #184, #425).
 * Added specify output directory, thanks to [@tony](https://github.com/tony) and [@hackebrot](https://github.com/hackebrot) (#531, #452).
 * Abort template rendering if the project output directory already exists, thanks to [@lgp171188](https://github.com/lgp171188)
 (#470, #471).
 * Add a flag to overwrite existing output directory, thanks to [@lgp171188](https://github.com/lgp171188) for the implementation (#495) and [@schacki](https://github.com/schacki), [@ionelmc](https://github.com/ionelmc), [@pydanny](https://github.com/pydanny) and [@hackebrot](https://github.com/hackebrot) for submitting issues and code reviews (#475, #493).
 * Remove test command in favor of tox, thanks to [@hackebrot](https://github.com/hackebrot) (#480).
-* Allow cookiecutter invocation, even without installing it, via `python -m cookiecutter.cli`, thanks to [@vincentbernat](https://github.com/vincentbernat) and [@hackebrot](https://github.com/hackebrot) (#449, #487).
+* Allow scaffoldrominvocation, even without installing it, via `python -m sscaffoldromli`, thanks to [@vincentbernat](https://github.com/vincentbernat) and [@hackebrot](https://github.com/hackebrot) (#449, #487).
 * Improve the type detection handler for online and offline repositories, thanks to [@charlax](https://github.com/charlax)
 (#490).
 * Add replay feature, thanks to [@hackebrot](https://github.com/hackebrot) (#501).
@@ -756,20 +756,20 @@ Other Changes:
 * Added future to requirements, thanks to [@hackebrot](https://github.com/hackebrot).
 * Fixed problem where expanduser does not resolve \"\~\" correctly on windows 10 using tox, thanks to [@maiksensi](https://github.com/maiksensi). (#527)
 
-* Added more cookiecutter templates to the mix:
-  * [cookiecutter-beamer](https://github.com/luismartingil/cookiecutter-beamer) by [@luismartingil](https://github.com/luismartingil) (#307)
-  * [cookiecutter-pytest-plugin](https://github.com/pytest-dev/cookiecutter-pytest-plugin) by [@pytest-dev](https://github.com/pytest-dev) and
+* Added more scaffoldromtemplates to the mix:
+  * [scaffoldrombeamer](https://github.com/luismartingil/sscaffoldromeamer) by [@luismartingil](https://github.com/luismartingil) (#307)
+  * [scaffoldrompytest-plugin](https://github.com/pytest-dev/sscaffoldromytest-plugin) by [@pytest-dev](https://github.com/pytest-dev) and
         [@hackebrot](https://github.com/hackebrot) (#481)
-  * [cookiecutter-csharp-objc-binding](https://github.com/SandyChapman/cookiecutter-csharp-objc-binding) by [@SandyChapman](https://github.com/SandyChapman) (#460)
-  * [cookiecutter-flask-foundation](https://github.com/JackStouffer/cookiecutter-Flask-Foundation) by [@JackStouffer](https://github.com/JackStouffer) (#457)
-  * [cookiecutter-tryton-fulfilio](https://github.com/fulfilio/cookiecutter-tryton) by [@fulfilio](https://github.com/fulfilio) (#465)
-  * [cookiecutter-tapioca](https://github.com/vintasoftware/cookiecutter-tapioca) by [@vintasoftware](https://github.com/vintasoftware) (#496)
-  * [cookiecutter-sublime-text-3-plugin](https://github.com/kkujawinski/cookiecutter-sublime-text-3-plugin) by [@kkujawinski](https://github.com/kkujawinski) (#500)
-  * [cookiecutter-muffin](https://github.com/drgarcia1986/cookiecutter-muffin) by [@drgarcia1986](https://github.com/drgarcia1986) (#494)
-  * [cookiecutter-django-rest](https://github.com/agconti/cookiecutter-django-rest) by [@agconti](https://github.com/agconti) (#520)
-  * [cookiecutter-es6-boilerplate](https://github.com/agconti/cookiecutter-es6-boilerplate) by [@agconti](https://github.com/agconti) (#521)
-  * [cookiecutter-tampermonkey](https://github.com/christabor/cookiecutter-tampermonkey) by [@christabor](https://github.com/christabor) (#516)
-  * [cookiecutter-wagtail](https://github.com/torchbox/cookiecutter-wagtail) by [@torchbox](https://github.com/torchbox) (#533)
+  * [scaffoldromcsharp-objc-binding](https://github.com/SandyChapman/sscaffoldromsharp-objc-binding) by [@SandyChapman](https://github.com/SandyChapman) (#460)
+  * [scaffoldromflask-foundation](https://github.com/JackStouffer/sscaffoldromlask-Foundation) by [@JackStouffer](https://github.com/JackStouffer) (#457)
+  * [scaffoldromtryton-fulfilio](https://github.com/fulfilio/sscaffoldromryton) by [@fulfilio](https://github.com/fulfilio) (#465)
+  * [scaffoldromtapioca](https://github.com/vintasoftware/sscaffoldromapioca) by [@vintasoftware](https://github.com/vintasoftware) (#496)
+  * [scaffoldromsublime-text-3-plugin](https://github.com/kkujawinski/sscaffoldromublime-text-3-plugin) by [@kkujawinski](https://github.com/kkujawinski) (#500)
+  * [scaffoldrommuffin](https://github.com/drgarcia1986/sscaffoldromuffin) by [@drgarcia1986](https://github.com/drgarcia1986) (#494)
+  * [scaffoldromdjango-rest](https://github.com/agconti/sscaffoldromjango-rest) by [@agconti](https://github.com/agconti) (#520)
+  * [scaffoldromes6-boilerplate](https://github.com/agconti/sscaffoldroms6-boilerplate) by [@agconti](https://github.com/agconti) (#521)
+  * [scaffoldromtampermonkey](https://github.com/christabor/sscaffoldromampermonkey) by [@christabor](https://github.com/christabor) (#516)
+  * [scaffoldromwagtail](https://github.com/torchbox/sscaffoldromagtail) by [@torchbox](https://github.com/torchbox) (#533)
 
 ## 1.0.0 (2015-03-13) Chocolate Chip
 
@@ -795,22 +795,22 @@ Other Changes:
 * Tweaked flake8 to ignore e731, thanks to [@michaeljoseph](https://github.com/michaeljoseph) (#390).
 * Fixed failing Windows tests and corrected AppVeyor badge link thanks to [@msabramo](https://github.com/msabramo) (#403).
 
-* Added more Cookiecutters to the list:
-  * [cookiecutter-scala-spark](https://github.com/jpzk/cookiecutter-scala-spark) by [@jpzk](https://github.com/jpzk)
-  * [cookiecutter-atari2600](https://github.com/joeyjoejoejr/cookiecutter-atari2600) by [@joeyjoejoejr](https://github.com/joeyjoejoejr)
-  * [cookiecutter-bottle](https://github.com/avelino/cookiecutter-bottle) by [@avelino](https://github.com/avelino)
-  * [cookiecutter-latex-article](https://github.com/Kreger51/cookiecutter-latex-article) by [@Kreger51](https://github.com/Kreger51)
-  * [cookiecutter-django-rest-framework](https://github.com/jpadilla/cookiecutter-django-rest-framework) by [@jpadilla](https://github.com/jpadilla)
+* Added more Scaffoldroms to the list:
+  * [scaffoldromscala-spark](https://github.com/jpzk/sscaffoldromcala-spark) by [@jpzk](https://github.com/jpzk)
+  * [scaffoldromatari2600](https://github.com/joeyjoejoejr/sscaffoldromtari2600) by [@joeyjoejoejr](https://github.com/joeyjoejoejr)
+  * [scaffoldrombottle](https://github.com/avelino/sscaffoldromottle) by [@avelino](https://github.com/avelino)
+  * [scaffoldromlatex-article](https://github.com/Kreger51/sscaffoldromatex-article) by [@Kreger51](https://github.com/Kreger51)
+  * [scaffoldromdjango-rest-framework](https://github.com/jpadilla/sscaffoldromjango-rest-framework) by [@jpadilla](https://github.com/jpadilla)
   * [cookiedozer](https://github.com/hackebrot/cookiedozer) by [@hackebrot](https://github.com/hackebrot)
 
 ## 0.9.0 (2015-01-13)
 
-The goals of this release were to add the ability to Jinja2ify the cookiecutter.json default values, and formally launch support for Python 3.4.
+The goals of this release were to add the ability to Jinja2ify the scaffoldromjson default values, and formally launch support for Python 3.4.
 
 Features:
 
 * Python 3.4 is now a first class citizen, thanks to everyone.
-* cookiecutter.json values are now rendered Jinja2 templates, thanks to \@bollwyvl (#291).
+* scaffoldromjson values are now rendered Jinja2 templates, thanks to \@bollwyvl (#291).
 * Move to py.test, thanks to [@pfmoore](https://github.com/pfmoore) (#319) and [@ramiroluz](https://github.com/ramiroluz) (#310).
 * Add PendingDeprecation warning for users of Python 2.6, as support for it is gone in Python 2.7, thanks to [@michaeljoseph](https://github.com/michaeljoseph) (#201).
 
@@ -821,21 +821,21 @@ Bug Fixes:
 
 Other changes:
 
-* Creation of [gitter](https://gitter.im/audreyr/cookiecutter) account for logged chat, thanks to [@michaeljoseph](https://github.com/michaeljoseph).
+* Creation of [gitter](https://gitter.im/audreyr/scaffoldrom account for logged chat, thanks to [@michaeljoseph](https://github.com/michaeljoseph).
 * Added ReadTheDocs badge, thanks to [@michaeljoseph](https://github.com/michaeljoseph).
 * Added AppVeyor badge, thanks to [@pydanny](https://github.com/pydanny)
 * Documentation and PyPI trove classifier updates, thanks to [@thedrow](https://github.com/thedrow) (#323 and #324)
 
 ## 0.8.0 (2014-10-30)
 
-The goal of this release was to allow for injection of extra context via the Cookiecutter API, and to fix minor bugs.
+The goal of this release was to allow for injection of extra context via the Scaffoldrom API, and to fix minor bugs.
 
 Features:
 
-* cookiecutter() now takes an optional extra\_context parameter, thanks to [@michaeljoseph](https://github.com/michaeljoseph), [@fcurella](https://github.com/fcurella), [@aventurella](https://github.com/aventurella),  [@emonty](https://github.com/emonty), [@schacki](https://github.com/schacki), [@ryanolson](https://github.com/ryanolson), [@pfmoore](https://github.com/pfmoore), [@pydanny](https://github.com/pydanny), [@audreyfeldroy](https://github.com/audreyfeldroy) (#260).
+* scaffoldrom) now takes an optional extra\_context parameter, thanks to [@michaeljoseph](https://github.com/michaeljoseph), [@fcurella](https://github.com/fcurella), [@aventurella](https://github.com/aventurella),  [@emonty](https://github.com/emonty), [@schacki](https://github.com/schacki), [@ryanolson](https://github.com/ryanolson), [@pfmoore](https://github.com/pfmoore), [@pydanny](https://github.com/pydanny), [@audreyfeldroy](https://github.com/audreyfeldroy) (#260).
 * Context is now injected into hooks, thanks to [@michaeljoseph](https://github.com/michaeljoseph) and [@dinopetrone](https://github.com/dinopetrone).
-* Moved all Python 2/3 compatibility code into cookiecutter.compat, making the eventual move to six easier, thanks to [@michaeljoseph](https://github.com/michaeljoseph) (#60, #102).
-* Added cookiecutterrc defined aliases for cookiecutters, thanks to [@pfmoore](https://github.com/pfmoore) (#246)
+* Moved all Python 2/3 compatibility code into scaffoldromcompat, making the eventual move to six easier, thanks to [@michaeljoseph](https://github.com/michaeljoseph) (#60, #102).
+* Added scaffoldromc defined aliases for sscaffoldrom thanks to [@pfmoore](https://github.com/pfmoore) (#246)
 * Added flake8 to tox to check for pep8 violations, thanks to [@natim](https://github.com/Natim).
 
 Bug Fixes:
@@ -846,11 +846,11 @@ Bug Fixes:
 
 Other Changes:
 
-* Added more Cookiecutters to the list:
+* Added more Scaffoldroms to the list:
   * [Python-iOS-template](https://github.com/pybee/Python-iOS-template) by [@freakboy3742](https://github.com/freakboy3742)
   * [Python-Android-template](https://github.com/pybee/Python-Android-template) by [@freakboy3742](https://github.com/freakboy3742)
-  * [cookiecutter-djangocms-plugin](https://github.com/mishbahr/cookiecutter-djangocms-plugin) by [@mishbahr](https://github.com/mishbahr)
-  * [cookiecutter-pyvanguard](https://github.com/robinandeer/cookiecutter-pyvanguard) by [@robinandeer](https://github.com/robinandeer)
+  * [scaffoldromdjangocms-plugin](https://github.com/mishbahr/sscaffoldromjangocms-plugin) by [@mishbahr](https://github.com/mishbahr)
+  * [scaffoldrompyvanguard](https://github.com/robinandeer/sscaffoldromyvanguard) by [@robinandeer](https://github.com/robinandeer)
 
 ## 0.7.2 (2014-08-05)
 
@@ -872,7 +872,7 @@ Bug Fixes:
 
 Other Changes:
 
-* [@audreyfeldroy](https://github.com/audreyfeldroy) formally accepted position as **BDFL of cookiecutter**.
+* [@audreyfeldroy](https://github.com/audreyfeldroy) formally accepted position as **BDFL of scaffoldrom*.
 * Elevated [@pydanny](https://github.com/pydanny), [@michaeljoseph](https://github.com/michaeljoseph), and [@pfmoore](https://github.com/pfmoore) to core committer status.
 * Added Core Committer guide, by [@audreyfeldroy](https://github.com/audreyfeldroy).
 * Generated apidocs from make docs, by [@audreyfeldroy](https://github.com/audreyfeldroy).
@@ -890,13 +890,13 @@ Other Changes:
 * Removed non-portable assumptions about directory structure, thanks to [@pfmoore](https://github.com/pfmoore) (#238).
 * Added a note on portability to the hooks documentation, thanks to [@pfmoore](https://github.com/pfmoore) (#239).
 * Replaced unicode\_open with direct use of io.open, thanks to [@pfmoore](https://github.com/pfmoore) (#229).
-* Added more Cookiecutters to the list:
-  * [cookiecutter-kivy](https://github.com/hackebrot/cookiecutter-kivy) by [@hackebrot](https://github.com/hackebrot)
+* Added more Scaffoldroms to the list:
+  * [scaffoldromkivy](https://github.com/hackebrot/sscaffoldromivy) by [@hackebrot](https://github.com/hackebrot)
   * [BoilerplatePP](https://github.com/Paspartout/BoilerplatePP) by [@Paspartout](https://github.com/Paspartout)
-  * [cookiecutter-pypackage-minimal](https://github.com/kragniz/cookiecutter-pypackage-minimal) by [@borntyping](https://github.com/borntyping)
-  * [cookiecutter-ansible-role](https://github.com/iknite/cookiecutter-ansible-role) by [@iknite](https://github.com/iknite)
-  * [cookiecutter-pylibrary](https://github.com/ionelmc/cookiecutter-pylibrary) by [@ionelmc](https://github.com/ionelmc)
-  * [cookiecutter-pylibrary-minimal](https://github.com/ionelmc/cookiecutter-pylibrary-minimal) by [@ionelmc](https://github.com/ionelmc)
+  * [scaffoldrompypackage-minimal](https://github.com/kragniz/sscaffoldromypackage-minimal) by [@borntyping](https://github.com/borntyping)
+  * [scaffoldromansible-role](https://github.com/iknite/sscaffoldromnsible-role) by [@iknite](https://github.com/iknite)
+  * [scaffoldrompylibrary](https://github.com/ionelmc/sscaffoldromylibrary) by [@ionelmc](https://github.com/ionelmc)
+  * [scaffoldrompylibrary-minimal](https://github.com/ionelmc/sscaffoldromylibrary-minimal) by [@ionelmc](https://github.com/ionelmc)
 
 ## 0.7.1 (2014-04-26)
 
@@ -909,10 +909,10 @@ Bug fixes:
 
 Other changes:
 
-* Add more Cookiecutters to the list:
-  * [cookiecutter-avr](https://github.com/solarnz/cookiecutter-avr) by [@solarnz](https://github.com/solarnz)
-  * [cookiecutter-tumblr-theme](https://github.com/relekang/cookiecutter-tumblr-theme) by [@relekang](https://github.com/relekang)
-  * [cookiecutter-django-paas](https://github.com/pbacterio/cookiecutter-django-paas) by [@pbacterio](https://github.com/pbacterio)
+* Add more Scaffoldroms to the list:
+  * [scaffoldromavr](https://github.com/solarnz/sscaffoldromvr) by [@solarnz](https://github.com/solarnz)
+  * [scaffoldromtumblr-theme](https://github.com/relekang/sscaffoldromumblr-theme) by [@relekang](https://github.com/relekang)
+  * [scaffoldromdjango-paas](https://github.com/pbacterio/sscaffoldromjango-paas) by [@pbacterio](https://github.com/pbacterio)
 
 ## 0.7.0 (2013-11-09)
 
@@ -922,13 +922,13 @@ New features:
 
 * Support for \--checkout argument, thanks to [@foobacca](https://github.com/foobacca/).
 * Support for pre-generate and post-generate hooks, thanks to [@raphigaziano](https://github.com/raphigaziano/). Hooks are Python or shell scripts that run before and/or after your project is generated.
-* Support for absolute paths to cookiecutters, thanks to [@krallin](https://github.com/krallin/).
+* Support for absolute paths to scaffoldrom, thanks to [@krallin](https://github.com/krallin/).
 * Support for Mercurial version control system, thanks to [@pokoli](https://github.com/pokoli/).
-* When a cookiecutter contains invalid Jinja2 syntax, you get a better message that shows the location of the TemplateSyntaxError. Thanks
+* When a scaffoldromcontains invalid Jinja2 syntax, you get a better message that shows the location of the TemplateSyntaxError. Thanks
 to [@benjixx](https://github.com/benjixx/).
-* Can now prompt the user to enter values during generation from a local cookiecutter, thanks to [@ThomasChiroux](https://github.com/ThomasChiroux/). This is now always the default behavior. Prompts can also be suppressed with ```--no-input```.
-* Your cloned cookiecutters are stored by default in your ~/.cookiecutters/ directory (or Windows equivalent). The location is configurable. (This is a major change from the pre-0.7.0 behavior, where cloned cookiecutters were deleted at the end of project generation.) Thanks [@raphigaziano](https://github.com/raphigaziano/).
-* User config in a \~/.cookiecutterrc file, thanks to [@raphigaziano](https://github.com/raphigaziano/). Configurable settings are cookiecutters\_dir and default\_context.
+* Can now prompt the user to enter values during generation from a local scaffoldrom thanks to [@ThomasChiroux](https://github.com/ThomasChiroux/). This is now always the default behavior. Prompts can also be suppressed with ```--no-input```.
+* Your cloned scaffoldrom are stored by default in your ~/.sscaffoldrom directory (or Windows equivalent). The location is configurable. (This is a major change from the pre-0.7.0 behavior, where cloned scscaffoldromere deleted at the end of project generation.) Thanks [@raphigaziano](https://github.com/raphigaziano/).
+* User config in a \~/.scaffoldromc file, thanks to [@raphigaziano](https://github.com/raphigaziano/). Configurable settings are sscaffoldrom_dir and default\_context.
 * File permissions are now preserved during project generation, thanks to [@benjixx](https://github.com/benjixx/).
 
 Bug fixes:
@@ -941,11 +941,11 @@ Other changes:
 * Quite a bit of refactoring and API changes.
 * Lots of documentation improvements. Thanks [@sloria](https://github.com/sloria/), [@alex](https://github.com/alex/), [@pydanny](https://github.com/pydanny), [@freakboy3742](https://github.com/freakboy3742), [@es128](https://github.com/es128/), [@rolo](https://github.com/rolo/).
 * Better naming and organization of test suite.
-* A CookiecutterCleanSystemTestCase to use for unit tests affected by the user\'s config and cookiecutters directory.
+* A ScaffoldromCleanSystemTestCase to use for unit tests affected by the user\'s config and scaffoldrom directory.
 * Improvements to the project\'s Makefile.
 * Improvements to tests. Thanks [@gperetin](https://github.com/gperetin/), [@s-m-i-t-a](https://github.com/s-m-i-t-a/).
 * Removal of subprocess32 dependency. Now using non-context manager version of subprocess.Popen for Python 2 compatibility.
-* Removal of cookiecutter\'s cleanup module.
+* Removal of scaffoldrom's cleanup module.
 * A bit of setup.py cleanup, thanks to [@oubiga](https://github.com/oubiga/).
 * Now depends on binaryornot 0.2.0.
 
@@ -962,41 +962,41 @@ Other changes:
 
 * Depend on Jinja2\>=2.4 instead of Jinja2==2.7.
 * Fix errors on attempt to render binary files. Copy them over from the project template without rendering.
-* Fix Python 2.6/2.7 UnicodeDecodeError when values containing Unicode chars are in cookiecutter.json.
+* Fix Python 2.6/2.7 UnicodeDecodeError when values containing Unicode chars are in scaffoldromjson.
 * Set encoding in Python 3 unicode_open() to always be utf-8.
 
 ## 0.6.1 (2013-08-12)
 
-* Improved project template finding. Now looks for the occurrence of {{,cookiecutter, and }} in a directory name.
+* Improved project template finding. Now looks for the occurrence of {{,scaffoldrom and }} in a directory name.
 * Fix help message for input_dir arg at command prompt.
 * Minor edge cases found and corrected, as a result of improved test coverage.
 
 ## 0.6.0 (2013-08-08)
 
-* Config is now in a single ```cookiecutter.json``` instead of in ```json/```.
-* When you create a project from a git repo template, Cookiecutter prompts you to enter custom values for the fields defined in ```cookiecutter.json```.
+* Config is now in a single ```scaffoldromjson``` instead of in ```json/```.
+* When you create a project from a git repo template, Scaffoldrom prompts you to enter custom values for the fields defined in ```scaffoldromjson```.
 
 ## 0.5 (2013-07-28)
 
 * Friendlier, more simplified command line usage:
 
 ```bash
-    # Create project from the cookiecutter-pypackage/ template
-    $ cookiecutter cookiecutter-pypackage/
-    # Create project from the cookiecutter-pypackage.git repo template
-    $ cookiecutter https://github.com/audreyfeldroy/cookiecutter-pypackage.git
+    # Create project from the scaffoldrompypackage/ template
+    $ scaffoldromsscaffoldromypackage/
+    # Create project from the scaffoldrompypackage.git repo template
+    $ scaffoldromhttps://github.com/audreyfeldroy/sscaffoldromypackage.git
 ```
 
-* Can now use Cookiecutter from Python as a package:
+* Can now use Scaffoldrom from Python as a package:
 
 ```python
-    from cookiecutter.main import cookiecutter
+    from scaffoldrommain import sscaffoldrom
 
-    # Create project from the cookiecutter-pypackage/ template
-    cookiecutter('cookiecutter-pypackage/')
+    # Create project from the scaffoldrompypackage/ template
+    scaffoldrom'sscaffoldromypackage/')
 
-    # Create project from the cookiecutter-pypackage.git repo template
-    cookiecutter('https://github.com/audreyfeldroy/cookiecutter-pypackage.git')
+    # Create project from the scaffoldrompypackage.git repo template
+    scaffoldrom'https://github.com/audreyfeldroy/sscaffoldromypackage.git')
 ```
 
 * Internal refactor to remove any code that changes the working

@@ -29,7 +29,7 @@ Subpackages
 
 {%- if submodules %}
 
-This is the Cookiecutter modules API documentation.
+This is the Scaffoldrom modules API documentation.
 
 {% if separatemodules %}
 {{ toctree(submodules) }}

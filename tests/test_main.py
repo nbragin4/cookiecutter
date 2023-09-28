@@ -1,8 +1,8 @@
-"""Collection of tests around cookiecutter's replay feature."""
-from cookiecutter.main import cookiecutter
+"""Collection of tests around scaffoldrom's replay feature."""
+from scaffoldrom.main import scaffoldrom
 
 
-def test_original_cookiecutter_options_preserved_in__cookiecutter(
+def test_original_scaffoldrom_options_preserved_in__scaffoldrom(
     monkeypatch,
     mocker,
     user_config_file,
@@ -10,20 +10,20 @@ def test_original_cookiecutter_options_preserved_in__cookiecutter(
     """Preserve original context options.
 
     Tests you can access the original context options via
-    `context['_cookiecutter']`.
+    `context['_scaffoldrom']`.
     """
-    monkeypatch.chdir('tests/fake-repo-tmpl-_cookiecutter')
-    mock_generate_files = mocker.patch('cookiecutter.main.generate_files')
-    cookiecutter(
+    monkeypatch.chdir('tests/fake-repo-tmpl-_scaffoldrom')
+    mock_generate_files = mocker.patch('scaffoldrom.main.generate_files')
+    scaffoldrom(
         '.',
         no_input=True,
         replay=False,
         config_file=user_config_file,
     )
-    assert mock_generate_files.call_args[1]['context']['_cookiecutter'][
+    assert mock_generate_files.call_args[1]['context']['_scaffoldrom'][
         'test_list'
     ] == [1, 2, 3, 4]
-    assert mock_generate_files.call_args[1]['context']['_cookiecutter'][
+    assert mock_generate_files.call_args[1]['context']['_scaffoldrom'][
         'test_dict'
     ] == {"foo": "bar"}
 
@@ -40,14 +40,14 @@ def test_replay_dump_template_name(
     '.' and '--replay'.
 
     Change the current working directory temporarily to 'tests/fake-repo-tmpl'
-    for this test and call cookiecutter with '.' for the target template.
+    for this test and call scaffoldrom with '.' for the target template.
     """
     monkeypatch.chdir('tests/fake-repo-tmpl')
 
-    mock_replay_dump = mocker.patch('cookiecutter.main.dump')
-    mocker.patch('cookiecutter.main.generate_files')
+    mock_replay_dump = mocker.patch('scaffoldrom.main.dump')
+    mocker.patch('scaffoldrom.main.generate_files')
 
-    cookiecutter(
+    scaffoldrom(
         '.',
         no_input=True,
         replay=False,
@@ -69,18 +69,18 @@ def test_replay_load_template_name(
     Calls require valid template_name that is not a relative path.
 
     Change the current working directory temporarily to 'tests/fake-repo-tmpl'
-    for this test and call cookiecutter with '.' for the target template.
+    for this test and call scaffoldrom with '.' for the target template.
     """
     monkeypatch.chdir('tests/fake-repo-tmpl')
 
-    mock_replay_load = mocker.patch('cookiecutter.main.load')
-    mocker.patch('cookiecutter.main.generate_context').return_value = {
-        'cookiecutter': {}
+    mock_replay_load = mocker.patch('scaffoldrom.main.load')
+    mocker.patch('scaffoldrom.main.generate_context').return_value = {
+        'scaffoldrom': {}
     }
-    mocker.patch('cookiecutter.main.generate_files')
-    mocker.patch('cookiecutter.main.dump')
+    mocker.patch('scaffoldrom.main.generate_files')
+    mocker.patch('scaffoldrom.main.dump')
 
-    cookiecutter(
+    scaffoldrom(
         '.',
         replay=True,
         config_file=user_config_file,
@@ -96,14 +96,14 @@ def test_custom_replay_file(monkeypatch, mocker, user_config_file):
     """Check that reply.load is called with the custom replay_file."""
     monkeypatch.chdir('tests/fake-repo-tmpl')
 
-    mock_replay_load = mocker.patch('cookiecutter.main.load')
-    mocker.patch('cookiecutter.main.generate_context').return_value = {
-        'cookiecutter': {}
+    mock_replay_load = mocker.patch('scaffoldrom.main.load')
+    mocker.patch('scaffoldrom.main.generate_context').return_value = {
+        'scaffoldrom': {}
     }
-    mocker.patch('cookiecutter.main.generate_files')
-    mocker.patch('cookiecutter.main.dump')
+    mocker.patch('scaffoldrom.main.generate_files')
+    mocker.patch('scaffoldrom.main.dump')
 
-    cookiecutter(
+    scaffoldrom(
         '.',
         replay='./custom-replay-file',
         config_file=user_config_file,

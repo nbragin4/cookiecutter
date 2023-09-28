@@ -1,6 +1,6 @@
 """test_read_user_variable."""
 import pytest
-from cookiecutter.prompt import read_user_variable
+from scaffoldrom.prompt import read_user_variable
 
 VARIABLE = 'project_name'
 DEFAULT = 'Kivy Project'
@@ -13,7 +13,7 @@ def mock_prompt(mocker):
 
 
 def test_click_invocation(mock_prompt):
-    """Test click function called correctly by cookiecutter.
+    """Test click function called correctly by scaffoldrom.
 
     Test for string type invocation.
     """

@@ -4,7 +4,7 @@ from jinja2.ext import Extension
 
 
 class HelloExtension(Extension):
-    """Simple jinja2 extension for cookiecutter test purposes."""
+    """Simple jinja2 extension for scaffoldrom test purposes."""
 
     tags = {'hello'}
 

@@ -1,12 +1,12 @@
-.. cookiecutter documentation master file, created by
+.. scaffoldrom documentation master file, created by
    sphinx-quickstart on Thu Jul 11 11:31:49 2013.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Cookiecutter: Better Project Templates
+Scaffoldrom: Better Project Templates
 ======================================
 
-Cookiecutter creates projects from **cookiecutters** (project templates), e.g. Python package projects from Python package templates.
+Scaffoldrom creates projects from **scaffoldroms** (project templates), e.g. Python package projects from Python package templates.
 
 Basics
 ------
@@ -31,7 +31,7 @@ API Reference
 .. toctree::
    :maxdepth: 2
 
-   cookiecutter
+   scaffoldrom
 
 Project Info
 ------------

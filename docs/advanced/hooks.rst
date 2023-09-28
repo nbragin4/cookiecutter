@@ -3,29 +3,29 @@
 Using Pre/Post-Generate Hooks
 =============================
 
-*New in cookiecutter 0.7*
+*New in scaffoldrom 0.7*
 
 You can have Python or Shell scripts that run before and/or after your project is generated.
 
 Put them in ``hooks/`` like this::
 
-    cookiecutter-something/
-    ├── {{cookiecutter.project_slug}}/
+    scaffoldrom-something/
+    ├── {{scaffoldrom.project_slug}}/
     ├── hooks
     │   ├── pre_gen_project.py
     │   └── post_gen_project.py
-    └── cookiecutter.json
+    └── scaffoldrom.json
 
 Shell scripts work similarly::
 
-    cookiecutter-something/
-    ├── {{cookiecutter.project_slug}}/
+    scaffoldrom-something/
+    ├── {{scaffoldrom.project_slug}}/
     ├── hooks
     │   ├── pre_gen_project.sh
     │   └── post_gen_project.sh
-    └── cookiecutter.json
+    └── scaffoldrom.json
 
-It shouldn't be too hard to extend Cookiecutter to work with other types of scripts too.
+It shouldn't be too hard to extend Scaffoldrom to work with other types of scripts too.
 Pull requests are welcome.
 
 For portability, you should use Python scripts (with extension `.py`) for your hooks, as these can be run on any platform.
@@ -51,13 +51,13 @@ This makes it easy for a post-generate hook to find generated files using relati
 Template variables are rendered in the script
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Just like your project template, Cookiecutter also renders Jinja template syntax in your scripts.
+Just like your project template, Scaffoldrom also renders Jinja template syntax in your scripts.
 This lets you incorporate Jinja template variables in your scripts.
-For example, this line of Python sets ``module_name`` to the value of the ``cookiecutter.module_name`` template variable:
+For example, this line of Python sets ``module_name`` to the value of the ``scaffoldrom.module_name`` template variable:
 
 .. code-block:: python
 
-    module_name = '{{ cookiecutter.module_name }}'
+    module_name = '{{ scaffoldrom.module_name }}'
 
 Example: Validating template variables
 --------------------------------------
@@ -72,7 +72,7 @@ Here is an example of a pre-generate hook script, defined at ``hooks/pre_gen_pro
 
     MODULE_REGEX = r'^[_a-zA-Z][_a-zA-Z0-9]+$'
 
-    module_name = '{{ cookiecutter.module_name }}'
+    module_name = '{{ scaffoldrom.module_name }}'
 
     if not re.match(MODULE_REGEX, module_name):
         print('ERROR: %s is not a valid Python module name!' % module_name)
@@ -93,8 +93,8 @@ The script ensures that the directory structure is as expected by removing unwan
    import os
 
    REMOVE_PATHS = [
-       '{% if cookiecutter.packaging != "pip" %} requirements.txt {% endif %}',
-       '{% if cookiecutter.packaging != "poetry" %} poetry.lock {% endif %}',
+       '{% if scaffoldrom.packaging != "pip" %} requirements.txt {% endif %}',
+       '{% if scaffoldrom.packaging != "poetry" %} poetry.lock {% endif %}',
    ]
 
    for path in REMOVE_PATHS:

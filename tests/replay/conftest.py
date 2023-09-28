@@ -1,12 +1,12 @@
-"""pytest fixtures for testing cookiecutter's replay feature."""
+"""pytest fixtures for testing scaffoldrom's replay feature."""
 import pytest
 
 
 @pytest.fixture
 def context():
-    """Fixture to return a valid context as known from a cookiecutter.json."""
+    """Fixture to return a valid context as known from a scaffoldrom.json."""
     return {
-        'cookiecutter': {
+        'scaffoldrom': {
             'email': 'raphael@hackebrot.de',
             'full_name': 'Raphael Pierzina',
             'github_username': 'hackebrot',
@@ -24,4 +24,4 @@ def replay_test_dir():
 @pytest.fixture
 def mock_user_config(mocker):
     """Fixture to mock user config."""
-    return mocker.patch('cookiecutter.main.get_user_config')
+    return mocker.patch('scaffoldrom.main.get_user_config')

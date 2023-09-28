@@ -10,20 +10,20 @@ Note: this option will force a refresh of cached resources.
 Basic Example: Using the Defaults
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Cookiecutter will pick a default value if used with ``no_input``:
+Scaffoldrom will pick a default value if used with ``no_input``:
 
 .. code-block:: python
 
-    from cookiecutter.main import cookiecutter
-    cookiecutter(
-        'cookiecutter-django',
+    from scaffoldrom.main import scaffoldrom
+    scaffoldrom(
+        'scaffoldrom-django',
         no_input=True,
     )
 
-In this case it will be using the default defined in ``cookiecutter.json`` or ``.cookiecutterrc``.
+In this case it will be using the default defined in ``scaffoldrom.json`` or ``.scaffoldromrc``.
 
 .. note::
-   values from ``cookiecutter.json`` will be overridden by values from  ``.cookiecutterrc``
+   values from ``scaffoldrom.json`` will be overridden by values from  ``.scaffoldromrc``
 
 Advanced Example: Defaults + Extra Context
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,7 +32,7 @@ If you combine an ``extra_context`` dict with the ``no_input`` argument, you can
 
 .. code-block:: python
 
-    cookiecutter('cookiecutter-pypackage/',
+    scaffoldrom('scaffoldrom-pypackage/',
                  no_input=True,
                  extra_context={'project_name': 'TheGreatest'})
 

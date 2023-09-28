@@ -1,1 +1,1 @@
-"""Cookiecutter integration tests."""
+"""Scaffoldrom integration tests."""

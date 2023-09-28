@@ -1,11 +1,11 @@
-"""cookiecutter distutils configuration."""
+"""scaffoldrom distutils configuration."""
 from pathlib import Path
 from setuptools import setup
 
 
 def _get_version() -> str:
-    """Read cookiecutter/VERSION.txt and return its contents."""
-    path = Path("cookiecutter").resolve()
+    """Read scaffoldrom/VERSION.txt and return its contents."""
+    path = Path("scaffoldrom").resolve()
     version_file = path / "VERSION.txt"
     return version_file.read_text().strip()
 
@@ -29,7 +29,7 @@ requirements = [
 ]
 
 setup(
-    name='cookiecutter',
+    name='scaffoldrom',
     version=version,
     description=(
         'A command-line utility that creates projects from project '
@@ -40,15 +40,15 @@ setup(
     long_description_content_type='text/markdown',
     author='Audrey Feldroy',
     author_email='audreyr@gmail.com',
-    url='https://github.com/cookiecutter/cookiecutter',
+    url='https://github.com/nbragin4/scaffoldrom',
     project_urls={
-        "Documentation": "https://cookiecutter.readthedocs.io",
-        "Issues": "https://github.com/cookiecutter/cookiecutter/issues",
+        "Documentation": "https://scaffoldrom.readthedocs.io",
+        "Issues": "https://github.com/nbragin4/scaffoldrom/issues",
         "Discord": "https://discord.gg/9BrxzPKuEW",
     },
-    packages=['cookiecutter'],
-    package_dir={'cookiecutter': 'cookiecutter'},
-    entry_points={'console_scripts': ['cookiecutter = cookiecutter.__main__:main']},
+    packages=['scaffoldrom'],
+    package_dir={'scaffoldrom': 'scaffoldrom'},
+    entry_points={'console_scripts': ['scaffoldrom = scaffoldrom.__main__:main']},
     include_package_data=True,
     python_requires='>=3.7',
     install_requires=requirements,
@@ -73,7 +73,7 @@ setup(
         "Topic :: Software Development",
     ],
     keywords=[
-        "cookiecutter",
+        "scaffoldrom",
         "Python",
         "projects",
         "project templates",

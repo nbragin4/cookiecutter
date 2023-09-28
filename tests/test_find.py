@@ -1,9 +1,9 @@
-"""Tests for `cookiecutter.find` module."""
+"""Tests for `scaffoldrom.find` module."""
 from pathlib import Path
 
 import pytest
 
-from cookiecutter import find
+from scaffoldrom import find
 
 
 @pytest.fixture(params=['fake-repo-pre', 'fake-repo-pre2'])
@@ -16,5 +16,5 @@ def test_find_template(repo_dir):
     """Verify correctness of `find.find_template` path detection."""
     template = find.find_template(repo_dir=repo_dir)
 
-    test_dir = Path(repo_dir, '{{cookiecutter.repo_name}}')
+    test_dir = Path(repo_dir, '{{scaffoldrom.repo_name}}')
     assert template == test_dir

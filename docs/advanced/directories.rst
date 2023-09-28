@@ -1,24 +1,24 @@
 .. _directories:
 
-Organizing cookiecutters in directories
+Organizing scaffoldroms in directories
 ---------------------------------------
 
-*New in Cookiecutter 1.7*
+*New in Scaffoldrom 1.7*
 
-Cookiecutter introduces the ability to organize several templates in one repository or zip file, separating them by directories.
+Scaffoldrom introduces the ability to organize several templates in one repository or zip file, separating them by directories.
 This allows using symlinks for general files.
 Here's an example repository demonstrating this feature::
 
     https://github.com/user/repo-name.git
         ├── directory1-name/
-        |   ├── {{cookiecutter.project_slug}}/
-        |   └── cookiecutter.json
+        |   ├── {{scaffoldrom.project_slug}}/
+        |   └── scaffoldrom.json
         └── directory2-name/
-            ├── {{cookiecutter.project_slug}}/
-            └── cookiecutter.json
+            ├── {{scaffoldrom.project_slug}}/
+            └── scaffoldrom.json
 
 To activate one of templates within a subdirectory, use the ``--directory`` option:
 
 .. code-block:: bash
 
-    cookiecutter https://github.com/user/repo-name.git --directory="directory1-name"
+    scaffoldrom https://github.com/user/repo-name.git --directory="directory1-name"

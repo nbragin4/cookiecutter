@@ -2,10 +2,10 @@
 Troubleshooting
 ===============
 
-I created a cookiecutter, but it doesn't work, and I can't figure out why
+I created a scaffoldrom, but it doesn't work, and I can't figure out why
 -------------------------------------------------------------------------
 
-* Try upgrading to Cookiecutter 0.8.0, which prints better error
+* Try upgrading to Scaffoldrom 0.8.0, which prints better error
   messages and has fixes for several common bugs.
 
 I'm having trouble generating Jinja templates from Jinja templates
@@ -27,10 +27,10 @@ Or this::
 
 See https://jinja.palletsprojects.com/en/latest/templates/#escaping for more info.
 
-You can also use the `_copy_without_render`_ key in your `cookiecutter.json`
+You can also use the `_copy_without_render`_ key in your `scaffoldrom.json`
 file to escape entire files and directories.
 
-.. _`_copy_without_render`: http://cookiecutter.readthedocs.io/en/latest/advanced/copy_without_render.html
+.. _`_copy_without_render`: http://scaffoldrom.readthedocs.io/en/latest/advanced/copy_without_render.html
 
 
 Other common issues

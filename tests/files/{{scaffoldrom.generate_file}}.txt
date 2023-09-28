@@ -1,0 +1,1 @@
+Testing {{ scaffoldrom.generate_file }}

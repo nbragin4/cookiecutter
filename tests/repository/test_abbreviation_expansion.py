@@ -1,8 +1,8 @@
 """Collection of tests around common path and url shorthands."""
 import pytest
 
-from cookiecutter.config import BUILTIN_ABBREVIATIONS
-from cookiecutter.repository import expand_abbreviations
+from scaffoldrom.config import BUILTIN_ABBREVIATIONS
+from scaffoldrom.repository import expand_abbreviations
 
 
 @pytest.mark.parametrize(
@@ -14,19 +14,19 @@ from cookiecutter.repository import expand_abbreviations
         ('gh:a', {'gh': '<{0}>'}, '<a>'),
         ('xx:a', {'xx': '<>'}, '<>'),
         (
-            'gh:pydanny/cookiecutter-django',
+            'gh:pydanny/scaffoldrom-django',
             BUILTIN_ABBREVIATIONS,
-            'https://github.com/pydanny/cookiecutter-django.git',
+            'https://github.com/pydanny/scaffoldrom-django.git',
         ),
         (
-            'gl:pydanny/cookiecutter-django',
+            'gl:pydanny/scaffoldrom-django',
             BUILTIN_ABBREVIATIONS,
-            'https://gitlab.com/pydanny/cookiecutter-django.git',
+            'https://gitlab.com/pydanny/scaffoldrom-django.git',
         ),
         (
-            'bb:pydanny/cookiecutter-django',
+            'bb:pydanny/scaffoldrom-django',
             BUILTIN_ABBREVIATIONS,
-            'https://bitbucket.org/pydanny/cookiecutter-django',
+            'https://bitbucket.org/pydanny/scaffoldrom-django',
         ),
     ],
     ids=(

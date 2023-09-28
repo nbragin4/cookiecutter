@@ -4,12 +4,12 @@ import shutil
 
 import pytest
 
-from cookiecutter import utils
-from cookiecutter.config import DEFAULT_CONFIG
+from scaffoldrom import utils
+from scaffoldrom.config import DEFAULT_CONFIG
 
 
 USER_CONFIG = """
-cookiecutters_dir: '{cookiecutters_dir}'
+scaffoldroms_dir: '{scaffoldroms_dir}'
 replay_dir: '{replay_dir}'
 """
 
@@ -19,9 +19,9 @@ def isolated_filesystem(monkeypatch, tmp_path):
     """Ensure filesystem isolation, set the user home to a tmp_path."""
     root_path = tmp_path.joinpath("home")
     root_path.mkdir()
-    cookiecutters_dir = root_path.joinpath(".cookiecutters/")
-    replay_dir = root_path.joinpath(".cookiecutter_replay/")
-    monkeypatch.setitem(DEFAULT_CONFIG, 'cookiecutters_dir', str(cookiecutters_dir))
+    scaffoldroms_dir = root_path.joinpath(".scaffoldroms/")
+    replay_dir = root_path.joinpath(".scaffoldrom_replay/")
+    monkeypatch.setitem(DEFAULT_CONFIG, 'scaffoldroms_dir', str(scaffoldroms_dir))
     monkeypatch.setitem(DEFAULT_CONFIG, 'replay_dir', str(replay_dir))
 
     monkeypatch.setenv("HOME", str(root_path))
@@ -64,41 +64,41 @@ def restore_backup_dir(original_dir, backup_dir, original_dir_found):
 
 @pytest.fixture(scope='function')
 def clean_system(request):
-    """Fixture. Simulates a clean system with no configured or cloned cookiecutters.
+    """Fixture. Simulates a clean system with no configured or cloned scaffoldroms.
 
     It runs code which can be regarded as setup code as known from a unittest
     TestCase. Additionally it defines a local function referring to values
     which have been stored to local variables in the setup such as the location
-    of the cookiecutters on disk. This function is registered as a teardown
+    of the scaffoldroms on disk. This function is registered as a teardown
     hook with `request.addfinalizer` at the very end of the fixture. Pytest
     runs the named hook as soon as the fixture is out of scope, when the test
     finished to put it another way.
 
     During setup:
 
-    * Back up the `~/.cookiecutterrc` config file to `~/.cookiecutterrc.backup`
-    * Back up the `~/.cookiecutters/` dir to `~/.cookiecutters.backup/`
-    * Back up the `~/.cookiecutter_replay/` dir to
-      `~/.cookiecutter_replay.backup/`
-    * Starts off a test case with no pre-existing `~/.cookiecutterrc` or
-      `~/.cookiecutters/` or `~/.cookiecutter_replay/`
+    * Back up the `~/.scaffoldromrc` config file to `~/.scaffoldromrc.backup`
+    * Back up the `~/.scaffoldroms/` dir to `~/.scaffoldroms.backup/`
+    * Back up the `~/.scaffoldrom_replay/` dir to
+      `~/.scaffoldrom_replay.backup/`
+    * Starts off a test case with no pre-existing `~/.scaffoldromrc` or
+      `~/.scaffoldroms/` or `~/.scaffoldrom_replay/`
 
     During teardown:
 
-    * Delete `~/.cookiecutters/` only if a backup is present at
-      `~/.cookiecutters.backup/`
-    * Delete `~/.cookiecutter_replay/` only if a backup is present at
-      `~/.cookiecutter_replay.backup/`
-    * Restore the `~/.cookiecutterrc` config file from
-      `~/.cookiecutterrc.backup`
-    * Restore the `~/.cookiecutters/` dir from `~/.cookiecutters.backup/`
-    * Restore the `~/.cookiecutter_replay/` dir from
-      `~/.cookiecutter_replay.backup/`
+    * Delete `~/.scaffoldroms/` only if a backup is present at
+      `~/.scaffoldroms.backup/`
+    * Delete `~/.scaffoldrom_replay/` only if a backup is present at
+      `~/.scaffoldrom_replay.backup/`
+    * Restore the `~/.scaffoldromrc` config file from
+      `~/.scaffoldromrc.backup`
+    * Restore the `~/.scaffoldroms/` dir from `~/.scaffoldroms.backup/`
+    * Restore the `~/.scaffoldrom_replay/` dir from
+      `~/.scaffoldrom_replay.backup/`
 
     """
-    # If ~/.cookiecutterrc is pre-existing, move it to a temp location
-    user_config_path = os.path.expanduser('~/.cookiecutterrc')
-    user_config_path_backup = os.path.expanduser('~/.cookiecutterrc.backup')
+    # If ~/.scaffoldromrc is pre-existing, move it to a temp location
+    user_config_path = os.path.expanduser('~/.scaffoldromrc')
+    user_config_path_backup = os.path.expanduser('~/.scaffoldromrc.backup')
     if os.path.exists(user_config_path):
         user_config_found = True
         shutil.copy(user_config_path, user_config_path_backup)
@@ -106,39 +106,39 @@ def clean_system(request):
     else:
         user_config_found = False
 
-    # If the default cookiecutters_dir is pre-existing, move it to a
+    # If the default scaffoldroms_dir is pre-existing, move it to a
     # temp location
-    cookiecutters_dir = os.path.expanduser('~/.cookiecutters')
-    cookiecutters_dir_backup = os.path.expanduser('~/.cookiecutters.backup')
-    cookiecutters_dir_found = backup_dir(cookiecutters_dir, cookiecutters_dir_backup)
+    scaffoldroms_dir = os.path.expanduser('~/.scaffoldroms')
+    scaffoldroms_dir_backup = os.path.expanduser('~/.scaffoldroms.backup')
+    scaffoldroms_dir_found = backup_dir(scaffoldroms_dir, scaffoldroms_dir_backup)
 
-    # If the default cookiecutter_replay_dir is pre-existing, move it to a
+    # If the default scaffoldrom_replay_dir is pre-existing, move it to a
     # temp location
-    cookiecutter_replay_dir = os.path.expanduser('~/.cookiecutter_replay')
-    cookiecutter_replay_dir_backup = os.path.expanduser('~/.cookiecutter_replay.backup')
-    cookiecutter_replay_dir_found = backup_dir(
-        cookiecutter_replay_dir, cookiecutter_replay_dir_backup
+    scaffoldrom_replay_dir = os.path.expanduser('~/.scaffoldrom_replay')
+    scaffoldrom_replay_dir_backup = os.path.expanduser('~/.scaffoldrom_replay.backup')
+    scaffoldrom_replay_dir_found = backup_dir(
+        scaffoldrom_replay_dir, scaffoldrom_replay_dir_backup
     )
 
     def restore_backup():
-        # If it existed, restore ~/.cookiecutterrc
-        # We never write to ~/.cookiecutterrc, so this logic is simpler.
+        # If it existed, restore ~/.scaffoldromrc
+        # We never write to ~/.scaffoldromrc, so this logic is simpler.
         if user_config_found and os.path.exists(user_config_path_backup):
             shutil.copy(user_config_path_backup, user_config_path)
             os.remove(user_config_path_backup)
 
-        # Carefully delete the created ~/.cookiecutters dir only in certain
+        # Carefully delete the created ~/.scaffoldroms dir only in certain
         # conditions.
         restore_backup_dir(
-            cookiecutters_dir, cookiecutters_dir_backup, cookiecutters_dir_found
+            scaffoldroms_dir, scaffoldroms_dir_backup, scaffoldroms_dir_found
         )
 
-        # Carefully delete the created ~/.cookiecutter_replay dir only in
+        # Carefully delete the created ~/.scaffoldrom_replay dir only in
         # certain conditions.
         restore_backup_dir(
-            cookiecutter_replay_dir,
-            cookiecutter_replay_dir_backup,
-            cookiecutter_replay_dir_found,
+            scaffoldrom_replay_dir,
+            scaffoldrom_replay_dir_backup,
+            scaffoldrom_replay_dir_found,
         )
 
     request.addfinalizer(restore_backup)
@@ -152,21 +152,21 @@ def user_dir(tmp_path_factory):
 
 @pytest.fixture(scope='session')
 def user_config_data(user_dir):
-    """Fixture that creates 2 Cookiecutter user config dirs.
+    """Fixture that creates 2 Scaffoldrom user config dirs.
 
      It will create it in the user's home directory.
 
-    * `cookiecutters_dir`
-    * `cookiecutter_replay`
+    * `scaffoldroms_dir`
+    * `scaffoldrom_replay`
 
     :returns: Dict with name of both user config dirs
     """
-    cookiecutters_dir = user_dir.joinpath('cookiecutters')
-    cookiecutters_dir.mkdir()
-    replay_dir = user_dir.joinpath('cookiecutter_replay')
+    scaffoldroms_dir = user_dir.joinpath('scaffoldroms')
+    scaffoldroms_dir.mkdir()
+    replay_dir = user_dir.joinpath('scaffoldrom_replay')
     replay_dir.mkdir()
     return {
-        'cookiecutters_dir': str(cookiecutters_dir),
+        'scaffoldroms_dir': str(scaffoldroms_dir),
         'replay_dir': str(replay_dir),
     }
 

@@ -1,9 +1,9 @@
-"""Collection of tests around cloning cookiecutter template repositories."""
+"""Collection of tests around cloning scaffoldrom template repositories."""
 import os
 
 import pytest
 
-from cookiecutter import exceptions, repository
+from scaffoldrom import exceptions, repository
 
 
 @pytest.mark.parametrize(
@@ -21,7 +21,7 @@ def test_zipfile_unzip(mocker, template, is_url, user_config_data):
     is passed a zipfile, or a URL to a zipfile.
     """
     mock_clone = mocker.patch(
-        'cookiecutter.repository.unzip',
+        'scaffoldrom.repository.unzip',
         return_value='tests/fake-repo-tmpl',
         autospec=True,
     )
@@ -29,7 +29,7 @@ def test_zipfile_unzip(mocker, template, is_url, user_config_data):
     project_dir, cleanup = repository.determine_repo_dir(
         template,
         abbreviations={},
-        clone_to_dir=user_config_data['cookiecutters_dir'],
+        clone_to_dir=user_config_data['scaffoldroms_dir'],
         checkout=None,
         no_input=True,
         password=None,
@@ -38,7 +38,7 @@ def test_zipfile_unzip(mocker, template, is_url, user_config_data):
     mock_clone.assert_called_once_with(
         zip_uri=template,
         is_url=is_url,
-        clone_to_dir=user_config_data['cookiecutters_dir'],
+        clone_to_dir=user_config_data['scaffoldroms_dir'],
         no_input=True,
         password=None,
     )
@@ -50,11 +50,11 @@ def test_zipfile_unzip(mocker, template, is_url, user_config_data):
 
 @pytest.fixture
 def template_url():
-    """URL to example Cookiecutter template on GitHub.
+    """URL to example Scaffoldrom template on GitHub.
 
     Note: when used, git clone is mocked.
     """
-    return 'https://github.com/pytest-dev/cookiecutter-pytest-plugin.git'
+    return 'https://github.com/pytest-dev/scaffoldrom-pytest-plugin.git'
 
 
 def test_repository_url_should_clone(mocker, template_url, user_config_data):
@@ -64,7 +64,7 @@ def test_repository_url_should_clone(mocker, template_url, user_config_data):
     passed a repository template url.
     """
     mock_clone = mocker.patch(
-        'cookiecutter.repository.clone',
+        'scaffoldrom.repository.clone',
         return_value='tests/fake-repo-tmpl',
         autospec=True,
     )
@@ -72,7 +72,7 @@ def test_repository_url_should_clone(mocker, template_url, user_config_data):
     project_dir, cleanup = repository.determine_repo_dir(
         template_url,
         abbreviations={},
-        clone_to_dir=user_config_data['cookiecutters_dir'],
+        clone_to_dir=user_config_data['scaffoldroms_dir'],
         checkout=None,
         no_input=True,
     )
@@ -80,7 +80,7 @@ def test_repository_url_should_clone(mocker, template_url, user_config_data):
     mock_clone.assert_called_once_with(
         repo_url=template_url,
         checkout=None,
-        clone_to_dir=user_config_data['cookiecutters_dir'],
+        clone_to_dir=user_config_data['scaffoldroms_dir'],
         no_input=True,
     )
 
@@ -90,9 +90,9 @@ def test_repository_url_should_clone(mocker, template_url, user_config_data):
 
 
 def test_repository_url_with_no_context_file(mocker, template_url, user_config_data):
-    """Verify cloned repository without `cookiecutter.json` file raises error."""
+    """Verify cloned repository without `scaffoldrom.json` file raises error."""
     mocker.patch(
-        'cookiecutter.repository.clone',
+        'scaffoldrom.repository.clone',
         return_value='tests/fake-repo-bad',
         autospec=True,
     )

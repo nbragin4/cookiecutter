@@ -3,5 +3,5 @@
 Command Line Options
 --------------------
 
-.. click:: cookiecutter.__main__:main
-  :prog: cookiecutter
+.. click:: scaffoldrom.__main__:main
+  :prog: scaffoldrom

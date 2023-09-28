@@ -4,7 +4,7 @@
 
 import sys
 
-{% if cookiecutter.abort_post_gen == "yes" %}
+{% if scaffoldrom.abort_post_gen == "yes" %}
 sys.exit(5)
 {% else %}
 sys.exit(0)

@@ -15,7 +15,7 @@ repos:
     hooks:
       - id: black
         language_version: python3
-        exclude: ^(tests\/hooks-abort-render\/hooks|docs\/HelloCookieCutter1)
+        exclude: ^(tests\/hooks-abort-render\/hooks|docs\/HelloScaffoldrom1)
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
@@ -45,7 +45,7 @@ repos:
           - "--indent=2"
           - "--no-sort-keys"
           - "--no-ensure-ascii"
-        exclude: "invalid-syntax.json|tests/fake-repo-bad-json/cookiecutter.json|tests/fake-repo/cookiecutter.json"
+        exclude: "invalid-syntax.json|tests/fake-repo-bad-json/scaffoldrom.json|tests/fake-repo/scaffoldrom.json"
       - id: check-toml
       - id: check-xml
       - id: check-yaml

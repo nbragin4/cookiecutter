@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from cookiecutter import replay
+from scaffoldrom import replay
 
 
 @pytest.fixture
@@ -45,37 +45,37 @@ def test_type_error_if_not_dict_context(replay_test_dir, template_name):
 
 def test_value_error_if_key_missing_in_context(replay_test_dir, template_name):
     """Test that replay.dump raises if the context does not contain a key \
-    named 'cookiecutter'."""
+    named 'scaffoldrom'."""
     with pytest.raises(ValueError):
         replay.dump(replay_test_dir, template_name, {'foo': 'bar'})
 
 
 @pytest.fixture
 def mock_ensure_failure(mocker):
-    """Replace cookiecutter.replay.make_sure_path_exists function.
+    """Replace scaffoldrom.replay.make_sure_path_exists function.
 
     Used to mock internal function and limit test scope.
     Always return expected value: False
     """
     return mocker.patch(
-        'cookiecutter.replay.make_sure_path_exists', side_effect=OSError
+        'scaffoldrom.replay.make_sure_path_exists', side_effect=OSError
     )
 
 
 @pytest.fixture
 def mock_ensure_success(mocker):
-    """Replace cookiecutter.replay.make_sure_path_exists function.
+    """Replace scaffoldrom.replay.make_sure_path_exists function.
 
     Used to mock internal function and limit test scope.
     Always return expected value: True
     """
-    return mocker.patch('cookiecutter.replay.make_sure_path_exists', return_value=True)
+    return mocker.patch('scaffoldrom.replay.make_sure_path_exists', return_value=True)
 
 
 def test_ioerror_if_replay_dir_creation_fails(mock_ensure_failure, replay_test_dir):
     """Test that replay.dump raises when the replay_dir cannot be created."""
     with pytest.raises(OSError):
-        replay.dump(replay_test_dir, 'foo', {'cookiecutter': {'hello': 'world'}})
+        replay.dump(replay_test_dir, 'foo', {'scaffoldrom': {'hello': 'world'}})
 
     mock_ensure_failure.assert_called_once_with(replay_test_dir)
 

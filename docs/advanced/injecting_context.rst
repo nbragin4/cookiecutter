@@ -3,12 +3,12 @@
 Injecting Extra Context
 -----------------------
 
-You can specify an ``extra_context`` dictionary that will override values from ``cookiecutter.json`` or ``.cookiecutterrc``:
+You can specify an ``extra_context`` dictionary that will override values from ``scaffoldrom.json`` or ``.scaffoldromrc``:
 
 .. code-block:: python
 
-    cookiecutter(
-        'cookiecutter-pypackage/',
+    scaffoldrom(
+        'scaffoldrom-pypackage/',
         extra_context={'project_name': 'TheGreatest'},
     )
 
@@ -16,20 +16,20 @@ This works as command-line parameters as well:
 
 .. code-block:: bash
 
-    cookiecutter --no-input cookiecutter-pypackage/ project_name=TheGreatest
+    scaffoldrom --no-input scaffoldrom-pypackage/ project_name=TheGreatest
 
-You will also need to add these keys to the ``cookiecutter.json`` or ``.cookiecutterrc``.
+You will also need to add these keys to the ``scaffoldrom.json`` or ``.scaffoldromrc``.
 
 
 Example: Injecting a Timestamp
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you have ``cookiecutter.json`` that has the following keys:
+If you have ``scaffoldrom.json`` that has the following keys:
 
 .. code-block:: JSON
 
     {
-        "timestamp": "{{ cookiecutter.timestamp }}"
+        "timestamp": "{{ scaffoldrom.timestamp }}"
     }
 
 
@@ -38,17 +38,17 @@ generated:
 
 .. code-block:: python
 
-    from cookiecutter.main import cookiecutter
+    from scaffoldrom.main import scaffoldrom
 
     from datetime import datetime
 
-    cookiecutter(
-        'cookiecutter-django',
+    scaffoldrom(
+        'scaffoldrom-django',
         extra_context={'timestamp': datetime.utcnow().isoformat()}
     )
 
 How this works:
 
 1. The script uses ``datetime`` to get the current UTC time in ISO format.
-2. To generate the project, ``cookiecutter()`` is called, passing the timestamp
+2. To generate the project, ``scaffoldrom()`` is called, passing the timestamp
    in as context via the ``extra_context``` dict.

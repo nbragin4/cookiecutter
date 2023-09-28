@@ -6,15 +6,15 @@ Human readable prompts
 You can add human-readable prompts that will be shown to the user for each variable using the ``__prompts__`` key.
 For multiple choices questions you can also provide labels for each option.
 
-See the following cookiecutter config as example:
+See the following scaffoldrom config as example:
 
 
 .. code-block:: json
 
     {
         "package_name": "my-package",
-        "module_name": "{{ cookiecutter.package_name.replace('-', '_') }}",
-        "package_name_stylized": "{{ cookiecutter.module_name.replace('_', ' ').capitalize() }}",
+        "module_name": "{{ scaffoldrom.package_name.replace('-', '_') }}",
+        "package_name_stylized": "{{ scaffoldrom.module_name.replace('_', ' ').capitalize() }}",
         "short_description": "A nice python package",
         "github_username": "your-org-or-username",
         "full_name": "Firstname Lastname",

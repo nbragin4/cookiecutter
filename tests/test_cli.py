@@ -1,4 +1,4 @@
-"""Collection of tests around cookiecutter's command-line interface."""
+"""Collection of tests around scaffoldrom's command-line interface."""
 import json
 import os
 import re
@@ -6,20 +6,20 @@ from pathlib import Path
 
 import pytest
 from click.testing import CliRunner
-from cookiecutter import utils
-from cookiecutter.__main__ import main
-from cookiecutter.environment import StrictEnvironment
-from cookiecutter.exceptions import UnknownExtension
-from cookiecutter.main import cookiecutter
+from scaffoldrom import utils
+from scaffoldrom.__main__ import main
+from scaffoldrom.environment import StrictEnvironment
+from scaffoldrom.exceptions import UnknownExtension
+from scaffoldrom.main import scaffoldrom
 
 
 @pytest.fixture(scope='session')
 def cli_runner():
-    """Fixture that returns a helper function to run the cookiecutter cli."""
+    """Fixture that returns a helper function to run the scaffoldrom cli."""
     runner = CliRunner()
 
     def cli_main(*cli_args, **cli_kwargs):
-        """Run cookiecutter cli main with the given args."""
+        """Run scaffoldrom cli main with the given args."""
         return runner.invoke(main, cli_args, **cli_kwargs)
 
     return cli_main
@@ -62,10 +62,10 @@ def version_cli_flag(request):
 
 
 def test_cli_version(cli_runner, version_cli_flag):
-    """Verify Cookiecutter version output by `cookiecutter` on cli invocation."""
+    """Verify Scaffoldrom version output by `scaffoldrom` on cli invocation."""
     result = cli_runner(version_cli_flag)
     assert result.exit_code == 0
-    assert result.output.startswith('Cookiecutter')
+    assert result.output.startswith('Scaffoldrom')
 
 
 @pytest.mark.usefixtures('make_fake_project_dir', 'remove_fake_project_dir')
@@ -100,13 +100,13 @@ def test_cli_verbose(cli_runner):
 @pytest.mark.usefixtures('remove_fake_project_dir')
 def test_cli_replay(mocker, cli_runner):
     """Test cli invocation display log with `verbose` and `replay` flags."""
-    mock_cookiecutter = mocker.patch('cookiecutter.cli.cookiecutter')
+    mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
     result = cli_runner(template_path, '--replay', '-v')
 
     assert result.exit_code == 0
-    mock_cookiecutter.assert_called_once_with(
+    mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
@@ -127,13 +127,13 @@ def test_cli_replay(mocker, cli_runner):
 @pytest.mark.usefixtures('remove_fake_project_dir')
 def test_cli_replay_file(mocker, cli_runner):
     """Test cli invocation correctly pass --replay-file option."""
-    mock_cookiecutter = mocker.patch('cookiecutter.cli.cookiecutter')
+    mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
     result = cli_runner(template_path, '--replay-file', '~/custom-replay-file', '-v')
 
     assert result.exit_code == 0
-    mock_cookiecutter.assert_called_once_with(
+    mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
@@ -170,8 +170,8 @@ def test_cli_replay_generated(mocker, cli_runner):
 @pytest.mark.usefixtures('remove_fake_project_dir')
 def test_cli_exit_on_noinput_and_replay(mocker, cli_runner):
     """Test cli invocation fail if both `no-input` and `replay` flags passed."""
-    mock_cookiecutter = mocker.patch(
-        'cookiecutter.cli.cookiecutter', side_effect=cookiecutter
+    mock_scaffoldrom = mocker.patch(
+        'scaffoldrom.cli.scaffoldrom', side_effect=scaffoldrom
     )
 
     template_path = 'tests/fake-repo-pre/'
@@ -185,7 +185,7 @@ def test_cli_exit_on_noinput_and_replay(mocker, cli_runner):
 
     assert expected_error_msg in result.output
 
-    mock_cookiecutter.assert_called_once_with(
+    mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         True,
@@ -210,18 +210,18 @@ def overwrite_cli_flag(request):
 
 
 @pytest.mark.usefixtures('remove_fake_project_dir')
-def test_run_cookiecutter_on_overwrite_if_exists_and_replay(
+def test_run_scaffoldrom_on_overwrite_if_exists_and_replay(
     mocker, cli_runner, overwrite_cli_flag
 ):
     """Test cli invocation with `overwrite-if-exists` and `replay` flags."""
-    mock_cookiecutter = mocker.patch('cookiecutter.cli.cookiecutter')
+    mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
     result = cli_runner(template_path, '--replay', '-v', overwrite_cli_flag)
 
     assert result.exit_code == 0
 
-    mock_cookiecutter.assert_called_once_with(
+    mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
@@ -272,13 +272,13 @@ def output_dir_flag(request):
 
 def test_cli_output_dir(mocker, cli_runner, output_dir_flag, output_dir):
     """Test cli invocation with `output-dir` flag changes output directory."""
-    mock_cookiecutter = mocker.patch('cookiecutter.cli.cookiecutter')
+    mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
     result = cli_runner(template_path, output_dir_flag, output_dir)
 
     assert result.exit_code == 0
-    mock_cookiecutter.assert_called_once_with(
+    mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
@@ -317,13 +317,13 @@ def user_config_path(tmp_path):
 
 def test_user_config(mocker, cli_runner, user_config_path):
     """Test cli invocation works with `config-file` option."""
-    mock_cookiecutter = mocker.patch('cookiecutter.cli.cookiecutter')
+    mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
     result = cli_runner(template_path, '--config-file', user_config_path)
 
     assert result.exit_code == 0
-    mock_cookiecutter.assert_called_once_with(
+    mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
@@ -343,7 +343,7 @@ def test_user_config(mocker, cli_runner, user_config_path):
 
 def test_default_user_config_overwrite(mocker, cli_runner, user_config_path):
     """Test cli invocation ignores `config-file` if `default-config` passed."""
-    mock_cookiecutter = mocker.patch('cookiecutter.cli.cookiecutter')
+    mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
     result = cli_runner(
@@ -354,7 +354,7 @@ def test_default_user_config_overwrite(mocker, cli_runner, user_config_path):
     )
 
     assert result.exit_code == 0
-    mock_cookiecutter.assert_called_once_with(
+    mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
@@ -374,13 +374,13 @@ def test_default_user_config_overwrite(mocker, cli_runner, user_config_path):
 
 def test_default_user_config(mocker, cli_runner):
     """Test cli invocation accepts `default-config` flag correctly."""
-    mock_cookiecutter = mocker.patch('cookiecutter.cli.cookiecutter')
+    mock_scaffoldrom = mocker.patch('scaffoldrom.cli.scaffoldrom')
 
     template_path = 'tests/fake-repo-pre/'
     result = cli_runner(template_path, '--default-config')
 
     assert result.exit_code == 0
-    mock_cookiecutter.assert_called_once_with(
+    mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
@@ -412,7 +412,7 @@ def test_echo_undefined_variable_error(output_dir, cli_runner):
 
     assert result.exit_code == 1
 
-    error = "Unable to create file '{{cookiecutter.foobar}}'"
+    error = "Unable to create file '{{scaffoldrom.foobar}}'"
     assert error in result.output
 
     message = (
@@ -421,11 +421,11 @@ def test_echo_undefined_variable_error(output_dir, cli_runner):
     assert message in result.output
 
     context = {
-        '_cookiecutter': {
+        '_scaffoldrom': {
             'github_username': 'hackebrot',
             'project_slug': 'testproject',
         },
-        'cookiecutter': {
+        'scaffoldrom': {
             'github_username': 'hackebrot',
             'project_slug': 'testproject',
             '_template': template_path,
@@ -475,7 +475,7 @@ def test_local_extension(tmpdir, cli_runner):
 
 def test_local_extension_not_available(tmpdir, cli_runner):
     """Test handling of included but unavailable local extension."""
-    context = {'cookiecutter': {'_extensions': ['foobar']}}
+    context = {'scaffoldrom': {'_extensions': ['foobar']}}
 
     with pytest.raises(UnknownExtension) as err:
         StrictEnvironment(context=context, keep_trailing_newline=True)
@@ -537,8 +537,8 @@ def test_debug_file_non_verbose(cli_runner, debug_file):
     assert debug_file.exists()
 
     context_log = (
-        "DEBUG cookiecutter.main: context_file is "
-        "tests/fake-repo-pre/cookiecutter.json"
+        "DEBUG scaffoldrom.main: context_file is "
+        "tests/fake-repo-pre/scaffoldrom.json"
     )
     assert context_log in debug_file.read_text()
     assert context_log not in result.output
@@ -564,8 +564,8 @@ def test_debug_file_verbose(cli_runner, debug_file):
     assert debug_file.exists()
 
     context_log = (
-        "DEBUG cookiecutter.main: context_file is "
-        "tests/fake-repo-pre/cookiecutter.json"
+        "DEBUG scaffoldrom.main: context_file is "
+        "tests/fake-repo-pre/scaffoldrom.json"
     )
     assert context_log in debug_file.read_text()
     assert context_log in result.output
@@ -577,8 +577,8 @@ def test_debug_list_installed_templates(cli_runner, debug_file, user_config_path
     fake_template_dir = os.path.dirname(os.path.abspath('fake-project'))
     os.makedirs(os.path.dirname(user_config_path))
     # Single quotes in YAML will not parse escape codes (\).
-    Path(user_config_path).write_text(f"cookiecutters_dir: '{fake_template_dir}'")
-    Path("fake-project", "cookiecutter.json").write_text('{}')
+    Path(user_config_path).write_text(f"scaffoldroms_dir: '{fake_template_dir}'")
+    Path("fake-project", "scaffoldrom.json").write_text('{}')
 
     result = cli_runner(
         '--list-installed',
@@ -596,7 +596,7 @@ def test_debug_list_installed_templates_failure(
 ):
     """Verify --list-installed command error on invocation."""
     os.makedirs(os.path.dirname(user_config_path))
-    Path(user_config_path).write_text('cookiecutters_dir: "/notarealplace/"')
+    Path(user_config_path).write_text('scaffoldroms_dir: "/notarealplace/"')
 
     result = cli_runner(
         '--list-installed', '--config-file', user_config_path, str(debug_file)
@@ -642,7 +642,7 @@ def test_cli_accept_hooks(
     expected,
 ):
     """Test cli invocation works with `accept-hooks` option."""
-    mock_cookiecutter = mocker.patch("cookiecutter.cli.cookiecutter")
+    mock_scaffoldrom = mocker.patch("scaffoldrom.cli.scaffoldrom")
 
     template_path = "tests/fake-repo-pre/"
     result = cli_runner(
@@ -650,7 +650,7 @@ def test_cli_accept_hooks(
     )
 
     assert result.exit_code == 0
-    mock_cookiecutter.assert_called_once_with(
+    mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         False,
@@ -683,5 +683,5 @@ def test_cli_with_json_decoding_error(cli_runner):
     # last part of the file. If we wanted to test the absolute path, we'd have
     # to do some additional work in the test which doesn't seem that needed at
     # this point.
-    path = os.path.sep.join(['tests', 'fake-repo-bad-json', 'cookiecutter.json'])
+    path = os.path.sep.join(['tests', 'fake-repo-bad-json', 'scaffoldrom.json'])
     assert path in result.output

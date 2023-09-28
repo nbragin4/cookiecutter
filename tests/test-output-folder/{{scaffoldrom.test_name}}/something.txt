@@ -1,0 +1,3 @@
+Hi!
+My name is {{ scaffoldrom.full_name }}.
+It is {{ scaffoldrom.year }}.

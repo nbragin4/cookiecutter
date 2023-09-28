@@ -1,10 +1,10 @@
-"""Tests around using locally cached cookiecutter template repositories."""
+"""Tests around using locally cached scaffoldrom template repositories."""
 
 from pathlib import Path
 
 import pytest
 
-from cookiecutter import repository, exceptions
+from scaffoldrom import repository, exceptions
 
 
 def test_finds_local_repo(tmp_path):
@@ -22,7 +22,7 @@ def test_finds_local_repo(tmp_path):
 
 
 def test_local_repo_with_no_context_raises(tmp_path):
-    """A local repository without a cookiecutter.json should raise a \
+    """A local repository without a scaffoldrom.json should raise a \
     `RepositoryNotFound` exception."""
     template_path = str(Path('tests', 'fake-repo-bad'))
     with pytest.raises(exceptions.RepositoryNotFound) as err:

@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from cookiecutter import replay
+from scaffoldrom import replay
 
 
 @pytest.fixture
@@ -28,7 +28,7 @@ def test_type_error_if_no_template_name(replay_test_dir):
 
 def test_value_error_if_key_missing_in_context(mocker, replay_test_dir):
     """Test that replay.load raises if the loaded context does not contain \
-    'cookiecutter'."""
+    'scaffoldrom'."""
     with pytest.raises(ValueError):
         replay.load(replay_test_dir, 'invalid_replay')
 

@@ -3,7 +3,7 @@
 Choice Variables
 ----------------
 
-*New in Cookiecutter 1.1*
+*New in Scaffoldrom 1.1*
 
 Choice variables provide different choices when creating a project.
 Depending on a user's choice the template renders things differently.
@@ -13,7 +13,7 @@ Basic Usage
 
 Choice variables are regular key / value pairs, but with the value being a list of strings.
 
-For example, if you provide the following choice variable in your ``cookiecutter.json``:
+For example, if you provide the following choice variable in your ``scaffoldrom.json``:
 
 .. code-block:: JSON
 
@@ -21,7 +21,7 @@ For example, if you provide the following choice variable in your ``cookiecutter
        "license": ["MIT", "BSD-3", "GNU GPL v3.0", "Apache Software License 2.0"]
    }
 
-you'd get the following choices when running Cookiecutter::
+you'd get the following choices when running Scaffoldrom::
 
    Select license:
    1 - MIT
@@ -30,23 +30,23 @@ you'd get the following choices when running Cookiecutter::
    4 - Apache Software License 2.0
    Choose from 1, 2, 3, 4 [1]:
 
-Depending on an user's choice, a different license is rendered by Cookiecutter.
+Depending on an user's choice, a different license is rendered by Scaffoldrom.
 
-The above ``license`` choice variable creates ``cookiecutter.license``, which can be used like this:
+The above ``license`` choice variable creates ``scaffoldrom.license``, which can be used like this:
 
 .. code-block:: html+jinja
 
-  {%- if cookiecutter.license == "MIT" -%}
+  {%- if scaffoldrom.license == "MIT" -%}
   # Possible license content here
 
-  {%- elif cookiecutter.license == "BSD-3" -%}
+  {%- elif scaffoldrom.license == "BSD-3" -%}
   # More possible license content here
 
   {% endif %}
 
-Cookiecutter is using `Jinja2's if conditional expression <https://jinja.palletsprojects.com/en/latest/templates/#if>`_ to determine the correct license.
+Scaffoldrom is using `Jinja2's if conditional expression <https://jinja.palletsprojects.com/en/latest/templates/#if>`_ to determine the correct license.
 
-The created choice variable is still a regular Cookiecutter variable and can be used like this:
+The created choice variable is still a regular Scaffoldrom variable and can be used like this:
 
 .. code-block:: html+jinja
 
@@ -54,14 +54,14 @@ The created choice variable is still a regular Cookiecutter variable and can be 
   License
   -------
 
-  Distributed under the terms of the `{{cookiecutter.license}}`_ license,
+  Distributed under the terms of the `{{scaffoldrom.license}}`_ license,
 
 Overwriting Default Choice Values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Choice Variables are overwritable using a :ref:`user-config` file.
 
-For example, a choice variable can be created in ``cookiecutter.json`` by using a list as value:
+For example, a choice variable can be created in ``scaffoldrom.json`` by using a list as value:
 
 .. code-block:: JSON
 
@@ -90,4 +90,4 @@ The resulting prompt changes and looks like::
   Choose from 1, 2, 3, 4 [1]:
 
 .. note::
-   As you can see the order of the options changed from ``1 - MIT`` to ``1 - Apache Software License 2.0``. **Cookiecutter** takes the first value in the list as the default.
+   As you can see the order of the options changed from ``1 - MIT`` to ``1 - Apache Software License 2.0``. **Scaffoldrom** takes the first value in the list as the default.

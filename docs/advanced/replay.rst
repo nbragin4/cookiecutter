@@ -3,18 +3,18 @@
 Replay Project Generation
 -------------------------
 
-*New in Cookiecutter 1.1*
+*New in Scaffoldrom 1.1*
 
-On invocation **Cookiecutter** dumps a json file to ``~/.cookiecutter_replay/`` which enables you to *replay* later on.
+On invocation **Scaffoldrom** dumps a json file to ``~/.scaffoldrom_replay/`` which enables you to *replay* later on.
 
 In other words, it persists your **input** for a template and fetches it when you run the same template again.
 
-Example for a replay file (which was created via ``cookiecutter gh:hackebrot/cookiedozer``):
+Example for a replay file (which was created via ``scaffoldrom gh:hackebrot/cookiedozer``):
 
 .. code-block:: JSON
 
     {
-        "cookiecutter": {
+        "scaffoldrom": {
             "app_class_name": "FooBarApp",
             "app_title": "Foo Bar",
             "email": "raphael@example.com",
@@ -34,27 +34,27 @@ Pass the according option on the CLI:
 
 .. code-block:: bash
 
-    cookiecutter --replay gh:hackebrot/cookiedozer
+    scaffoldrom --replay gh:hackebrot/cookiedozer
 
 
 Or use the Python API:
 
 .. code-block:: python
 
-    from cookiecutter.main import cookiecutter
-    cookiecutter('gh:hackebrot/cookiedozer', replay=True)
+    from scaffoldrom.main import scaffoldrom
+    scaffoldrom('gh:hackebrot/cookiedozer', replay=True)
 
 This feature comes in handy if, for instance, you want to create a new project from an updated template.
 
 Custom replay file
 ~~~~~~~~~~~~~~~~~~
 
-*New in Cookiecutter 2.0*
+*New in Scaffoldrom 2.0*
 
 To specify a custom filename, you can use the ``--replay-file`` option:
 
 .. code-block:: bash
 
-    cookiecutter --replay-file ./cookiedozer.json gh:hackebrot/cookiedozer
+    scaffoldrom --replay-file ./cookiedozer.json gh:hackebrot/cookiedozer
 
 This may be useful to run the same replay file over several machines, in tests or when a user of the template reports a problem.
