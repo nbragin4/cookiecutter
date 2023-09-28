@@ -4,6 +4,8 @@ import os
 import re
 from pathlib import Path
 
+import yaml
+
 import pytest
 from click.testing import CliRunner
 from scaffoldrom import utils
@@ -538,7 +540,7 @@ def test_debug_file_non_verbose(cli_runner, debug_file):
 
     context_log = (
         "DEBUG scaffoldrom.main: context_file is "
-        "tests/fake-repo-pre/scaffoldrom.json"
+        "tests/fake-repo-pre/scaffoldrom.yaml"
     )
     assert context_log in debug_file.read_text()
     assert context_log not in result.output
@@ -565,7 +567,7 @@ def test_debug_file_verbose(cli_runner, debug_file):
 
     context_log = (
         "DEBUG scaffoldrom.main: context_file is "
-        "tests/fake-repo-pre/scaffoldrom.json"
+        "tests/fake-repo-pre/scaffoldrom.yaml"
     )
     assert context_log in debug_file.read_text()
     assert context_log in result.output
@@ -578,7 +580,7 @@ def test_debug_list_installed_templates(cli_runner, debug_file, user_config_path
     os.makedirs(os.path.dirname(user_config_path))
     # Single quotes in YAML will not parse escape codes (\).
     Path(user_config_path).write_text(f"scaffoldroms_dir: '{fake_template_dir}'")
-    Path("fake-project", "scaffoldrom.json").write_text('{}')
+    Path("fake-project", "scaffoldrom.yaml").write_text('{}')
 
     result = cli_runner(
         '--list-installed',
@@ -677,11 +679,11 @@ def test_cli_with_json_decoding_error(cli_runner):
 
     # Validate the error message.
     # original message from json module should be included
-    pattern = 'Expecting \'{0,1}:\'{0,1} delimiter: line 1 column (19|20) \\(char 19\\)'
+    pattern = 'YAML decoding error'
     assert re.search(pattern, result.output)
     # File name should be included too...for testing purposes, just test the
     # last part of the file. If we wanted to test the absolute path, we'd have
     # to do some additional work in the test which doesn't seem that needed at
     # this point.
-    path = os.path.sep.join(['tests', 'fake-repo-bad-json', 'scaffoldrom.json'])
+    path = os.path.sep.join(['tests', 'fake-repo-bad-json', 'scaffoldrom.yaml'])
     assert path in result.output

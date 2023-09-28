@@ -4,7 +4,7 @@ import pytest
 
 @pytest.fixture
 def context():
-    """Fixture to return a valid context as known from a scaffoldrom.json."""
+    """Fixture to return a valid context as known from a scaffoldrom.yaml."""
     return {
         'scaffoldrom': {
             'email': 'raphael@hackebrot.de',

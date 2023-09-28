@@ -60,7 +60,7 @@ def list_installed_templates(default_config, passed_config_file):
         folder
         for folder in os.listdir(scaffoldrom_folder)
         if os.path.exists(
-            os.path.join(scaffoldrom_folder, folder, 'scaffoldrom.json')
+            os.path.join(scaffoldrom_folder, folder, 'scaffoldrom.yaml')
         )
     ]
     click.echo(f'{len(template_names)} installed templates: ')
@@ -75,7 +75,7 @@ def list_installed_templates(default_config, passed_config_file):
 @click.option(
     '--no-input',
     is_flag=True,
-    help='Do not prompt for parameters and only use scaffoldrom.json file content. '
+    help='Do not prompt for parameters and only use scaffoldrom.yaml file content. '
     'Defaults to deleting any cached resources and redownloading them. '
     'Cannot be combined with the --values flag.',
 )
@@ -86,7 +86,7 @@ def list_installed_templates(default_config, passed_config_file):
 )
 @click.option(
     '--directory',
-    help='Directory within repo that holds scaffoldrom.json file '
+    help='Directory within repo that holds scaffoldrom.yaml file '
     'for advanced repositories with multi templates in it',
 )
 @click.option(

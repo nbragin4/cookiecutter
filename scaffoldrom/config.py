@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name, no-value-for-parameter
 """Global configuration handling."""
 import collections
 import copy

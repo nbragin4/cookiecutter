@@ -26,7 +26,7 @@ def remove_output_folder(request):
 def test_output_folder():
     """Tests should correctly create content, as output_folder does not yet exist."""
     context = generate.generate_context(
-        context_file='tests/test-output-folder/scaffoldrom.json'
+        context_file='tests/test-output-folder/scaffoldrom.yaml'
     )
     generate.generate_files(context=context, repo_dir='tests/test-output-folder')
 
@@ -49,7 +49,7 @@ It is 2014.
 def test_exception_when_output_folder_exists():
     """Tests should raise error as output folder created before `generate_files`."""
     context = generate.generate_context(
-        context_file='tests/test-output-folder/scaffoldrom.json'
+        context_file='tests/test-output-folder/scaffoldrom.yaml'
     )
     output_folder = context['scaffoldrom']['test_name']
 

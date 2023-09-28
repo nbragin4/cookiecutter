@@ -23,12 +23,12 @@ This is a directory structure for a simple scaffoldrom::
     ├── blah.txt                      <--------- Non-templated files/dirs
     │                                            go outside
     │
-    └── scaffoldrom.json             <--------- Prompts & default values
+    └── scaffoldrom.yaml             <--------- Prompts & default values
 
 You must have:
 
-- A ``scaffoldrom.json`` file.
-- A ``{{ scaffoldrom.project_name }}/`` directory, where ``project_name`` is defined in your ``scaffoldrom.json``.
+- A ``scaffoldrom.yaml`` file.
+- A ``{{ scaffoldrom.project_name }}/`` directory, where ``project_name`` is defined in your ``scaffoldrom.yaml``.
 
 Beyond that, you can have whatever files/directories you want.
 

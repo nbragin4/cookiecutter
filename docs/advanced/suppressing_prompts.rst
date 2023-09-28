@@ -20,10 +20,10 @@ Scaffoldrom will pick a default value if used with ``no_input``:
         no_input=True,
     )
 
-In this case it will be using the default defined in ``scaffoldrom.json`` or ``.scaffoldromrc``.
+In this case it will be using the default defined in ``scaffoldrom.yaml`` or ``.scaffoldromrc``.
 
 .. note::
-   values from ``scaffoldrom.json`` will be overridden by values from  ``.scaffoldromrc``
+   values from ``scaffoldrom.yaml`` will be overridden by values from  ``.scaffoldromrc``
 
 Advanced Example: Defaults + Extra Context
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

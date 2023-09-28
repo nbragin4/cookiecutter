@@ -25,7 +25,7 @@ def cloned_scaffoldrom_path(user_config_data, template):
     subdir_template_path = os.path.join(cloned_template_path, 'my-dir')
     if not os.path.exists(subdir_template_path):
         os.mkdir(subdir_template_path)
-    Path(subdir_template_path, 'scaffoldrom.json').touch()  # creates file
+    Path(subdir_template_path, 'scaffoldrom.yaml').touch()  # creates file
 
     return subdir_template_path
 
@@ -33,7 +33,7 @@ def cloned_scaffoldrom_path(user_config_data, template):
 def test_should_find_existing_scaffoldrom(
     template, user_config_data, cloned_scaffoldrom_path
 ):
-    """Find `scaffoldrom.json` in sub folder created by `cloned_scaffoldrom_path`."""
+    """Find `scaffoldrom.yaml` in sub folder created by `cloned_scaffoldrom_path`."""
     project_dir, cleanup = repository.determine_repo_dir(
         template=template,
         abbreviations={},
@@ -48,7 +48,7 @@ def test_should_find_existing_scaffoldrom(
 
 
 def test_local_repo_typo(template, user_config_data, cloned_scaffoldrom_path):
-    """Wrong pointing to `scaffoldrom.json` sub-directory should raise."""
+    """Wrong pointing to `scaffoldrom.yaml` sub-directory should raise."""
     with pytest.raises(exceptions.RepositoryNotFound) as err:
         repository.determine_repo_dir(
             template=template,

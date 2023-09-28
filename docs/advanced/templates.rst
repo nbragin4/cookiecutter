@@ -18,7 +18,7 @@ Here's an example repository::
     |   └── file.txt
     ├── templates/
     |   └── base.txt
-    └── scaffoldrom.json
+    └── scaffoldrom.yaml
 
 every file in the `templates` directory will become referable inside the project itself,
 and the path should be relative from the `templates` folder like ::

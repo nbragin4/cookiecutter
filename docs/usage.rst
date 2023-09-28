@@ -12,7 +12,7 @@ First, clone a Scaffoldrom project template::
 Make your changes
 -----------------
 
-Modify the variables defined in `scaffoldrom.json`.
+Modify the variables defined in `scaffoldrom.yaml`.
 
 Open up the skeleton project. If you need to change it around a bit, do so.
 
@@ -51,7 +51,7 @@ repository::
     $ scaffoldrom hg+ssh://hg@bitbucket.org/audreyr/scaffoldrom-pypackage
 
 You will be prompted to enter a bunch of project config values. (These are
-defined in the project's `scaffoldrom.json`.)
+defined in the project's `scaffoldrom.yaml`.)
 
 Then, Scaffoldrom will generate a project from the template, using the values
 that you entered. It will be placed in your current directory.

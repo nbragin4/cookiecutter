@@ -5,7 +5,7 @@ Copy without Render
 
 *New in Scaffoldrom 1.1*
 
-To avoid rendering directories and files of a scaffoldrom, the ``_copy_without_render`` key can be used in the ``scaffoldrom.json``.
+To avoid rendering directories and files of a scaffoldrom, the ``_copy_without_render`` key can be used in the ``scaffoldrom.yaml``.
 The value of this key accepts a list of Unix shell-style wildcards:
 
 .. code-block:: JSON

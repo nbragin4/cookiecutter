@@ -11,16 +11,16 @@ Let's imagine to have the following structure::
 
     main-directory/
         ├── project-1
-        │   ├── scaffoldrom.json
+        │   ├── scaffoldrom.yaml
         │   ├── {{scaffoldrom.project_slug}}
         |	│   ├── ...
         ├── project-2
-        │   ├── scaffoldrom.json
+        │   ├── scaffoldrom.yaml
         │   ├── {{scaffoldrom.project_slug}}
         |	│   ├── ...
-        └── scaffoldrom.json
+        └── scaffoldrom.yaml
 
-It is possible to specify in the main ``scaffoldrom.json`` how to reach the other
+It is possible to specify in the main ``scaffoldrom.yaml`` how to reach the other
 config files as follows:
 
 .. code-block:: JSON
@@ -43,4 +43,4 @@ among the possible templates:
     Choose from 1, 2 [1]:
 
 Once a template is chosen, for example ``1``, it will continue to ask the info required by
-``scaffoldrom.json`` in the ``project-1`` folder, such as ``project-slug``
+``scaffoldrom.yaml`` in the ``project-1`` folder, such as ``project-slug``

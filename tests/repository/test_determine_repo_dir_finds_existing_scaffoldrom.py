@@ -21,7 +21,7 @@ def cloned_scaffoldrom_path(user_config_data, template):
     cloned_template_path = os.path.join(scaffoldroms_dir, template)
     os.mkdir(cloned_template_path)
 
-    Path(cloned_template_path, "scaffoldrom.json").touch()  # creates file
+    Path(cloned_template_path, "scaffoldrom.yaml").touch()  # creates file
 
     return cloned_template_path
 

@@ -1,7 +1,7 @@
 """Test scaffoldrom for work without any input.
 
 Tests in this file execute `scaffoldrom()` with `no_input=True` flag and
-verify result with different settings in `scaffoldrom.json`.
+verify result with different settings in `scaffoldrom.yaml`.
 """
 import os
 import textwrap
@@ -56,14 +56,14 @@ def test_scaffoldrom_no_input_extra_context():
 
 @pytest.mark.usefixtures('clean_system', 'remove_additional_dirs')
 def test_scaffoldrom_templated_context():
-    """Verify Jinja2 templating correctly works in `scaffoldrom.json` file."""
+    """Verify Jinja2 templating correctly works in `scaffoldrom.yaml` file."""
     main.scaffoldrom('tests/fake-repo-tmpl', no_input=True)
     assert os.path.isdir('fake-project-templated')
 
 
 @pytest.mark.usefixtures('clean_system', 'remove_additional_dirs')
 def test_scaffoldrom_no_input_return_rendered_file():
-    """Verify Jinja2 templating correctly works in `scaffoldrom.json` file."""
+    """Verify Jinja2 templating correctly works in `scaffoldrom.yaml` file."""
     project_dir = main.scaffoldrom('tests/fake-repo-pre', no_input=True)
     assert project_dir == os.path.abspath('fake-project')
     content = Path(project_dir, 'README.rst').read_text()
@@ -72,7 +72,7 @@ def test_scaffoldrom_no_input_return_rendered_file():
 
 @pytest.mark.usefixtures('clean_system', 'remove_additional_dirs')
 def test_scaffoldrom_dict_values_in_context():
-    """Verify configured dictionary from `scaffoldrom.json` correctly unpacked."""
+    """Verify configured dictionary from `scaffoldrom.yaml` correctly unpacked."""
     project_dir = main.scaffoldrom('tests/fake-repo-dict', no_input=True)
     assert project_dir == os.path.abspath('fake-project-dict')
 

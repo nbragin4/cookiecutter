@@ -17,7 +17,7 @@ class ExtensionLoaderMixin:
         Does the following:
 
         1. Establishes default_extensions (currently just a Time feature)
-        2. Reads extensions set in the scaffoldrom.json _extensions key.
+        2. Reads extensions set in the scaffoldrom.yaml _extensions key.
         3. Attempts to load the extensions. Provides useful error if fails.
         """
         context = kwargs.pop('context', {})
@@ -60,6 +60,6 @@ class StrictEnvironment(ExtensionLoaderMixin, Environment):
     def __init__(self, **kwargs):
         """Set the standard Scaffoldrom StrictEnvironment.
 
-        Also loading extensions defined in scaffoldrom.json's _extensions key.
+        Also loading extensions defined in scaffoldrom.yaml's _extensions key.
         """
         super().__init__(undefined=StrictUndefined, **kwargs)

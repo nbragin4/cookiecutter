@@ -44,7 +44,7 @@ Possible settings are:
 
 ``default_context``:
     A list of key/value pairs that you want injected as context whenever you generate a project with Scaffoldrom.
-    These values are treated like the defaults in ``scaffoldrom.json``, upon generation of any project.
+    These values are treated like the defaults in ``scaffoldrom.yaml``, upon generation of any project.
 ``scaffoldroms_dir``
     Directory where your scaffoldroms are cloned to when you use Scaffoldrom with a repo argument.
 ``values_dir``

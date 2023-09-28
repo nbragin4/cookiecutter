@@ -14,7 +14,7 @@ Put them in ``hooks/`` like this::
     ├── hooks
     │   ├── pre_gen_project.py
     │   └── post_gen_project.py
-    └── scaffoldrom.json
+    └── scaffoldrom.yaml
 
 Shell scripts work similarly::
 
@@ -23,7 +23,7 @@ Shell scripts work similarly::
     ├── hooks
     │   ├── pre_gen_project.sh
     │   └── post_gen_project.sh
-    └── scaffoldrom.json
+    └── scaffoldrom.yaml
 
 It shouldn't be too hard to extend Scaffoldrom to work with other types of scripts too.
 Pull requests are welcome.

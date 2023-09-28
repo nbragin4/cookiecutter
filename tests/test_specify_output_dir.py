@@ -6,7 +6,7 @@ from scaffoldrom import main
 
 @pytest.fixture
 def context():
-    """Fixture to return a valid context as known from a scaffoldrom.json."""
+    """Fixture to return a valid context as known from a scaffoldrom.yaml."""
     return {
         'scaffoldrom': {
             'email': 'raphael@hackebrot.de',
@@ -22,7 +22,7 @@ def template(tmp_path):
     """Fixture to prepare test template directory."""
     template_dir = tmp_path.joinpath("template")
     template_dir.mkdir()
-    template_dir.joinpath('scaffoldrom.json').touch()
+    template_dir.joinpath('scaffoldrom.yaml').touch()
     return str(template_dir)
 
 

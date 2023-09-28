@@ -16,10 +16,10 @@ Create the directory for your scaffoldrom and cd into it:
     $ mkdir scaffoldrom-website-simple
     $ cd scaffoldrom-website-simple/
 
-Step 2: Create scaffoldrom.json
+Step 2: Create scaffoldrom.yaml
 ----------------------------------
 
-`scaffoldrom.json` is a JSON file that contains fields which can be referenced in the scaffoldrom template. For each, default value is defined and user will be prompted for input during scaffoldrom execution. Only mandatory field is `project_slug` and it should comply with package naming conventions defined in `PEP8 Naming Conventions <https://www.python.org/dev/peps/pep-0008/#package-and-module-names>`_ .
+`scaffoldrom.yaml` is a JSON file that contains fields which can be referenced in the scaffoldrom template. For each, default value is defined and user will be prompted for input during scaffoldrom execution. Only mandatory field is `project_slug` and it should comply with package naming conventions defined in `PEP8 Naming Conventions <https://www.python.org/dev/peps/pep-0008/#package-and-module-names>`_ .
 
 .. code-block:: json
 

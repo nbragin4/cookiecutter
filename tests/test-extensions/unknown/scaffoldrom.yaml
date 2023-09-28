@@ -1,0 +1,4 @@
+project_slug: Foobar
+year: '{{scaffoldrom.nope | foobar}}'
+_extensions:
+- FoobarExtension

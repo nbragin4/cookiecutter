@@ -90,7 +90,7 @@ def test_repository_url_should_clone(mocker, template_url, user_config_data):
 
 
 def test_repository_url_with_no_context_file(mocker, template_url, user_config_data):
-    """Verify cloned repository without `scaffoldrom.json` file raises error."""
+    """Verify cloned repository without `scaffoldrom.yaml` file raises error."""
     mocker.patch(
         'scaffoldrom.repository.clone',
         return_value='tests/fake-repo-bad',

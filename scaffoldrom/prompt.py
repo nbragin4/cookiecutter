@@ -184,7 +184,7 @@ def read_user_dict(var_name, default_value, prompts=None, prefix=""):
 def render_variable(env, raw, scaffoldrom_dict):
     """Render the next variable to be displayed in the user prompt.
 
-    Inside the prompting taken from the scaffoldrom.json file, this renders
+    Inside the prompting taken from the scaffoldrom.yaml file, this renders
     the next variable. For example, if a project_name is "Peanut Butter
     Cookie", the repo_name could be be rendered with:
 

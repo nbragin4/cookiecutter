@@ -12,10 +12,10 @@ Here's an example repository demonstrating this feature::
     https://github.com/user/repo-name.git
         ├── directory1-name/
         |   ├── {{scaffoldrom.project_slug}}/
-        |   └── scaffoldrom.json
+        |   └── scaffoldrom.yaml
         └── directory2-name/
             ├── {{scaffoldrom.project_slug}}/
-            └── scaffoldrom.json
+            └── scaffoldrom.yaml
 
 To activate one of templates within a subdirectory, use the ``--directory`` option:
 

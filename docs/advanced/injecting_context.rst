@@ -3,7 +3,7 @@
 Injecting Extra Context
 -----------------------
 
-You can specify an ``extra_context`` dictionary that will override values from ``scaffoldrom.json`` or ``.scaffoldromrc``:
+You can specify an ``extra_context`` dictionary that will override values from ``scaffoldrom.yaml`` or ``.scaffoldromrc``:
 
 .. code-block:: python
 
@@ -18,13 +18,13 @@ This works as command-line parameters as well:
 
     scaffoldrom --no-input scaffoldrom-pypackage/ project_name=TheGreatest
 
-You will also need to add these keys to the ``scaffoldrom.json`` or ``.scaffoldromrc``.
+You will also need to add these keys to the ``scaffoldrom.yaml`` or ``.scaffoldromrc``.
 
 
 Example: Injecting a Timestamp
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you have ``scaffoldrom.json`` that has the following keys:
+If you have ``scaffoldrom.yaml`` that has the following keys:
 
 .. code-block:: JSON
 

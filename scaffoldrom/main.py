@@ -4,6 +4,8 @@ Main entry point for the `scaffoldrom` command.
 The code in this module is also a good example of how to use Scaffoldrom as a
 library rather than a script.
 """
+from collections import OrderedDict
+import json
 import logging
 import os
 import re
@@ -13,6 +15,7 @@ from copy import copy
 from scaffoldrom.config import get_user_config
 from scaffoldrom.exceptions import InvalidModeException
 from scaffoldrom.generate import generate_context, generate_files
+from scaffoldrom.ordered_yaml import ordered_dump
 from scaffoldrom.prompt import prompt_for_config
 from scaffoldrom.values import dump, load
 from scaffoldrom.repository import determine_repo_dir
@@ -44,7 +47,7 @@ def scaffoldrom(
         or a URL to a git repository.
     :param checkout: The branch, tag or commit ID to checkout after clone.
     :param no_input: Do not prompt for user input.
-        Use default values for template parameters taken from `scaffoldrom.json`, user
+        Use default values for template parameters taken from `scaffoldrom.yaml`, user
         config and `extra_dict`. Force a refresh of cached resources.
     :param extra_context: A dictionary of context that overrides default
         and user configuration.
@@ -93,7 +96,21 @@ def scaffoldrom(
                 path, template_name = os.path.split(os.path.splitext(values)[0])
                 context_from_valuesfile = load(path, template_name)
 
-    context_file = os.path.join(repo_dir, 'scaffoldrom.json')
+    context_file = os.path.join(repo_dir, 'scaffoldrom.yaml')
+
+    # temporary code block
+    # json_file = os.path.join(repo_dir, "scaffoldrom.json")
+    # yaml_file = os.path.join(repo_dir, "scaffoldrom.yaml")
+
+    # if os.path.exists(json_file):
+    #     with open(json_file, "r") as f:
+    #         data = json.load(f, object_pairs_hook=OrderedDict)
+    #     with open(yaml_file, "w") as f:
+    #         ordered_dump(data, f)
+    #     if os.path.exists(yaml_file):
+    #         os.remove(json_file)
+    # temporary code block
+
     logger.debug('context_file is %s', context_file)
 
     if values:

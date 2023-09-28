@@ -114,10 +114,10 @@ https://raw.github.com/audreyfeldroy/scaffoldrom-pypackage/master/%7B%7Bscaffold
 
 Observe how it corresponds to the `AUTHORS.rst` file that you generated.
 
-scaffoldrom.json
+scaffoldrom.yaml
 ~~~~~~~~~~~~~~~~~
 
-Now navigate back up to `scaffoldrom-pypackage/` and look at the `scaffoldrom.json` file.
+Now navigate back up to `scaffoldrom-pypackage/` and look at the `scaffoldrom.yaml` file.
 
 You should see JSON that corresponds to the prompts and default values shown earlier during project generation:
 

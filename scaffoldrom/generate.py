@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name, no-value-for-parameter
 """Functions for generating a project from a project template."""
 import fnmatch
 import json
@@ -10,6 +11,7 @@ from pathlib import Path
 from binaryornot.check import is_binary
 from jinja2 import FileSystemLoader, Environment
 from jinja2.exceptions import TemplateSyntaxError, UndefinedError
+import yaml
 
 from scaffoldrom.environment import StrictEnvironment
 from scaffoldrom.exceptions import (
@@ -21,6 +23,7 @@ from scaffoldrom.exceptions import (
 )
 from scaffoldrom.find import find_template
 from scaffoldrom.hooks import run_hook
+from scaffoldrom.ordered_yaml import ordered_load
 from scaffoldrom.utils import make_sure_path_exists, rmtree, work_in
 
 logger = logging.getLogger(__name__)
@@ -88,13 +91,13 @@ def apply_overwrites_to_context(context, overwrite_context):
 
 
 def generate_context(
-    context_file='scaffoldrom.json', default_context=None, extra_context=None
+    context_file='scaffoldrom.yaml', default_context=None, extra_context=None
 ):
     """Generate the context for a Scaffoldrom project template.
 
-    Loads the JSON file as a Python object, with key being the JSON filename.
+    Loads the YAML file as a Python object, with key being the YAML filename.
 
-    :param context_file: JSON file containing key/value pairs for populating
+    :param context_file: YAML file containing key/value pairs for populating
         the scaffoldrom's variables.
     :param default_context: Dictionary containing config to take into account.
     :param extra_context: Dictionary containing configuration overrides
@@ -103,15 +106,15 @@ def generate_context(
 
     try:
         with open(context_file, encoding='utf-8') as file_handle:
-            obj = json.load(file_handle, object_pairs_hook=OrderedDict)
-    except ValueError as e:
-        # JSON decoding error.  Let's throw a new exception that is more
+            obj = ordered_load(file_handle, object_pairs_hook=OrderedDict)
+    except yaml.YAMLError as e:
+        # YAML decoding error.  Let's throw a new exception that is more
         # friendly for the developer or user.
         full_fpath = os.path.abspath(context_file)
-        json_exc_message = str(e)
+        yaml_exc_message = str(e)
         our_exc_message = (
-            f"JSON decoding error while loading '{full_fpath}'. "
-            f"Decoding error details: '{json_exc_message}'"
+            f"YAML decoding error while loading '{full_fpath}'. "
+            f"Decoding error details: '{yaml_exc_message}'"
         )
         raise ContextDecodingException(our_exc_message) from e
 

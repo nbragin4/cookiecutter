@@ -45,7 +45,7 @@ repos:
           - "--indent=2"
           - "--no-sort-keys"
           - "--no-ensure-ascii"
-        exclude: "invalid-syntax.json|tests/fake-repo-bad-json/scaffoldrom.json|tests/fake-repo/scaffoldrom.json"
+        exclude: "invalid-syntax.json|tests/fake-repo-bad-json/scaffoldrom.yaml|tests/fake-repo/scaffoldrom.yaml"
       - id: check-toml
       - id: check-xml
       - id: check-yaml
