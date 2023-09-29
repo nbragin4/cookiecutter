@@ -2,6 +2,8 @@
 import json
 import os
 
+import yaml
+
 import pytest
 
 from scaffoldrom import values
@@ -16,7 +18,7 @@ def template_name():
 @pytest.fixture
 def values_file(values_test_dir, template_name):
     """Fixture to return a actual file name of the dump."""
-    file_name = f'{template_name}.json'
+    file_name = f'{template_name}.yaml'
     return os.path.join(values_test_dir, file_name)
 
 
@@ -80,7 +82,7 @@ def test_ioerror_if_values_dir_creation_fails(mock_ensure_failure, values_test_d
     mock_ensure_failure.assert_called_once_with(values_test_dir)
 
 
-def test_run_json_dump(
+def test_run_yaml_dump(
     mocker,
     mock_ensure_success,
     mock_user_config,
@@ -89,11 +91,12 @@ def test_run_json_dump(
     values_test_dir,
     values_file,
 ):
-    """Test that values.dump runs json.dump under the hood and that the context \
+    """Test that values.dump runs yaml.dump under the hood and that the context \
     is correctly written to the expected file in the values_dir."""
     spy_get_values_file = mocker.spy(values, 'get_file_name')
 
-    mock_json_dump = mocker.patch('json.dump', side_effect=json.dump)
+    #mock_yaml_dump = mocker.patch('ordered_dump', side_effect=scaffoldrom.ordered_yaml.ordered_dump)
+    mock_yaml_dump = mocker.patch('yaml.dump', side_effect=yaml.dump)
 
     values.dump(values_test_dir, template_name, context)
 
@@ -101,7 +104,7 @@ def test_run_json_dump(
     mock_ensure_success.assert_called_once_with(values_test_dir)
     spy_get_values_file.assert_called_once_with(values_test_dir, template_name)
 
-    assert mock_json_dump.call_count == 1
-    (dumped_context, outfile_handler), kwargs = mock_json_dump.call_args
-    assert outfile_handler.name == values_file
-    assert dumped_context == context
+    assert mock_yaml_dump.call_count == 1
+    (args, kwargs) = mock_yaml_dump.call_args_list[0]
+    assert args[1].name == values_file
+    assert args[0] == context

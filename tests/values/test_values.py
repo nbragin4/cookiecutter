@@ -6,10 +6,10 @@ import pytest
 from scaffoldrom import exceptions, main, values
 
 
-@pytest.mark.parametrize("values_file_name", ['bar', 'bar.json'])
+@pytest.mark.parametrize("values_file_name", ['bar', 'bar.yaml'])
 def test_get_values_file_name(values_file_name):
     """Make sure that values.get_file_name generates a valid json file path."""
-    exp_values_file_path = os.path.join('foo', 'bar.json')
+    exp_values_file_path = os.path.join('foo', 'bar.yaml')
     values_file_path = values.get_file_name('foo', values_file_name)
     assert values_file_path == exp_values_file_path
 

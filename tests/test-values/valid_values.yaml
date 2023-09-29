@@ -1,0 +1,10 @@
+scaffoldrom: 
+  version: "0.1.0"
+  email: raphael@hackebrot.de
+  full_name: Raphael Pierzina
+  github_username: hackebrot
+  project_name: values Project
+  repo_name: values-project
+  release_date: "2013-07-28"
+  year: "2013"
+  description: "valuesed"

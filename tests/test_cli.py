@@ -160,7 +160,7 @@ def test_cli_values_generated(mocker, cli_runner):
     result = cli_runner(
         template_path,
         '--values-file',
-        'tests/test-values/valid_values.json',
+        'tests/test-values/valid_values.yaml',
         '-o',
         'tests/tmp/',
         '-v',

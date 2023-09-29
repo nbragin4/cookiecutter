@@ -97,20 +97,6 @@ def scaffoldrom(
                 context_from_valuesfile = load(path, template_name)
 
     context_file = os.path.join(repo_dir, 'scaffoldrom.yaml')
-
-    # temporary code block
-    # json_file = os.path.join(repo_dir, "scaffoldrom.json")
-    # yaml_file = os.path.join(repo_dir, "scaffoldrom.yaml")
-
-    # if os.path.exists(json_file):
-    #     with open(json_file, "r") as f:
-    #         data = json.load(f, object_pairs_hook=OrderedDict)
-    #     with open(yaml_file, "w") as f:
-    #         ordered_dump(data, f)
-    #     if os.path.exists(yaml_file):
-    #         os.remove(json_file)
-    # temporary code block
-
     logger.debug('context_file is %s', context_file)
 
     if values:

@@ -3,15 +3,16 @@ scaffoldrom.values.
 
 -------------------
 """
-import json
+from collections import OrderedDict
 import os
+from scaffoldrom.ordered_yaml import ordered_load, ordered_dump
 
 from scaffoldrom.utils import make_sure_path_exists
 
 
 def get_file_name(values_dir, template_name):
     """Get the name of file."""
-    suffix = '.json' if not template_name.endswith('.json') else ''
+    suffix = '.yaml' if not template_name.endswith('.yaml') else ''
     file_name = f'{template_name}{suffix}'
     return os.path.join(values_dir, file_name)
 
@@ -32,7 +33,7 @@ def dump(values_dir: "os.PathLike[str]", template_name: str, context: dict):
     values_file = get_file_name(values_dir, template_name)
 
     with open(values_file, 'w', encoding="utf-8") as outfile:
-        json.dump(context, outfile, indent=2)
+        ordered_dump(context, outfile, indent=2)
 
 
 def load(values_dir, template_name):
@@ -43,9 +44,10 @@ def load(values_dir, template_name):
     values_file = get_file_name(values_dir, template_name)
 
     with open(values_file, encoding="utf-8") as infile:
-        context = json.load(infile)
+        context = ordered_load(infile)
 
     if 'scaffoldrom' not in context:
-        raise ValueError('Context is required to contain a scaffoldrom key')
+        context = OrderedDict({'scaffoldrom': context})
+        #raise ValueError('Context is required to contain a scaffoldrom key')
 
     return context

@@ -1,5 +1,5 @@
 """test_load."""
-import json
+import yaml
 import os
 
 import pytest
@@ -16,7 +16,7 @@ def template_name():
 @pytest.fixture
 def values_file(values_test_dir, template_name):
     """Fixture to return a actual file name of the dump."""
-    file_name = f'{template_name}.json'
+    file_name = f'{template_name}.yaml'
     return os.path.join(values_test_dir, file_name)
 
 
@@ -29,8 +29,8 @@ def test_type_error_if_no_template_name(values_test_dir):
 def test_value_error_if_key_missing_in_context(mocker, values_test_dir):
     """Test that values.load raises if the loaded context does not contain \
     'scaffoldrom'."""
-    with pytest.raises(ValueError):
-        values.load(values_test_dir, 'invalid_values')
+    result = values.load(values_test_dir, 'invalid_values')
+    assert 'scaffoldrom' in result.keys()
 
 
 def test_io_error_if_no_values_file(mocker, values_test_dir):
@@ -39,21 +39,21 @@ def test_io_error_if_no_values_file(mocker, values_test_dir):
         values.load(values_test_dir, 'no_values')
 
 
-def test_run_json_load(
+def test_run_yaml_load(
     mocker, mock_user_config, template_name, context, values_test_dir, values_file
 ):
-    """Test that values.load runs json.load under the hood and that the context \
+    """Test that values.load runs yaml.load under the hood and that the context \
     is correctly loaded from the file in values_dir."""
     spy_get_values_file = mocker.spy(values, 'get_file_name')
 
-    mock_json_load = mocker.patch('json.load', side_effect=json.load)
+    mock_yaml_load = mocker.patch('yaml.load', side_effect=yaml.load)
 
     loaded_context = values.load(values_test_dir, template_name)
 
     assert not mock_user_config.called
     spy_get_values_file.assert_called_once_with(values_test_dir, template_name)
 
-    assert mock_json_load.call_count == 1
-    (infile_handler,), kwargs = mock_json_load.call_args
-    assert infile_handler.name == values_file
+    assert mock_yaml_load.call_count == 1
+    (args, kwargs) = mock_yaml_load.call_args_list[0]
+    assert args[0].name == values_file
     assert loaded_context == context
