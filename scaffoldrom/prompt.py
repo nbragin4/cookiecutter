@@ -279,26 +279,7 @@ def prompt_for_config(context, no_input=False):
                     )
                 else:
                     scaffoldrom_dict[key] = read_user_yes_no(key, raw, prompts, prefix)
-            elif not isinstance(raw, dict):
-                # We are dealing with a regular variable
-                val = render_variable(env, raw, scaffoldrom_dict)
-
-                if not no_input:
-                    val = read_user_variable(key, val, prompts, prefix)
-
-                scaffoldrom_dict[key] = val
-        except UndefinedError as err:
-            msg = f"Unable to render variable '{key}'"
-            raise UndefinedVariableInTemplate(msg, err, context) from err
-
-    # Second pass; handle the dictionaries.
-    for key, raw in context['scaffoldrom'].items():
-        # Skip private type dicts not to be rendered.
-        if key.startswith('_') and not key.startswith('__'):
-            continue
-
-        try:
-            if isinstance(raw, dict):
+            elif isinstance(raw, dict):
                 # We are dealing with a dict variable
                 count += 1
                 prefix = f"  [dim][{count}/{size}][/] "
@@ -308,6 +289,15 @@ def prompt_for_config(context, no_input=False):
                     val = read_user_dict(key, val, prompts, prefix)
 
                 scaffoldrom_dict[key] = val
+            else:
+                # We are dealing with a regular variable
+                val = render_variable(env, raw, scaffoldrom_dict)
+
+                if not no_input:
+                    val = read_user_variable(key, val, prompts, prefix)
+
+                scaffoldrom_dict[key] = val
+
         except UndefinedError as err:
             msg = f"Unable to render variable '{key}'"
             raise UndefinedVariableInTemplate(msg, err, context) from err
