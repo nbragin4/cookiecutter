@@ -44,10 +44,13 @@ def load(values_dir, template_name):
     values_file = get_file_name(values_dir, template_name)
 
     with open(values_file, encoding="utf-8") as infile:
-        context = ordered_load(infile)
+        context: OrderedDict = ordered_load(infile)
 
     if 'scaffoldrom' not in context:
         context = OrderedDict({'scaffoldrom': context})
         #raise ValueError('Context is required to contain a scaffoldrom key')
+
+    spec = context['scaffoldrom'].pop('spec', OrderedDict({}) )
+    context['scaffoldrom'].update(spec)
 
     return context

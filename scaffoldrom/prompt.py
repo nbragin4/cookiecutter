@@ -1,5 +1,7 @@
 """Functions for prompting the user for project info."""
 import json
+import copy
+
 from collections import OrderedDict
 
 from rich.prompt import Prompt, Confirm, PromptBase, InvalidResponse
@@ -230,15 +232,19 @@ def prompt_choice_for_config(
     return read_user_choice(key, rendered_options, prompts, prefix)
 
 
-def prompt_for_config(context, no_input=False):
+def prompt_for_config(context, no_input=False, global_context=OrderedDict({'scaffoldrom':{}})):
     """Prompt user to enter a new config.
 
     :param dict context: Source for field names and sample values.
     :param no_input: Do not prompt for user input and use only values from context.
+    :param dict global_context: Source for field names and sample values.
     """
+    global_context = copy.deepcopy(global_context)
+    global_context['scaffoldrom'].update(context['scaffoldrom'])
     scaffoldrom_dict = OrderedDict([])
-    env = StrictEnvironment(context=context)
 
+    env = StrictEnvironment(context=global_context)
+    global_context = global_context['scaffoldrom']
     prompts = {}
     if '__prompts__' in context['scaffoldrom'].keys():
         prompts = context['scaffoldrom']['__prompts__']
@@ -253,11 +259,12 @@ def prompt_for_config(context, no_input=False):
     visible_prompts = [k for k, _ in all_prompts if not k.startswith("_")]
     size = len(visible_prompts)
     for key, raw in all_prompts:
+        global_context.update(scaffoldrom_dict)
         if key.startswith('_') and not key.startswith('__'):
             scaffoldrom_dict[key] = raw
             continue
         elif key.startswith('__'):
-            scaffoldrom_dict[key] = render_variable(env, raw, scaffoldrom_dict)
+            scaffoldrom_dict[key] = render_variable(env, raw, global_context)
             continue
 
         if not isinstance(raw, dict):
@@ -268,14 +275,14 @@ def prompt_for_config(context, no_input=False):
             if isinstance(raw, list):
                 # We are dealing with a choice variable
                 val = prompt_choice_for_config(
-                    scaffoldrom_dict, env, key, raw, no_input, prompts, prefix
+                    global_context, env, key, raw, no_input, prompts, prefix
                 )
                 scaffoldrom_dict[key] = val
             elif isinstance(raw, bool):
                 # We are dealing with a boolean variable
                 if no_input:
                     scaffoldrom_dict[key] = render_variable(
-                        env, raw, scaffoldrom_dict
+                        env, raw, global_context
                     )
                 else:
                     scaffoldrom_dict[key] = read_user_yes_no(key, raw, prompts, prefix)
@@ -283,7 +290,7 @@ def prompt_for_config(context, no_input=False):
                 # We are dealing with a dict variable
                 count += 1
                 prefix = f"  [dim][{count}/{size}][/] "
-                val = render_variable(env, raw, scaffoldrom_dict)
+                val = render_variable(env, raw, global_context)
 
                 if not no_input and not key.startswith('__'):
                     val = read_user_dict(key, val, prompts, prefix)
@@ -291,7 +298,7 @@ def prompt_for_config(context, no_input=False):
                 scaffoldrom_dict[key] = val
             else:
                 # We are dealing with a regular variable
-                val = render_variable(env, raw, scaffoldrom_dict)
+                val = render_variable(env, raw, global_context)
 
                 if not no_input:
                     val = read_user_variable(key, val, prompts, prefix)

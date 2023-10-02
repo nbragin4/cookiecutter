@@ -134,7 +134,7 @@ def scaffoldrom(
     with import_patch:
         if context_for_prompting['scaffoldrom']:
             context['scaffoldrom'].update(
-                prompt_for_config(context_for_prompting, no_input)
+                prompt_for_config(context_for_prompting, no_input, global_context=context)
             )
         if "template" in context["scaffoldrom"]:
             nested_template = re.search(
