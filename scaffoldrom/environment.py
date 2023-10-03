@@ -1,8 +1,27 @@
 """Jinja2 environment and extensions loading."""
-from jinja2 import Environment, StrictUndefined
+import copy
+from collections import OrderedDict
+from jinja2 import Environment, StrictUndefined, Template
 
 from scaffoldrom.exceptions import UnknownExtension
 
+class ScaffoldromTemplate(Template):
+    """Custom template class provide flexible way to access scaffoldrom variables in context"""
+    def new_context(
+        self,
+        vars = None,
+        shared: bool = False,
+        locals = None,
+    ):
+        """Create a new :class:`Context` for this template.  The vars
+        provided will be passed to the template.  Per default the globals
+        are added to the context.  If shared is set to `True` the data
+        is passed as is to the context without adding the globals.
+
+        `locals` can be a dict of local variables for internal usage.
+        """
+        vars.update(copy.deepcopy(vars.get('scaffoldrom', OrderedDict({}))))
+        return super().new_context(vars=vars, shared=shared, locals=locals)
 
 class ExtensionLoaderMixin:
     """Mixin providing sane loading of extensions specified in a given context.
@@ -60,6 +79,14 @@ class StrictEnvironment(ExtensionLoaderMixin, Environment):
     def __init__(self, **kwargs):
         """Set the standard Scaffoldrom StrictEnvironment.
 
+        Used to update context to access variables outside of scaffoldrom var
         Also loading extensions defined in scaffoldrom.yaml's _extensions key.
         """
+        self.template_class = ScaffoldromTemplate
+        context = kwargs.pop('context', {})
+        scaffoldrom: OrderedDict = copy.deepcopy(context.get('scaffoldrom', OrderedDict({})))
+        scaffoldrom.update(context)
+        del context
+        kwargs["context"]=scaffoldrom
+
         super().__init__(undefined=StrictUndefined, **kwargs)
