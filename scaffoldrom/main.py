@@ -15,6 +15,7 @@ from copy import copy
 from scaffoldrom.config import get_user_config
 from scaffoldrom.exceptions import InvalidModeException
 from scaffoldrom.generate import generate_context, generate_files
+from scaffoldrom.merging import merger
 from scaffoldrom.ordered_yaml import ordered_dump
 from scaffoldrom.prompt import prompt_for_config
 from scaffoldrom.values import dump, load
@@ -113,7 +114,7 @@ def scaffoldrom(
         }
         context_for_prompting = {}
         context_for_prompting['scaffoldrom'] = items_for_prompting
-        context = context_from_valuesfile
+        context = merger.merge(context.copy(), context_from_valuesfile)
         logger.debug('prompting context: %s', context_for_prompting)
     else:
         context = generate_context(

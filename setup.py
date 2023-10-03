@@ -19,6 +19,7 @@ with open('README.md', encoding='utf-8') as readme_file:
 
 requirements = [
     'binaryornot>=0.4.4',
+    'deepmerge>=1.1.0',
     'Jinja2>=2.7,<4.0.0',
     'click>=7.0,<9.0.0',
     'pyyaml>=5.3.1',
