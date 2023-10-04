@@ -4,6 +4,8 @@ import os
 import re
 from pathlib import Path
 
+import yaml
+
 import pytest
 from jinja2 import FileSystemLoader
 from jinja2.exceptions import TemplateSyntaxError
@@ -22,6 +24,8 @@ def tear_down():
     yield
     if os.path.exists('tests/files/cheese.txt'):
         os.remove('tests/files/cheese.txt')
+    if os.path.exists('tests/files/eggs.txt'):
+        os.remove('tests/files/eggs.txt')
     if os.path.exists('tests/files/cheese_lf_newlines.txt'):
         os.remove('tests/files/cheese_lf_newlines.txt')
     if os.path.exists('tests/files/cheese_crlf_newlines.txt'):
@@ -60,6 +64,18 @@ def test_generate_file_jsonify_filter(env):
     assert os.path.isfile('tests/files/cheese.txt')
     generated_text = Path('tests/files/cheese.txt').read_text()
     assert json.loads(generated_text) == data
+
+
+def test_generate_file_yamlify_filter(env):
+    """Verify yamlify filter works during files generation process."""
+    infile = 'tests/files/{{scaffoldrom.yamlify_file}}.txt'
+    data = {'yamlify_file': 'eggs', 'type': 'chicken'}
+    generate.generate_file(
+        project_dir=".", infile=infile, context={'scaffoldrom': data}, env=env
+    )
+    assert os.path.isfile('tests/files/eggs.txt')
+    generated_text = Path('tests/files/eggs.txt').read_text()
+    assert yaml.safe_load(generated_text) == data
 
 
 @pytest.mark.parametrize("length", (10, 40))

@@ -42,6 +42,7 @@ class ExtensionLoaderMixin:
         context = kwargs.pop('context', {})
 
         default_extensions = [
+            'scaffoldrom.extensions.YamlifyExtension',
             'scaffoldrom.extensions.JsonifyExtension',
             'scaffoldrom.extensions.RandomStringExtension',
             'scaffoldrom.extensions.SlugifyExtension',
