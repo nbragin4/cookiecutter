@@ -48,7 +48,7 @@ def is_copy_only_path(path, context):
 
     return False
 
-
+# TODO: Replace this with deepmerge strategy
 def apply_overwrites_to_context(context, overwrite_context):
     """Modify the given context in place based on the overwrite_context."""
     for variable, overwrite in overwrite_context.items():

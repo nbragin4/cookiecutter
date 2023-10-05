@@ -1,4 +1,5 @@
 """Collection of tests around scaffoldrom's command-line interface."""
+from collections import OrderedDict
 import json
 import os
 import re
@@ -170,34 +171,33 @@ def test_cli_values_generated(mocker, cli_runner):
 
 
 @pytest.mark.usefixtures('remove_fake_project_dir')
-def test_cli_exit_on_noinput_and_values(mocker, cli_runner):
+def test_cli_values_file_and_extra_context(mocker, cli_runner):
     """Test cli invocation fail if both `no-input` and `values` flags passed."""
     mock_scaffoldrom = mocker.patch(
         'scaffoldrom.cli.scaffoldrom', side_effect=scaffoldrom
     )
 
     template_path = 'tests/fake-repo-pre/'
-    result = cli_runner(template_path, '--no-input', '--values', '-v')
+    result = cli_runner(template_path, '--no-input', '--values-file', template_path+'values.yaml', '-v', 'full_name=Updated Full Name')
 
-    assert result.exit_code == 1
+    assert result.exit_code == 0
 
-    expected_error_msg = (
-        "You can not use both values and no_input or extra_context at the same time."
-    )
-
-    assert expected_error_msg in result.output
+    with open('fake-project/README.rst', 'r') as opened_file:
+        rendered_file = opened_file.read()
+        assert 'Project name: **Values from Fake Project**' in rendered_file
+        assert 'Full Name: **Updated Full Name**' in rendered_file
 
     mock_scaffoldrom.assert_called_once_with(
         template_path,
         None,
         True,
-        values=True,
+        values=template_path+'values.yaml',
         overwrite_if_exists=False,
         skip_if_file_exists=False,
         output_dir='.',
         config_file=None,
         default_config=False,
-        extra_context=None,
+        extra_context=OrderedDict([('full_name', 'Updated Full Name')]),
         password=None,
         directory=None,
         accept_hooks=True,

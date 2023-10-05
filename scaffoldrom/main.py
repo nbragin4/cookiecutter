@@ -64,12 +64,12 @@ def scaffoldrom(
     :param keep_project_on_failure: If `True` keep generated project directory even when
         generation fails
     """
-    if values and ((no_input is not False) or (extra_context is not None)):
-        err_msg = (
-            "You can not use both values and no_input or extra_context "
-            "at the same time."
-        )
-        raise InvalidModeException(err_msg)
+    # if (values or (no_input is not False)) and (extra_context is not None):
+    #     err_msg = (
+    #         "You can not use both values and no_input or extra_context "
+    #         "at the same time."
+    #     )
+    #     raise InvalidModeException(err_msg)
 
     config_dict = get_user_config(
         config_file=config_file,
@@ -106,6 +106,7 @@ def scaffoldrom(
             default_context=config_dict['default_context'],
             extra_context=None,
         )
+        merger.merge(context_from_valuesfile, OrderedDict(scaffoldrom=(extra_context or OrderedDict())))
         logger.debug('valuesfile context: %s', context_from_valuesfile)
         items_for_prompting = {
             k: v

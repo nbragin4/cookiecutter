@@ -33,7 +33,7 @@ def _expand_path(path):
     path = os.path.expanduser(path)
     return path
 
-
+# TODO: Replace this with deepmerge strategy
 def merge_configs(default, overwrite):
     """Recursively update a dict with the key/value pair of another.
 
